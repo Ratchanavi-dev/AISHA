@@ -1,0 +1,2769 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>คู่มือการปฏิบัติงานอย่างมืออาชีพ (Work Handbook)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#F9FAFC;--surface:#FFFFFF;--surface-2:#E8EDF5;--surface-3:#F1F4F9;
+    --ink:#050A15;--ink-2:#636975;--ink-3:#8A909C;
+    --line:#DDE0E5;--line-soft:#E9ECF1;
+    --accent:#2563EB;--accent-ink:#1D4ED8;--accent-soft:#DBE5FB;--on-accent:#FAFAFA;
+    --brand:#2563EB;
+    --teal:#128A7B;--teal-soft:#C8EEE8;--on-teal:#FFFFFF;
+    --amber:#9A6B12;--amber-soft:#FBEFD6;
+    --alert:#DB1C22;--alert-soft:#FBDDDD;
+    --sidebar:#0F1A2F;--sidebar-fg:#D4D8DE;--sidebar-accent:#2563EB;--sidebar-line:rgba(255,255,255,.12);
+    --shadow:0 1px 2px rgba(5,10,21,.06), 0 10px 26px -20px rgba(5,10,21,.4);
+    --radius:5px;
+    --font:"Inter","Noto Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:"Inter","Noto Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --code:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#050810;--surface:#0E141F;--surface-2:#1C2433;--surface-3:#141B26;
+      --ink:#E8EBF1;--ink-2:#A6ADB8;--ink-3:#767E8B;
+      --line:#222935;--line-soft:#181E28;
+      --accent:#417DFC;--accent-ink:#7BA5FD;--accent-soft:#16233F;--on-accent:#FAFAFA;
+      --brand:#417DFC;
+      --teal:#4FBBAB;--teal-soft:#0C2A27;--on-teal:#08201C;
+      --amber:#D9A02C;--amber-soft:#2A1F10;
+      --alert:#E24942;--alert-soft:#2E1615;
+      --sidebar:#070D18;--sidebar-fg:#D4D8DE;--sidebar-accent:#3D7EFC;--sidebar-line:rgba(255,255,255,.10);
+      --shadow:0 1px 2px rgba(0,0,0,.5), 0 12px 30px -22px rgba(0,0,0,.95);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#050810;--surface:#0E141F;--surface-2:#1C2433;--surface-3:#141B26;
+    --ink:#E8EBF1;--ink-2:#A6ADB8;--ink-3:#767E8B;
+    --line:#222935;--line-soft:#181E28;
+    --accent:#417DFC;--accent-ink:#7BA5FD;--accent-soft:#16233F;--on-accent:#FAFAFA;
+    --brand:#417DFC;
+    --teal:#4FBBAB;--teal-soft:#0C2A27;--on-teal:#08201C;
+    --amber:#D9A02C;--amber-soft:#2A1F10;
+    --alert:#E24942;--alert-soft:#2E1615;
+    --sidebar:#070D18;--sidebar-fg:#D4D8DE;--sidebar-accent:#3D7EFC;--sidebar-line:rgba(255,255,255,.10);
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 12px 30px -22px rgba(0,0,0,.95);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font);font-size:15.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+  /* ---------- shell ---------- */
+  .shell{display:grid;grid-template-columns:252px 1fr;min-height:100vh;max-width:1320px;margin:0 auto}
+  aside{
+    border-right:1px solid var(--sidebar-line);background:var(--sidebar);color:var(--sidebar-fg);
+    position:sticky;top:0;height:100vh;overflow-y:auto;padding:26px 0 40px;
+  }
+  .brand{padding:0 22px 20px;border-bottom:1px solid var(--sidebar-line);margin-bottom:14px}
+  .brand .kicker{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,245,252,.55);margin:0 0 8px}
+  .brand h1{font-size:17px;font-weight:700;margin:0;letter-spacing:-.01em;line-height:1.35;color:var(--sidebar-fg)}
+  .brand .ver{font-family:var(--mono);font-size:10px;color:rgba(244,245,252,.5);margin-top:8px;letter-spacing:.06em}
+
+  .navgroup{padding:14px 12px 4px}
+  .navgroup .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,245,252,.45);padding:0 10px;margin-bottom:6px;display:block}
+  nav button{
+    display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+    background:none;border:0;border-radius:4px;cursor:pointer;
+    padding:7px 10px;font-family:var(--font);font-size:14px;color:rgba(244,245,252,.8);
+    line-height:1.4;
+  }
+  nav button .n{font-family:var(--mono);font-size:10.5px;color:rgba(244,245,252,.45);flex:0 0 20px}
+  nav button:hover{background:rgba(255,255,255,.08);color:#fff}
+  nav button[aria-current="true"]{background:var(--sidebar-accent);color:#fff;font-weight:600}
+  nav button[aria-current="true"] .n{color:#fff}
+  nav button:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+
+  main{padding:40px 44px 96px;min-width:0}
+  .pane{max-width:860px}
+  .pane[hidden]{display:none!important}
+
+  /* ---------- typography ---------- */
+  .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
+  h2{font-size:clamp(24px,3vw,30px);font-weight:700;line-height:1.25;margin:0 0 12px;letter-spacing:-.018em;text-wrap:balance}
+  h3{font-size:18px;font-weight:600;margin:32px 0 10px;line-height:1.4;letter-spacing:-.008em}
+  h4{font-size:15px;font-weight:600;margin:22px 0 6px}
+  .lede{font-size:16.5px;color:var(--ink-2);margin:0 0 26px;max-width:66ch}
+  p{margin:0 0 14px;max-width:70ch}
+  b,strong{font-weight:600;color:var(--ink)}
+
+  /* ---------- cards ---------- */
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-bottom:8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+  .card h4{margin-top:0}
+  .card p{font-size:14px;color:var(--ink-2);margin-bottom:0}
+  .card .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:6px}
+  .card.link{cursor:pointer;text-align:left;width:100%;font-family:var(--font);border-left:3px solid var(--brand)}
+  .card.link:hover{border-color:var(--brand)}
+  .card.link:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+
+  .panel{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:var(--radius);padding:20px 22px;margin-bottom:16px;box-shadow:var(--shadow)}
+  .panel.alert{border-left-color:var(--alert)}
+  .panel.amber{border-left-color:var(--amber)}
+  .panel.teal{border-left-color:var(--teal)}
+  .panel h3{margin-top:0}
+  .panel > :last-child{margin-bottom:0}
+
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:15px 17px;font-size:14px;color:var(--ink-2);margin-bottom:16px}
+  .note > :last-child{margin-bottom:0}
+
+  /* ---------- tables ---------- */
+  .tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);margin-bottom:18px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
+  th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:500;padding:11px 15px;border-bottom:1px solid var(--line);background:var(--surface-2);white-space:nowrap}
+  td{padding:11px 15px;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--ink-2)}
+  tr:last-child td{border-bottom:none}
+  td.code{font-family:var(--mono);font-size:12px;color:var(--accent-ink);white-space:nowrap;font-weight:500}
+  td.k{color:var(--ink);font-weight:500}
+  tr.hi td{background:var(--accent-soft)}
+  tr.hi td.code{color:var(--ink)}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* ---------- chips ---------- */
+  .chip{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+  .chip.fact{background:var(--teal-soft);color:var(--teal)}
+  .chip.rec{background:var(--accent-soft);color:var(--accent-ink)}
+  .chip.gap{background:var(--alert-soft);color:var(--alert)}
+  .chip.hypo{background:var(--amber-soft);color:var(--amber)}
+
+  /* ---------- code / examples ---------- */
+  pre{margin:0 0 14px;padding:15px 17px;overflow-x:auto;background:var(--surface-3);border:1px solid var(--line);border-radius:var(--radius);font-family:var(--code);font-size:12.5px;line-height:1.72;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+  pre.bad{border-left:3px solid var(--alert)}
+  pre.good{border-left:3px solid var(--teal)}
+
+  .ex{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .ex-head{display:flex;align-items:center;gap:11px;flex-wrap:wrap;padding:13px 17px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+  .ex-id{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--brand);letter-spacing:.06em}
+  .ex-title{font-weight:600;font-size:14.5px;flex:1 1 auto;min-width:160px}
+  .ex-tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:2px 6px;border-radius:3px;background:var(--accent-soft);color:var(--accent-ink)}
+  .copy{flex:0 0 auto;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:4px 9px;cursor:pointer}
+  .copy:hover,.copy:focus-visible{color:var(--accent-ink);border-color:var(--brand);outline:none}
+  .copy[data-state="done"]{color:var(--teal);border-color:var(--teal)}
+  .ex pre{margin:0;border:0;border-radius:0;background:var(--surface)}
+  .ex-why{padding:12px 17px;border-top:1px solid var(--line-soft);font-size:13.5px;color:var(--ink-2);background:var(--surface-3)}
+  .ex-why b{color:var(--ink)}
+  .ex-when{padding:12px 17px 0;font-size:13.5px;color:var(--ink-2)}
+
+  /* ---------- lists ---------- */
+  ul.c,ol.c{margin:0 0 14px;padding-left:0;list-style:none;max-width:70ch}
+  ul.c li{position:relative;padding-left:22px;margin-bottom:8px;color:var(--ink-2)}
+  ul.c li::before{content:"";position:absolute;left:4px;top:11px;width:5px;height:5px;border-radius:50%;background:var(--brand);opacity:.85}
+  ol.c{counter-reset:c}
+  ol.c li{counter-increment:c;position:relative;padding-left:26px;margin-bottom:9px;color:var(--ink-2)}
+  ol.c li::before{content:counter(c);position:absolute;left:0;top:1px;font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+  ul.c li b,ol.c li b{color:var(--ink)}
+  ul.warn li::before{background:var(--alert)}
+  ul.ok li::before{background:var(--teal)}
+
+  /* ---------- diagram ---------- */
+  figure{margin:0 0 18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px 14px;box-shadow:var(--shadow)}
+  figure svg{display:block;max-width:100%;height:auto;margin:0 auto;color:var(--ink-2)}
+  figcaption{margin-top:12px;font-size:13px;color:var(--ink-3);text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
+  .dbox{fill:none;stroke:currentColor;stroke-width:1.2}
+  .dbox-hi{fill:none;stroke:var(--brand);stroke-width:2}
+  .dtitle{font-family:var(--font);font-size:15px;font-weight:600;fill:var(--ink)}
+  .dsub{font-family:var(--font);font-size:11.5px;fill:var(--ink-3)}
+  .dedge{stroke:currentColor;stroke-width:1.2;fill:none}
+  .dlbl{font-family:var(--mono);font-size:10px;fill:var(--ink-3);letter-spacing:.04em}
+  .dloop{stroke:var(--brand);stroke-width:1.4;fill:none;stroke-dasharray:5 4}
+  .dloop-lbl{font-family:var(--font);font-size:12px;fill:var(--brand)}
+
+  .sechead{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:26px}
+
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr}
+    aside{position:sticky;top:0;height:auto;border-right:0;border-bottom:1px solid var(--sidebar-line);padding:16px 0 8px;z-index:30}
+    .brand{padding:0 18px 12px}
+    .navgroup{padding:8px 0 0;display:flex;overflow-x:auto;scrollbar-width:none;gap:2px}
+    .navgroup::-webkit-scrollbar{display:none}
+    .navgroup .lbl{display:none}
+    nav button{width:auto;flex:0 0 auto;white-space:nowrap;padding:7px 12px}
+    nav button .n{display:none}
+    main{padding:28px 20px 72px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+  /* ---------- theme toggle ---------- */
+  .themebtn{display:flex;align-items:center;gap:8px;width:calc(100% - 24px);margin:12px 12px 0;padding:8px 10px;border:1px solid var(--sidebar-line);border-radius:4px;background:rgba(255,255,255,.05);color:rgba(244,245,252,.85);font-family:var(--font);font-size:12.5px;cursor:pointer}
+  .themebtn:hover{background:rgba(255,255,255,.1);color:#fff}
+  .themebtn:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+  .themebtn .ico{font-size:14px;line-height:1}
+
+  /* ---------- stat tiles (home dashboard) ---------- */
+  .stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:8px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px 17px;box-shadow:var(--shadow)}
+  .stat.link{cursor:pointer;text-align:left;width:100%;font-family:var(--font);border-left:3px solid var(--brand)}
+  .stat.link:hover{border-color:var(--brand)}
+  .stat.link:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .stat .snum{font-family:var(--mono);font-size:27px;font-weight:600;color:var(--ink);line-height:1.1;font-variant-numeric:tabular-nums}
+  .stat .snum.warn{color:var(--alert)}
+  .stat .snum.good{color:var(--teal)}
+  .stat .slbl{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);display:block;margin-top:6px}
+
+  /* ---------- interactive tool shell ---------- */
+  .tool{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);padding:20px 22px;margin-bottom:22px;box-shadow:var(--shadow)}
+  .tool h3{margin-top:0}
+  .field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+  .field label{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+  .field input,.field select,.field textarea{font-family:var(--font);font-size:14px;padding:9px 11px;border:1px solid var(--line);border-radius:4px;background:var(--surface-3);color:var(--ink)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--brand);outline-offset:1px;border-color:var(--brand)}
+  .frow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .tbtn{font-family:var(--font);font-size:13px;padding:9px 15px;border-radius:4px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);cursor:pointer}
+  .tbtn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+  .tbtn:hover{border-color:var(--brand);color:var(--ink)}
+  .tbtn.primary:hover{color:var(--on-accent);opacity:.92}
+  .tbtn:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+  .tbtn.ghost{background:transparent}
+  .tbtn.danger{color:var(--alert);border-color:var(--alert-soft)}
+  .tbtn.danger:hover{border-color:var(--alert)}
+  .tbtnrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+  /* editable log table */
+  .logtable td.act{white-space:nowrap}
+  .logtable .rowbtn{font-family:var(--mono);font-size:10px;letter-spacing:.04em;padding:3px 8px;border-radius:3px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);cursor:pointer;margin-right:4px}
+  .logtable .rowbtn:hover{border-color:var(--brand);color:var(--ink)}
+  .logtable .rowbtn.close{color:var(--teal);border-color:var(--teal-soft)}
+  .logtable tr.done td{opacity:.62}
+  .logtable tr.overdue td.dl{color:var(--alert);font-weight:600}
+  .badge{display:inline-flex;align-items:center;font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:3px}
+  .badge.open{background:var(--amber-soft);color:var(--amber)}
+  .badge.closed{background:var(--teal-soft);color:var(--teal)}
+  .badge.over{background:var(--alert-soft);color:var(--alert)}
+  .empty{padding:22px 14px;text-align:center;color:var(--ink-3);font-size:13.5px}
+  .filterbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+  .chipbtn{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--ink-3);cursor:pointer}
+  .chipbtn[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+  .chipbtn:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+
+  /* scorecard weekly */
+  .scmetric{display:grid;grid-template-columns:1fr 96px 80px;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line-soft)}
+  .scmetric:last-of-type{border-bottom:0}
+  .scmetric .scname{font-size:13.5px;color:var(--ink)}
+  .scmetric .sccri{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+  .scmetric input{width:100%;font-family:var(--mono);font-size:13px;padding:7px 9px;border:1px solid var(--line);border-radius:4px;background:var(--surface-3);color:var(--ink)}
+  .scmetric input:focus{outline:2px solid var(--brand);outline-offset:1px;border-color:var(--brand)}
+  .scverd{font-family:var(--mono);font-size:11px;text-align:center;padding:4px 0;border-radius:3px}
+  .scverd.pass{background:var(--teal-soft);color:var(--teal)}
+  .scverd.fail{background:var(--alert-soft);color:var(--alert)}
+  .scverd.idle{color:var(--ink-3)}
+  @media (max-width:600px){.scmetric{grid-template-columns:1fr 80px 66px;gap:8px}}
+  figure.spark{padding:18px 18px 12px}
+  .sparkrow{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--ink-3);margin-top:6px;justify-content:center}
+  .sparkrow b{color:var(--ink)}
+  .legdot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+
+  /* ---------- format library ---------- */
+  .fmtbar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+  .fmtjump{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.05em;padding:6px 12px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--accent-ink);cursor:pointer}
+  .fmtjump:hover{border-color:var(--brand);background:var(--accent-soft)}
+  .fmtjump:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+  details.fmt{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:16px}
+  details.fmt>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:15px 18px;background:var(--surface-2);border-left:3px solid var(--brand)}
+  details.fmt>summary::-webkit-details-marker{display:none}
+  details.fmt>summary::after{content:"▸";margin-left:auto;font-size:13px;color:var(--ink-3);transition:transform .18s ease}
+  details.fmt[open]>summary::after{transform:rotate(90deg)}
+  details.fmt>summary:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+  .fmt-code{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--on-accent);background:var(--accent);padding:3px 9px;border-radius:4px;flex:0 0 auto}
+  .fmt-name{font-weight:600;font-size:15px;color:var(--ink)}
+  .fmt-sub{font-size:12.5px;color:var(--ink-3);margin-left:6px;font-weight:400}
+  .fmt-body{padding:4px 18px 18px}
+  .fmt-body h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:18px 0 7px;font-weight:600}
+  .fmt-body p{font-size:14px;color:var(--ink-2);margin:0 0 8px}
+  .fmt-concept{background:var(--surface-3);border:1px solid var(--line-soft);border-radius:4px;padding:12px 14px;font-size:13.5px;color:var(--ink-2)}
+  .fmt-concept ul{margin:0;padding-left:18px}
+  .fmt-concept li{margin-bottom:4px}
+  .fmt-note{background:var(--amber-soft);border-radius:4px;padding:10px 13px;font-size:13px;color:var(--amber);margin:10px 0 0}
+  .codewrap{position:relative}
+  .codewrap pre{margin:0}
+  .codewrap .copy{position:absolute;top:9px;right:9px}
+  .fmt-ex pre{background:var(--teal-soft);border:1px solid var(--teal-soft);border-left:3px solid var(--teal);color:var(--ink)}
+  .fmt-practice textarea{width:100%;min-height:150px;resize:vertical;font-family:var(--code);font-size:12.5px;line-height:1.7;padding:12px 13px;border:1px solid var(--line);border-radius:4px;background:var(--surface-3);color:var(--ink);box-sizing:border-box}
+  .fmt-practice textarea:focus{outline:2px solid var(--brand);outline-offset:1px;border-color:var(--brand)}
+  .saveflag{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-left:auto}
+  .saveflag.on{color:var(--teal)}
+  @media (max-width:600px){details.fmt>summary{flex-wrap:wrap}.fmt-body{padding:4px 14px 16px}}
+
+  /* ---------- border beam (pure-CSS, theme-aware) ---------- */
+  @property --bb-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
+  .beam{position:relative}
+  .beam::after{
+    content:"";position:absolute;inset:0;border-radius:inherit;padding:1.6px;z-index:2;pointer-events:none;
+    background:conic-gradient(from var(--bb-angle),transparent 0deg,var(--brand) 32deg,var(--accent) 52deg,transparent 88deg);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    mask-composite:exclude;
+    animation:bbspin 7s linear infinite;
+  }
+  @keyframes bbspin{to{--bb-angle:360deg}}
+  @media (prefers-reduced-motion:reduce){.beam::after{animation:none;background:conic-gradient(from 130deg,transparent,var(--brand),transparent 60%)}}
+
+  /* ---------- self-training ---------- */
+  .trainrow{display:grid;grid-template-columns:190px 1fr;gap:20px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--radius);padding:20px 22px;margin-bottom:18px;box-shadow:var(--shadow)}
+  @media (max-width:640px){.trainrow{grid-template-columns:1fr;gap:14px}}
+  .ring{position:relative;width:150px;height:150px;margin:0 auto}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .rbg{fill:none;stroke:var(--surface-2);stroke-width:12}
+  .ring .rfg{fill:none;stroke:var(--accent);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset .5s ease}
+  .ring .rtxt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring .rpct{font-family:var(--mono);font-size:30px;font-weight:600;color:var(--ink);line-height:1}
+  .ring .rsub{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+  .streak{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;color:var(--amber);background:var(--amber-soft);padding:5px 11px;border-radius:20px;margin-bottom:12px}
+  .ckl{list-style:none;margin:0;padding:0}
+  .ckl li{display:flex;align-items:flex-start;gap:11px;padding:9px 0;border-bottom:1px solid var(--line-soft)}
+  .ckl li:last-child{border-bottom:0}
+  .ckl input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:0 0 20px;width:20px;height:20px;margin:1px 0 0;border:1.6px solid var(--line);border-radius:5px;background:var(--surface-3);cursor:pointer;position:relative}
+  .ckl input[type=checkbox]:checked{background:var(--accent);border-color:var(--accent)}
+  .ckl input[type=checkbox]:checked::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--on-accent);font-size:12px;font-weight:700}
+  .ckl input[type=checkbox]:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .ckl .ct{font-size:14px;color:var(--ink);cursor:pointer}
+  .ckl .ch{font-size:12.5px;color:var(--ink-3);display:block;margin-top:1px}
+  .ckl li.done .ct{color:var(--ink-3);text-decoration:line-through}
+  .pbar{height:9px;border-radius:6px;background:var(--surface-2);overflow:hidden;margin:8px 0}
+  .pbar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:6px;transition:width .5s ease}
+  .pbar.teal>i{background:var(--teal)}
+  .roadmap{list-style:none;margin:0;padding:0}
+  .roadmap li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-soft)}
+  .roadmap li:last-child{border-bottom:0}
+  .roadmap .wk{flex:0 0 30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:600;background:var(--surface-2);color:var(--ink-3)}
+  .roadmap li.done .wk{background:var(--accent);color:var(--on-accent)}
+  .roadmap .wtxt{flex:1;font-size:13.5px;color:var(--ink)}
+  .roadmap .wtxt b{display:block;font-size:14px}
+  .roadmap .wtxt span{color:var(--ink-3);font-size:12.5px}
+  .roadmap input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:0 0 22px;width:22px;height:22px;border:1.6px solid var(--line);border-radius:6px;background:var(--surface-3);cursor:pointer;position:relative}
+  .roadmap input[type=checkbox]:checked{background:var(--teal);border-color:var(--teal)}
+  .roadmap input[type=checkbox]:checked::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--on-teal);font-size:13px;font-weight:700}
+  .roadmap input[type=checkbox]:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .mastery{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .mchip{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.05em;padding:5px 11px;border-radius:20px;border:1px solid var(--line);color:var(--ink-3);background:var(--surface)}
+  .mchip.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+  .scArea{fill:var(--teal-soft);opacity:.7}
+  .scLine{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+  .scDot{fill:var(--teal)}
+  .scDotLast{fill:var(--surface);stroke:var(--teal);stroke-width:2.6}
+  .scGrid{stroke:var(--line-soft);stroke-width:1}
+  .scAxis{stroke:var(--line);stroke-width:1}
+  .scLbl{font-family:var(--mono);font-size:10px;fill:var(--ink-3)}
+  .scVal{font-family:var(--mono);font-size:10.5px;fill:var(--ink-2);font-weight:500}
+</style>
+
+<div class="shell">
+<aside>
+  <div class="brand">
+    <p class="kicker">FORSOUL · Project Office</p>
+    <h1>คู่มือการปฏิบัติงานอย่างมืออาชีพ<br><span style="font-weight:400;font-size:13px;color:rgba(236,230,245,.6)">FORSOUL Work Handbook</span></h1>
+    <p class="ver">v2.8 · 8 พ.ย. 2569 · Confidential</p>
+  </div>
+  <button class="themebtn" id="themeToggle" type="button" aria-label="สลับธีมสว่าง/มืด"><span class="ico" id="themeIco">◐</span><span id="themeTxt">ธีม: ตามระบบ</span></button>
+  <nav>
+    <div class="navgroup"><span class="lbl">เริ่มที่นี่</span>
+      <button data-p="home" aria-current="true"><span class="n">00</span>หน้ารวม</button>
+      <button data-p="forsoul"><span class="n">◆</span>โครงการ FORSOUL</button>
+      <button data-p="train"><span class="n">◆</span>ฝึกตัวเองวันนี้</button>
+      <button data-p="kt"><span class="n">01</span>คู่มืออ่านผู้บริหาร</button>
+      <button data-p="culture"><span class="n">02</span>วัฒนธรรมองค์กร</button>
+    </div>
+    <div class="navgroup"><span class="lbl">ทักษะแกน</span>
+      <button data-p="delegate"><span class="n">03</span>Delegate Level</button>
+      <button data-p="rds"><span class="n">04</span>RDS</button>
+      <button data-p="al"><span class="n">05</span>Accountability</button>
+      <button data-p="q"><span class="n">06</span>Q1–Q4 &amp; ปฏิทิน</button>
+    </div>
+    <div class="navgroup"><span class="lbl">ใช้งานจริง</span>
+      <button data-p="updates"><span class="n">07</span>ตัวอย่างอัปเดต 16 แบบ</button>
+      <button data-p="cross"><span class="n">08</span>ประสานข้ามฝ่าย</button>
+      <button data-p="meeting"><span class="n">09</span>ประชุม</button>
+    </div>
+    <div class="navgroup"><span class="lbl">ภาษาองค์กร</span>
+      <button data-p="formats"><span class="n">◆</span>Format ทางการ 10 แบบ</button>
+    </div>
+    <div class="navgroup"><span class="lbl">เครื่องมือ</span>
+      <button data-p="log"><span class="n">◆</span>Decision Log</button>
+      <button data-p="score"><span class="n">◆</span>Scorecard รายสัปดาห์</button>
+    </div>
+    <div class="navgroup"><span class="lbl">อ้างอิง</span>
+      <button data-p="training"><span class="n">10</span>Training 8 สัปดาห์</button>
+      <button data-p="jargon"><span class="n">12</span>Jargon &amp; คน</button>
+      <button data-p="gap"><span class="n">13</span>Fact / Gap</button>
+    </div>
+  </nav>
+</aside>
+
+<main>
+
+<!-- ============ 00 HOME ============ -->
+<section class="pane" id="p-home">
+  <div class="sechead">
+    <p class="eyebrow">00 · หน้ารวม</p>
+    <h2>ระบบปฏิบัติงานมืออาชีพ สำหรับโครงการ FORSOUL</h2>
+    <p class="lede">คู่มือเล่มนี้คือ <b>ระบบปฏิบัติงาน</b> ที่นำมาใช้ขับเคลื่อนและเตรียมเปิดตัว <b>FORSOUL</b> — Urban Forest Sanctuary เพื่อสุขภาวะใจและจิตวิญญาณ · อ่านหลักการ · ฝึกในพื้นที่จริง · วัดความคืบหน้าทุกวัน · เริ่มที่ <b>โครงการ FORSOUL</b> เพื่อดูว่าระบบนี้ใช้กับงานโครงการอย่างไร แล้วค่อยลงลึกทีละทักษะ</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 900 250" role="img" aria-label="วงจรห้าขั้น: จำแนกงานเป็น Q แล้วระบุ Delegate Level แล้วเรียงข้อมูลด้วย RDS แล้วถูกประเมินเป็น Accountability Level แล้วสะท้อนแก้ไข แล้ววนกลับโดยเรื่องเดิมควรเลื่อนระดับ D ขึ้นหนึ่งขั้น">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker>
+        <marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--brand)"/></marker>
+      </defs>
+      <rect class="dbox" x="20" y="56" width="148" height="66" rx="3"/>
+      <text class="dtitle" x="94" y="83" text-anchor="middle">Q1–Q4</text>
+      <text class="dsub" x="94" y="104" text-anchor="middle">งานนี้ประเภทไหน</text>
+      <rect class="dbox-hi" x="196" y="56" width="148" height="66" rx="3"/>
+      <text class="dtitle" x="270" y="83" text-anchor="middle">D1–D7</text>
+      <text class="dsub" x="270" y="104" text-anchor="middle">ใครเป็นคนตัดสิน</text>
+      <rect class="dbox-hi" x="372" y="56" width="148" height="66" rx="3"/>
+      <text class="dtitle" x="446" y="83" text-anchor="middle">RDS</text>
+      <text class="dsub" x="446" y="104" text-anchor="middle">เรียงข้อมูลยังไง</text>
+      <rect class="dbox" x="548" y="56" width="148" height="66" rx="3"/>
+      <text class="dtitle" x="622" y="83" text-anchor="middle">A–D</text>
+      <text class="dsub" x="622" y="104" text-anchor="middle">ได้เกรดพฤติกรรม</text>
+      <rect class="dbox" x="724" y="56" width="148" height="66" rx="3"/>
+      <text class="dtitle" x="798" y="83" text-anchor="middle">RF / SF</text>
+      <text class="dsub" x="798" y="104" text-anchor="middle">ทวนและแก้</text>
+      <line class="dedge" x1="168" y1="89" x2="190" y2="89" marker-end="url(#ar)"/>
+      <line class="dedge" x1="344" y1="89" x2="366" y2="89" marker-end="url(#ar)"/>
+      <line class="dedge" x1="520" y1="89" x2="542" y2="89" marker-end="url(#ar)"/>
+      <line class="dedge" x1="696" y1="89" x2="718" y2="89" marker-end="url(#ar)"/>
+      <text class="dlbl" x="179" y="44" text-anchor="middle">จำแนก</text>
+      <text class="dlbl" x="355" y="44" text-anchor="middle">ระบุอำนาจ</text>
+      <text class="dlbl" x="531" y="44" text-anchor="middle">สื่อสาร</text>
+      <text class="dlbl" x="707" y="44" text-anchor="middle">ถูกประเมิน</text>
+      <path class="dloop" d="M798 122 V188 Q798 200 786 200 H106 Q94 200 94 188 V130" marker-end="url(#arb)"/>
+      <text class="dloop-lbl" x="446" y="224" text-anchor="middle">รอบถัดไป — เรื่องเดิมควรเลื่อนขึ้นหนึ่งระดับ D</text>
+    </svg>
+    <figcaption>สองกล่องที่เน้นสีคือหัวใจ — <b>D</b> ตอบว่าใครตัดสิน · <b>RDS</b> ตอบว่าเรียงข้อมูลอย่างไร คือหัวกับตัวของทุกข้อความที่ส่งถึงผู้บริหาร</figcaption>
+  </figure>
+
+  <div class="panel teal">
+    <h3>ประโยคเดียวที่สรุปคู่มือทั้งเล่ม</h3>
+    <p style="font-size:18px;margin-bottom:8px"><b>“งานประเภท Q2 · ขอที่ระดับ D5 · เล่าด้วย RDS · เพื่อให้ได้ A · แล้วรอบหน้าขอ D6”</b></p>
+    <p style="margin-bottom:0">ถ้าจำได้แค่นี้ ก็ทำงานกับผู้บริหารได้ถูกต้อง 80% แล้ว ส่วนที่เหลือคือรายละเอียดที่ทำให้ไม่พลาด</p>
+  </div>
+
+  <h3>สถานะการฝึกและเครื่องมือวันนี้</h3>
+  <div class="stats">
+    <button class="stat link" data-go="train"><span class="snum" id="statTrainDay">—</span><span class="slbl">งานฝึกวันนี้ (จาก 5)</span></button>
+    <button class="stat link" data-go="train"><span class="snum" id="statMastery">—</span><span class="slbl">Format ฝึกแล้ว (จาก 10)</span></button>
+    <button class="stat link" data-go="log"><span class="snum" id="statOpen">—</span><span class="slbl">Decision ที่ยังไม่ปิด</span></button>
+    <button class="stat link" data-go="log"><span class="snum" id="statOver">—</span><span class="slbl">เลยกำหนด (Overdue)</span></button>
+    <button class="stat link" data-go="score"><span class="snum" id="statScore">—</span><span class="slbl">Scorecard สัปดาห์ล่าสุด</span></button>
+    <button class="stat link" data-go="score"><span class="snum" id="statTrend">—</span><span class="slbl">แนวโน้ม D เลื่อนขึ้น / เดือน</span></button>
+  </div>
+  <div class="note" style="margin-top:2px">ตัวเลขเหล่านี้ดึงจาก <b>Decision Log</b> และ <b>Scorecard</b> ที่ดิฉันกรอกไว้ในเครื่องนี้ · ข้อมูลบันทึกอยู่ในเบราว์เซอร์นี้เท่านั้น ไม่ส่งออกที่ไหน</div>
+
+  <h3>เข้าถึงเร็ว</h3>
+  <div class="grid">
+    <button class="card link" data-go="forsoul" style="border-left-color:var(--teal)"><span class="lbl">เริ่มที่นี่สำหรับโครงการ</span><h4>โครงการ FORSOUL</h4><p>บริบท · แมปบทบาท PM↔ผู้ก่อตั้ง · 9 Workstreams · ความพร้อมก่อนเปิดตัว</p></button>
+    <button class="card link" data-go="updates"><span class="lbl">ใช้บ่อยที่สุด</span><h4>ตัวอย่างอัปเดต 16 แบบ</h4><p>คัดลอกไปใช้ได้ทันที ทุกแบบมีคำอธิบายว่าทำไมถึงเขียนแบบนั้น</p></button>
+    <button class="card link" data-go="delegate"><span class="lbl">ทักษะแกนที่ 1</span><h4>Delegate Level D1–D7</h4><p>ภาษากลางของการขอตัดสินใจ และหน่วยวัดความไว้วางใจ</p></button>
+    <button class="card link" data-go="rds"><span class="lbl">ทักษะแกนที่ 2</span><h4>RDS</h4><p>Result → Detail → Solution ลำดับที่ทำให้ได้เกรด A อัตโนมัติ</p></button>
+    <button class="card link" data-go="kt"><span class="lbl">คนที่ต้องเข้าใจ</span><h4>คู่มืออ่านผู้บริหาร</h4><p>ข้อเท็จจริง · วิธีคิด 5 ข้อ · กับดัก 90 วันแรก</p></button>
+  </div>
+
+  <h3>กติกาสามข้อที่ใช้ได้ตั้งแต่วันนี้</h3>
+  <div class="grid">
+    <div class="card"><span class="lbl">ก่อนส่งทุกข้อความ</span><h4>เขียน R ให้ได้ก่อน</h4><p>ถ้าเขียนบรรทัด Result ไม่ได้ภายใน 30 วินาที แปลว่ายังไม่ถึงเวลาส่ง</p></div>
+    <div class="card"><span class="lbl">ทุกวาระ</span><h4>ประกาศ D-Level ก่อน</h4><p>บอกตั้งแต่บรรทัดแรกว่าขอมาที่ระดับไหน ไม่ใช่สรุปทีหลัง</p></div>
+    <div class="card"><span class="lbl">เมื่อได้ Reflection</span><h4>ทวนภายใน 1 ชั่วโมง</h4><p>ระบบให้เวลา 1 วันเป็นเพดาน ไม่ใช่เป้าหมาย</p></div>
+    <div class="card" style="border-left:3px solid var(--brand)"><span class="lbl">ทุกข้อเสนอ · ใหม่</span><h4>ต้องมี Worst case</h4><p>ผู้บริหารมักประเมินข้อเสนอจากสิ่งที่อาจพลาดมากกว่าสิ่งที่จะได้ ข้อเสนอที่ไม่มี Plan B จะถูกถามกลับเสมอ</p></div>
+  </div>
+
+  <div class="note" style="margin-top:22px">
+    <b>ที่มาของคู่มือ:</b> Onboarding Package ขององค์กร (62 หน้า) · ข้อมูลสาธารณะเกี่ยวกับบริษัทและ CEO · การวิเคราะห์เชิงวิชาชีพของสำนักบริหาร · <b>ทุกส่วนที่เป็นข้อเสนอ ไม่ใช่มาตรฐานบริษัท ถูกกำกับไว้ชัดเจน</b> ดูหัวข้อ 13 · <b>ปรับใช้กับโครงการ FORSOUL</b> — ดูหน้า “โครงการ FORSOUL”
+  </div>
+</section>
+
+<!-- ============ FORSOUL PROJECT ============ -->
+<section class="pane" id="p-forsoul" hidden>
+  <div class="sechead">
+    <p class="eyebrow">โครงการ · FORSOUL</p>
+    <h2>โครงการ FORSOUL</h2>
+    <p class="lede"><b>FORSOUL</b> — Urban Forest Sanctuary เพื่อสุขภาวะใจและจิตวิญญาณ (Mental &amp; Spiritual Wellness) · หน้านี้คือ “สะพาน” ที่แปลงระบบในคู่มือเล่มนี้ (RDS · D-Level · Format · Decision Log) ให้ใช้กับการพัฒนาและ <b>เตรียมเปิดตัว (Pre-opening)</b> ของโครงการ</p>
+  </div>
+
+  <div class="note"><span class="chip gap">Gap</span> ข้อมูลเฉพาะของโครงการ — ขอบเขต · งบประมาณ · ไทม์ไลน์ · ไมล์สโตน · ผู้รับผิดชอบ — ให้ยึดจาก <b>เอกสารโครงการ FORSOUL เป็นแหล่งจริง (Single Source of Truth)</b> · ช่องที่เว้นในหน้านี้เป็น “โครงให้เติม” · <b>เว้นว่างดีกว่าเดา</b></div>
+
+  <div class="panel teal">
+    <h3 style="margin-top:0">ระบบในคู่มือใช้กับ FORSOUL ได้ทันที</h3>
+    <p style="margin-bottom:0">ระบบปฏิบัติงานเล่มนี้ไม่ผูกกับตำแหน่งใดตำแหน่งหนึ่ง — เป็น “วิธีส่งข้อมูลและวิธีรับผิดชอบ” ที่ย้ายมาใช้กับงานโครงการได้เลย เพียงแค่<b>แมปบทบาท</b>ให้ตรง แล้วอ่านทั้งเล่มด้วยสายตาของผู้จัดการโครงการ FORSOUL</p>
+  </div>
+
+  <h3>แมปบทบาท — อ่านทั้งเล่มด้วยสายตานี้</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ในคู่มือ (คำเดิม)</th><th>ใน FORSOUL</th></tr></thead>
+      <tbody>
+        <tr class="hi"><td class="k">ผู้บริหาร / CEO</td><td><b>ผู้ก่อตั้ง / ผู้บริหารโครงการ (Project Sponsor)</b> — ผู้ให้ทิศทางและอนุมัติ</td></tr>
+        <tr><td class="k">สำนักบริหาร / Chief of Staff</td><td>Senior PM / PMO — ดิฉัน (ผู้ขับเคลื่อนและประสาน)</td></tr>
+        <tr><td class="k">หัวหน้าฝ่าย</td><td>หัวหน้า Workstream · ผู้ออกแบบ · ผู้รับเหมา · Vendor</td></tr>
+        <tr><td class="k">วาระ/ข้อความถึงผู้บริหาร</td><td>รายงานความคืบหน้า / ขออนุมัติเรื่องโครงการ</td></tr>
+        <tr><td class="k">Decision Log</td><td>ทะเบียนการตัดสินใจโครงการ (Decision Register)</td></tr>
+        <tr><td class="k">บรรทัด Risk / Mitigation / Trigger</td><td>ทะเบียนความเสี่ยงโครงการ (Risk Register)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>9 Workstreams ของ FORSOUL</h3>
+  <div class="note">ใช้เป็นโครงจัดระเบียบงาน · แต่ละ Workstream มี “R ที่ต้องรายงาน” เป็นสถานะเทียบไมล์สโตน และความเสี่ยงหลักที่ต้อง Flag ล่วงหน้า</div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Workstream</th><th>สิ่งที่ต้องคุม</th><th>ความเสี่ยงที่ต้อง Flag ก่อน</th></tr></thead>
+      <tbody>
+        <tr><td class="k">1 · กลยุทธ์ (Strategy)</td><td>วิสัยทัศน์ · ตำแหน่งแบรนด์ · โมเดลรายได้/ประสบการณ์</td><td>ทิศทางยังไม่นิ่ง ทำให้งานปลายน้ำรื้อซ้ำ</td></tr>
+        <tr><td class="k">2 · ออกแบบ (Design)</td><td>ผังพื้นที่ป่าในเมือง · สถาปัตย์ · บรรยากาศ wellness</td><td>แก้แบบหลังเริ่มก่อสร้าง = ต้นทุน+เวลาบาน</td></tr>
+        <tr><td class="k">3 · ก่อสร้าง (Construction)</td><td>โครงสร้าง · ระบบ · ความปลอดภัย · คุณภาพงาน</td><td>งานล่าช้า/ไม่ผ่านตรวจรับ กระทบวันเปิด</td></tr>
+        <tr><td class="k">4 · จัดซื้อจัดจ้าง (Procurement)</td><td>Vendor · สัญญา · Lead time · คุณภาพวัสดุ</td><td>ของเข้าช้า · สเปกไม่ตรง · ราคาเกินงบ</td></tr>
+        <tr><td class="k">5 · ความพร้อมธุรกิจ (Business Readiness)</td><td>ราคา · แพ็กเกจ · ระบบจอง · การเงิน/กระแสเงินสด</td><td>ยังไม่มีช่องทางรับรายได้ตอนเปิด</td></tr>
+        <tr><td class="k">6 · ปฏิบัติการ (Operations)</td><td>SOP · กำลังคน · การฝึกอบรม · บริการหน้างาน</td><td>คนไม่พอ/ไม่พร้อมในวัน Soft Opening</td></tr>
+        <tr><td class="k">7 · แบรนด์ &amp; ประสบการณ์ลูกค้า (Brand &amp; CX)</td><td>อัตลักษณ์ · การสื่อสาร · Customer Journey</td><td>เปิดตัวโดยยังไม่มีคนรู้จัก/ไม่มีคนจอง</td></tr>
+        <tr><td class="k">8 · กำกับ &amp; Compliance</td><td>ใบอนุญาต · ความปลอดภัย · สุขอนามัย · กฎหมาย</td><td>ใบอนุญาตไม่ครบ = เปิดไม่ได้ (เรื่อง D3)</td></tr>
+        <tr class="hi"><td class="k">9 · เตรียมเปิดตัว (Pre-opening)</td><td>Dry-run · Rehearsal · Soft Opening · Go-live</td><td>ไม่มีการซ้อมจริงก่อนวันเปิดจริง</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>ใช้เครื่องมือแต่ละตัวกับงานโครงการอย่างไร</h3>
+  <div class="grid">
+    <div class="card"><span class="lbl">ทุกอัปเดต Workstream</span><h4>RDS</h4><p><b>R</b> = สถานะเทียบไมล์สโตน (%/วันที่) · <b>D</b> = ข้อเท็จจริง+ตัวเลข+แหล่ง (ใบเสนอราคา/ผู้รับเหมา) · <b>S</b> = ขั้นต่อไป + Recommendation</p></div>
+    <div class="card"><span class="lbl">ขออำนาจตัดสินใจ</span><h4>Delegate Level</h4><p>D5 = ตัดสินใจเองในกรอบที่ได้รับมอบ · D3 = เกินอำนาจ PM (งบใหญ่ · เซ็นสัญญา · กฎหมาย/ใบอนุญาต)</p></div>
+    <div class="card"><span class="lbl">สื่อสารทีม/Vendor/ผู้ก่อตั้ง</span><h4>Format 10 แบบ</h4><p>TT ทวงงานผู้รับเหมา · CC คุยเรื่องเสี่ยง · RJ ปฏิเสธ Scope creep · FB/RB กับทีม</p></div>
+    <div class="card"><span class="lbl">คุมการตัดสินใจ+ความเสี่ยง</span><h4>Decision Log + Risk</h4><p>ทุกเรื่องที่ขอ D3/D5 ลงทะเบียน และปิด loop · ทุกข้อเสนอมีบรรทัด Risk/Mitigation/Trigger/Worst case</p></div>
+  </div>
+  <div class="tbtnrow" style="margin:4px 0 8px">
+    <button class="tbtn" data-go="log" type="button">เปิด Decision Register →</button>
+    <button class="tbtn" data-go="formats" type="button">Format ทางการ →</button>
+    <button class="tbtn" data-go="rds" type="button">ทบทวน RDS →</button>
+  </div>
+
+  <h3>ความพร้อมก่อนเปิดตัว (Pre-opening Readiness)</h3>
+  <div class="note">โครงเช็กความพร้อม 6 ด้าน — เติมสถานะจริง (พร้อม / กำลังทำ / ยังไม่เริ่ม) จากเอกสารโครงการ · ด้านที่ยังไม่พร้อมและใกล้กำหนดเปิด คือเรื่องที่ต้อง Flag ถึงผู้ก่อตั้งก่อน</div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ด้าน</th><th>เกณฑ์ผ่าน (ตัวอย่าง)</th><th>สถานะ</th></tr></thead>
+      <tbody>
+        <tr><td class="k">สถานที่ &amp; ก่อสร้าง</td><td>งานผ่านการตรวจรับ (sign-off) · ความปลอดภัยผ่าน</td><td><span class="chip gap">เติม</span></td></tr>
+        <tr><td class="k">ใบอนุญาต &amp; Compliance</td><td>ใบอนุญาตที่จำเป็นครบ · สุขอนามัย/กฎหมายผ่าน</td><td><span class="chip gap">เติม</span></td></tr>
+        <tr><td class="k">กำลังคน &amp; ฝึกอบรม</td><td>จ้างครบตามโครงสร้าง · ผ่านการอบรมตาม SOP</td><td><span class="chip gap">เติม</span></td></tr>
+        <tr><td class="k">ระบบ &amp; SOP</td><td>SOP + ระบบจอง/ชำระเงิน ทดสอบจริงแล้ว</td><td><span class="chip gap">เติม</span></td></tr>
+        <tr><td class="k">แบรนด์ &amp; การตลาด</td><td>ช่องทางสื่อสารพร้อม · มียอดจอง/ความสนใจตั้งต้น</td><td><span class="chip gap">เติม</span></td></tr>
+        <tr><td class="k">Soft Opening / Dry-run</td><td>ซ้อมบริการจริงอย่างน้อย 1 รอบ · เก็บบทเรียนแล้ว</td><td><span class="chip gap">เติม</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel amber">
+    <h3 style="margin-top:0">สามกติกาสำหรับงานโครงการ FORSOUL</h3>
+    <ol class="c" style="margin-bottom:0">
+      <li><b>ทุกอัปเดตต้องมี R ที่วัดได้</b> — “% ของไมล์สโตน” หรือ “วันที่คาดเสร็จ” ไม่ใช่ “กำลังทำอยู่”</li>
+      <li><b>รายงานสิ่งที่กำลังจะพลาด ไม่ใช่สิ่งที่พลาดแล้ว</b> — ความล่าช้า 1 สัปดาห์ของ Workstream หนึ่ง อาจเลื่อนวันเปิดทั้งโครงการ · Flag ล่วงหน้าเสมอ</li>
+      <li><b>แยกเรื่อง D3 ให้เด็ด</b> — งบก้อนใหญ่ · การเซ็นสัญญา · ใบอนุญาต/กฎหมาย เป็นการตัดสินใจของผู้ก่อตั้ง ไม่ใช่ของ PM</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SELF-TRAINING ============ -->
+<section class="pane" id="p-train" hidden>
+  <div class="sechead">
+    <p class="eyebrow">โปรแกรมฝึกตัวเอง</p>
+    <h2>ฝึกตัวเองวันนี้</h2>
+    <p class="lede">วงจรฝึกสั้น ๆ ที่ทำได้ทุกวัน — ทำครบคือได้ฝึกจริง ไม่ใช่แค่อ่าน · ทุกช่องบันทึกอัตโนมัติในเครื่อง และรีเซ็ตเป็นรายวัน/รายสัปดาห์เอง</p>
+  </div>
+
+  <div class="trainrow beam">
+    <div class="ring">
+      <svg viewBox="0 0 120 120" width="150" height="150"><circle class="rbg" cx="60" cy="60" r="52"/><circle class="rfg" id="ringFg" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg>
+      <div class="rtxt"><span class="rpct" id="ringPct">0%</span><span class="rsub">วันนี้</span></div>
+    </div>
+    <div>
+      <div class="streak" id="streakBox">🔥 <span id="streakNum">0</span> วันติดต่อกัน</div>
+      <h3 style="margin:0 0 4px">งานฝึกประจำวัน</h3>
+      <p style="margin:0 0 10px;color:var(--ink-2);font-size:14px">เช็กเมื่อทำเสร็จ · ครบทั้ง 5 ข้อ = ฝึกครบหนึ่งวัน และต่อสตรีค</p>
+      <ul class="ckl" id="dailyList"></ul>
+    </div>
+  </div>
+
+  <h3>เช็กลิสต์รายสัปดาห์</h3>
+  <div class="tool" style="border-left-color:var(--teal)">
+    <div class="pbar teal"><i id="weekBar"></i></div>
+    <p style="margin:0 0 12px;font-family:var(--mono);font-size:12px;color:var(--ink-3)" id="weekPct">0 / 4 ข้อสัปดาห์นี้</p>
+    <ul class="ckl" id="weekList"></ul>
+  </div>
+
+  <h3>ความชำนาญ Format ทางการ</h3>
+  <div class="tool">
+    <div class="pbar"><i id="mastBar"></i></div>
+    <p style="margin:0 0 8px;font-family:var(--mono);font-size:12px;color:var(--ink-3)"><span id="mastPct">0 / 10</span> Format ที่มีงานฝึกแล้ว · ฝึกเพิ่มได้ที่หน้า <button class="tbtn" data-go="formats" type="button" style="padding:3px 11px">Format ทางการ →</button></p>
+    <div class="mastery" id="mastChips"></div>
+  </div>
+
+  <h3>เส้นทางฝึก 8 สัปดาห์</h3>
+  <div class="tool">
+    <div class="pbar"><i id="roadBar"></i></div>
+    <p style="margin:0 0 12px;font-family:var(--mono);font-size:12px;color:var(--ink-3)"><span id="roadPct">0 / 8</span> สัปดาห์ที่ผ่าน · ทำทีละสัปดาห์ อย่าเปิดทุกโมดูลพร้อมกัน</p>
+    <ul class="roadmap" id="roadList"></ul>
+  </div>
+
+  <div class="note">แนวคิดของหน้านี้: ระบบวัดดิฉันที่ <b>วิธีส่งข้อมูลและวิธีรับผิดชอบ</b> ไม่ใช่ปริมาณงาน — ซึ่งฝึกได้ในไม่กี่สัปดาห์ · ทำวงจรนี้ให้ครบทุกวัน แล้วดูสัดส่วน D3:D5 และ Scorecard ค่อย ๆ ขยับขึ้นเอง</div>
+</section>
+
+<!-- ============ 01 READ EXECUTIVE ============ -->
+<section class="pane" id="p-kt" hidden>
+  <div class="sechead">
+    <p class="eyebrow">01 · คนที่ต้องเข้าใจ</p>
+    <h2>คู่มืออ่านผู้บริหาร</h2>
+    <p class="lede">เข้าใจเพื่อทำงานให้ถูกจังหวะตั้งแต่ครั้งแรก ไม่ใช่เพื่อจัดประเภทตัวบุคคล · ทุกบรรทัดกำกับว่าเชื่อได้แค่ไหน</p>
+  </div>
+
+  <h3>ข้อเท็จจริงที่ต้องยืนยันก่อนเริ่มงาน</h3>
+  <div class="note">ตารางนี้เป็น <b>โครงให้กรอก</b> — เติมข้อมูลจริงของผู้บริหารที่ยืนยันได้ลงในช่อง Fact และทำเครื่องหมาย Gap ในเรื่องที่ยังไม่ได้คำตอบ · <b>เว้นว่างไว้ดีกว่าเดา</b></div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>สถานะ</th><th>สิ่งที่ต้องรู้เกี่ยวกับผู้บริหาร</th></tr></thead>
+      <tbody>
+        <tr><td><span class="chip fact">Fact</span></td><td><b>ชื่อ–ตำแหน่งเต็ม + วิธีสะกดที่ถูกต้อง</b><br><span style="color:var(--ink-3)">ตรวจการสะกดชื่อและตำแหน่งให้ตรงทุกครั้งก่อนส่งเอกสารออกนอกสำนักบริหาร — ตั้ง Autocorrect ไว้ในเครื่อง</span></td></tr>
+        <tr class="hi"><td><span class="chip gap">Gap</span></td><td><b>สไตล์การสื่อสารและการตัดสินใจ</b> — ถ้าองค์กรใช้เครื่องมืออย่าง MBTI / Enneagram เป็นมาตรฐาน ให้บันทึกไว้ที่นี่<br><span style="color:var(--ink-3)">ใช้เป็นสมมติฐานเพื่อการสื่อสารเท่านั้น ไม่ใช่ข้อสรุปตัวบุคคล — ดูวิธีแปลงเป็นการทำงานในหัวข้อถัดไป</span></td></tr>
+        <tr><td><span class="chip fact">Fact</span></td><td><b>ระยะเวลาในตำแหน่ง</b> — เพิ่งรับตำแหน่ง / อยู่ในช่วง 100 วันแรก หรือดำรงตำแหน่งมานาน</td></tr>
+        <tr><td><span class="chip fact">Fact</span></td><td><b>เส้นทางก่อนหน้า + Mandate</b> — มาจากสายงานใด และถูกมอบหมายให้ทำอะไรเป็นหลัก</td></tr>
+        <tr><td><span class="chip fact">Fact</span></td><td><b>กลยุทธ์/ทิศทางที่ท่านประกาศเอง</b> — ถ้อยคำเดิมของท่าน (ใช้เป็นกรอบตัดสินทุกข้อเสนอ)</td></tr>
+        <tr><td><span class="chip fact">Fact</span></td><td><b>โจทย์เชิงตัวเลขที่ท่านถูกวัด</b> — รายได้ / กำไร / มาร์จิ้น / ต้นทุน · ช่วง High Season ของธุรกิจ</td></tr>
+        <tr><td><span class="chip fact">Fact</span></td><td><b>บริบทธรรมาภิบาล</b> — เป็นบริษัทจดทะเบียนหรือไม่ · มีผู้ก่อตั้ง/บอร์ดอยู่ในโครงสร้างกำกับดูแลหรือไม่ → เรื่องที่แตะงบการเงินหรือการเปิดเผยข้อมูลมีมิติ Disclosure เสมอ</td></tr>
+        <tr><td><span class="chip gap">Gap</span></td><td>ตำแหน่งในคณะกรรมการชุดย่อยที่เป็นปัจจุบัน + เส้นแบ่ง L3/L4 — <b>ต้องขอจากเลขานุการบริษัท</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>อ่านสไตล์การตัดสินใจของผู้บริหาร — คันโยกที่ใหญ่ที่สุด</h3>
+  <div class="note">
+    <p style="margin-bottom:0"><span class="chip hypo">Hypo</span> ถ้าองค์กรใช้เครื่องมืออย่าง MBTI / Enneagram เป็นมาตรฐาน ให้ใช้เป็น <b>สมมติฐานเพื่อการสื่อสาร</b> ไม่ใช่ข้อสรุปทางจิตวิทยา · เป้าหมายคือทำงานให้ถูกจังหวะ ไม่ใช่จัดประเภทตัวบุคคล · <b>เมื่อพฤติกรรมจริงไม่ตรง ให้แก้เอกสาร ไม่ใช่ดันทุรังตีความคนให้เข้ากรอบ</b></p>
+  </div>
+
+  <div class="panel teal">
+    <h3 style="margin-top:0">รูปแบบที่พบบ่อยในผู้บริหารสายปฏิบัติการ</h3>
+    <p>ด้านหนึ่งให้ <b>ความเด็ดขาด โครงสร้าง มาตรฐาน และความเร็ว</b> · อีกด้านให้ <b>ความระแวดระวัง การมองหาสิ่งที่อาจผิดพลาด และความต้องการความมั่นคง</b></p>
+    <p style="font-size:17px;margin-bottom:0"><b>ผลลัพธ์ของสองอย่างรวมกัน: ท่านจะตัดสินใจเร็วมากเมื่อความเสี่ยงถูกล้อมกรอบไว้แล้ว และจะช้าลงทันทีเมื่อความเสี่ยงยังเปิดกว้าง</b> — ทดสอบกับพฤติกรรมจริงใน 30 วันแรกว่าตรงกับผู้บริหารของคุณหรือไม่</p>
+  </div>
+
+  <p style="margin-top:18px">นี่คือ <b>คันโยกที่ใหญ่ที่สุดที่ดิฉันมีอยู่</b> — งานของดิฉันไม่ใช่การทำให้ข้อเสนอฟังดูดีขึ้น แต่คือการทำให้ <b>ความเสี่ยงของข้อเสนอถูกล้อมกรอบไว้แล้ว</b> ก่อนที่ท่านจะต้องถาม</p>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>ลักษณะที่อาจพบในผู้บริหาร</th><th>แปลว่าท่านจะ…</th><th>ดิฉันต้องทำอะไร</th></tr></thead>
+      <tbody>
+        <tr class="hi">
+          <td class="k">ประเมินข้อเสนอจาก<b>สิ่งที่อาจพลาด</b> มากกว่าสิ่งที่จะได้</td>
+          <td>ถาม “แล้วถ้าไม่เป็นไปตามนั้นล่ะ” มากกว่า “ทำไมถึงดี”</td>
+          <td><b>ทุกข้อเสนอต้องมีบรรทัด Risk + Mitigation + Trigger</b> ไม่ใช่แค่ Recommendation · Recommendation ที่ไม่มี Plan B จะได้คำถามกลับเสมอ</td>
+        </tr>
+        <tr>
+          <td class="k">รับ<b>เซอร์ไพรส์</b>ได้แย่ที่สุด</td>
+          <td>“ทำไมเพิ่งรู้” ไม่ใช่ความหงุดหงิด แต่คือความรู้สึกว่าฐานความมั่นคงถูกสั่น</td>
+          <td><b>รายงานสิ่งที่กำลังจะพลาด ไม่ใช่แค่สิ่งที่พลาดไปแล้ว</b> · การเตือนล่วงหน้าคือสิ่งที่สร้างความไว้วางใจได้เร็วที่สุดกับคนแบบนี้</td>
+        </tr>
+        <tr>
+          <td class="k">ให้ความไว้วางใจกับ<b>ความสม่ำเสมอ</b> ไม่ใช่ความเก่ง</td>
+          <td>จำได้ว่าใครรักษาคำพูดทุกครั้ง มากกว่าจำว่าใครทำผลงานชิ้นใหญ่</td>
+          <td><b>สัญญาเล็กที่รักษาได้ 20 ครั้ง มีค่ากว่าผลงานใหญ่ 1 ชิ้น</b> · อย่ารับปากเกินตัวเพื่อสร้างความประทับใจ — พลาดครั้งเดียวเสียมากกว่าที่ได้</td>
+        </tr>
+        <tr>
+          <td class="k">มีพฤติกรรม<b>ตรวจสอบซ้ำ</b>โดยธรรมชาติ</td>
+          <td>อาจถามเรื่องเดิมสองครั้ง หรือเช็ครายละเอียดที่ดิฉันบอกไปแล้ว</td>
+          <td><b>อย่าตีความว่าท่านไม่เชื่อฝีมือดิฉัน</b> — นี่คือการยืนยันข้อมูล ไม่ใช่การไม่ไว้ใจ · สิ่งที่ทำลายคือ<b>คำตอบที่ไม่ตรงกันสองครั้ง</b> จึงต้องจดไว้ว่าตอบอะไรไป</td>
+        </tr>
+        <tr>
+          <td class="k">ต้องการรู้ว่า<b>ขอบเขตอำนาจ</b>อยู่ตรงไหน</td>
+          <td>ระวังเป็นพิเศษเรื่องการทำเกินขอบเขตของตัวเอง โดยเฉพาะช่วงเปลี่ยนผ่านหรือเมื่อมีผู้ก่อตั้ง/บอร์ดอยู่ในโครงสร้างกำกับดูแล</td>
+          <td><b>ห้ามวางท่านไว้ในตำแหน่งที่ดูเหมือนใช้อำนาจเกินขอบเขต</b> · แยก CEO Decision / Direction / Request / เรื่องรอบอร์ด ให้เด็ดขาด และเตือนท่านเองเมื่อเรื่องอาจเข้าข่าย L4</td>
+        </tr>
+        <tr>
+          <td class="k"><b>เห็นคุณค่าของคนที่กล้า Flag ความเสี่ยง</b> ถ้าทำด้วยความภักดี</td>
+          <td>ยินดีรับการทักท้วงที่มาพร้อมข้อมูล มากกว่าคนที่เออออตาม</td>
+          <td><b>ข่าวดีสำหรับดิฉัน</b> — แบบที่ 11 (ไม่เห็นด้วยกับ Direction) จะได้ผลดีกับท่านมากกว่ากับผู้บริหารประเภทอื่น · แต่ต้องปิดท้ายด้วยการยืนยันว่าจะทำตาม Direction เสมอ</td>
+        </tr>
+        <tr>
+          <td class="k">ภายใต้ความกดดัน จะ<b>หาข้อมูลเพิ่มและปรึกษามากขึ้น</b></td>
+          <td>อาจดูเหมือนลังเลหรือเช็คถี่ ทั้งที่จริงคือกำลังหาความมั่นใจ</td>
+          <td><b>ให้ภาพความเสี่ยงตั้งแต่ต้น ท่านจะได้ไม่ต้องไปหาเอง</b> · ถ้าดิฉันปิดด้านลบไว้แล้วท่านไปเจอเอง ความไว้วางใจจะตกทันทีและกู้ยาก</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel amber">
+    <h3 style="margin-top:0">บรรทัดเดียวที่ต้องเพิ่มในทุกข้อเสนอ ตั้งแต่วันนี้</h3>
+    <pre style="margin-bottom:10px">Risk : [สิ่งที่อาจผิดพลาด] · โอกาส [สูง/กลาง/ต่ำ] · ผลกระทบ [สูง/กลาง/ต่ำ]
+Mitigation : [ดิฉันจะคุมอย่างไร]
+Trigger : ถ้า [เงื่อนไข] เกิดขึ้น ดิฉันจะ [action] และแจ้งผู้บริหารทันที
+Worst case : กรณีแย่ที่สุดคือ [X] ซึ่งดิฉันจำกัดไว้ที่ [ขอบเขต]</pre>
+    <p style="margin-bottom:0"><b>บรรทัด “Worst case” คือบรรทัดที่ทรงพลังที่สุด</b> — สำหรับผู้บริหารที่ประเมินความเสี่ยงเป็นหลัก การรู้ว่าแย่ที่สุดแค่ไหนและมันถูกจำกัดไว้แล้ว มีค่ามากกว่าการรู้ว่าดีที่สุดแค่ไหน · ข้อเสนอที่มีบรรทัดนี้จะได้ Approve เร็วกว่าข้อเสนอที่มีแต่ด้านบวกอย่างเห็นได้ชัด</p>
+  </div>
+
+  <h3>วิธีคิดของท่าน 5 ข้อ <span class="chip rec">Infer</span></h3>
+
+  <div class="panel">
+    <h3 style="margin-top:0">1 · เป็นผู้บริหารสาย Operator ไม่ใช่ Visionary</h3>
+    <p><b>สังเกตจาก:</b> ผู้บริหารที่ขึ้นมาจากสายปฏิบัติการ มักออกแบบวัฒนธรรมทั้งองค์กรรอบวินัยระดับปฏิบัติการรายวัน และเป็นคนจัดระบบเหล่านั้นเอง</p>
+    <p><b>แปลว่า:</b> ท่านจะถามคำถามชั้นที่สองที่ผู้บริหารทั่วไปไม่ถาม — “หน้างานรองรับไหวไหม” “เพิ่มภาระกี่นาทีต่อเคส” “ใครเป็นคนคีย์ข้อมูลเข้าระบบ”</p>
+    <p style="margin-bottom:0"><b>ดิฉันต้องทำ:</b> ห้ามเสนอเรื่องที่จบแค่ชั้นกลยุทธ์ <b>ต้องเตรียมชั้นปฏิบัติการลึกลงไปอีกหนึ่งขั้นไว้เสมอ</b> แม้ไม่ได้ใส่ในสไลด์</p>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">2 · โจทย์ของท่านคือ “กำไร” ไม่ใช่ “ยอดขาย”</h3>
+    <p><b>สังเกตจาก:</b> ตัวเลขที่ท่านหยิบมาพูดและใช้ตัดสิน — ถ้าเน้นกำไรและมาร์จิ้นมากกว่ายอดขาย นี่คือโจทย์จริงของท่าน (ยืนยันจากตัวเลขจริงขององค์กร)</p>
+    <p style="margin-bottom:0"><b>ดิฉันต้องทำ:</b> ทุกข้อเสนอต้องมีบรรทัดผลกระทบต่อ <b>ต้นทุน / มาร์จิ้น / ผลิตภาพ</b> · ข้อเสนอที่ขึ้นต้นว่า “น่าจะช่วยเพิ่มรายได้” โดยไม่พูดถึงต้นทุน จะถูกปัดตกทันที และทำให้ครั้งต่อไปถูกฟังน้อยลง</p>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">3 · ให้คุณค่ากับ “ระบบ” มากกว่า “ความขยันเฉพาะกิจ”</h3>
+    <p><b>สังเกตจาก:</b> Mandate และถ้อยคำที่ท่านใช้ — ถ้าพูดถึง “ระบบ” และ “มาตรฐานการบริหารที่แข็งแรง” บ่อย นี่คือสิ่งที่ท่านให้คุณค่า</p>
+    <p style="margin-bottom:0"><b>ดิฉันต้องทำ:</b> เวลารายงานว่าแก้ปัญหาแล้ว ให้ต่อท้ายเสมอว่า <b>“และเพื่อไม่ให้เกิดซ้ำ ดิฉันวางกลไก [X] ให้ [Owner] ดูแลต่อ”</b> — ประโยคนี้สร้างความไว้ใจเร็วที่สุด</p>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">4 · กลยุทธ์ที่ท่านประกาศเอง คือกรอบที่ท่านใช้ตัดสินทุกเรื่อง</h3>
+    <p>บันทึกถ้อยคำกลยุทธ์/ทิศทางที่ท่านประกาศเอง และเป็นสิ่งที่ท่านถูกวัดผลจากคณะกรรมการ ไว้ให้ตรงที่สุด</p>
+    <p style="margin-bottom:0"><b>ดิฉันต้องทำ:</b> ใส่บรรทัดเดียวทุกข้อเสนอ — “เชื่อมกับ [กลยุทธ์ที่ท่านประกาศ] ตรงจุด [ระบบ / ผนึกข้ามธุรกิจ / ประสิทธิภาพ / Growth ที่วัดได้]” · ถ้าเชื่อมไม่ได้จริง ให้ยอมรับตรง ๆ อย่าฝืน</p>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">5 · บริบทช่วงเปลี่ยนผ่านและโครงสร้างกำกับดูแล</h3>
+    <p><b>แปลว่า:</b> ถ้าท่านเพิ่งรับตำแหน่ง หรือมีผู้ก่อตั้ง/บอร์ดอยู่ในโครงสร้างกำกับดูแล ท่านกำลังถูกมองจากคณะกรรมการ หัวหน้าฝ่าย และนักลงทุน · ความผิดพลาดเล็ก ๆ ของสำนักบริหารช่วงนี้ <b>ไม่ได้ตกที่ดิฉันคนเดียว แต่ตกที่เครดิตของท่าน</b></p>
+    <p style="margin-bottom:0"><b>ดิฉันต้องทำ:</b> เข้มงวดสุดขีดกับการแยกประเภท CEO Decision / Direction / Request / ข้อเสนอ CoS / เรื่องรอบอร์ด (ดูหัวข้อ 08)</p>
+  </div>
+
+  <div class="panel teal">
+    <h3 style="margin-top:0">สิ่งที่วัฒนธรรมองค์กรเปลี่ยนไปจากการอ่านผู้บริหารแบบเดิม</h3>
+    <ul class="c" style="margin-bottom:0">
+      <li><b>ความตรงของท่านคือบทบาทตามระบบ ไม่ใช่อารมณ์ส่วนตัว</b> — ถ้าท่านอยู่ในชุดผู้สะท้อนที่องค์กรกำหนด ซึ่งมีหน้าที่ให้ Feedback อย่างเป็นทางการ ข้อนี้ปิดความเสี่ยงเรื่อง “ตีความน้ำเสียงผิด” ไปได้เกือบทั้งหมด</li>
+      <li><b>เครื่องมือบุคลิกภาพ (ถ้าองค์กรใช้) ไม่ใช่การเดาของดิฉัน แต่เป็นเครื่องมือขององค์กร</b> — เช่น Onboarding Package ประกาศไว้อย่างเปิดเผย และแบบ Keeper Test มีช่องกรอก · โดยทั่วไปตัวหนึ่งบอกว่าท่าน<b>สื่อสาร</b>อย่างไร อีกตัวบอกว่าท่าน<b>ตัดสินใจ</b>อย่างไร — ตัวหลังสำคัญกว่าสำหรับงานของดิฉัน</li>
+      <li><b>สิ่งที่ท่านใช้ประเมินดิฉันคือ Accountability Level</b> — ไม่ใช่ปริมาณงาน · ระดับ A คือมาพร้อม Solution และขอ Commit เอง ซึ่งเป็นนิยามของ Chief of Staff ที่ดีในภาษาของที่นี่พอดี</li>
+      <li><b>ความไว้วางใจวัดได้ด้วย D-Level</b> — ไม่ต้องเดาว่าท่านไว้ใจแค่ไหน ดูว่าเรื่องต่าง ๆ เลื่อนจาก D3 ไป D5 ไป D7 ได้หรือไม่</li>
+    </ul>
+  </div>
+
+  <h3>กับดัก 7 ข้อใน 90 วันแรก</h3>
+  <div class="panel alert">
+    <ul class="c warn" style="margin-bottom:0">
+      <li><b>สะกดชื่อหรือตำแหน่งท่านผิด</b> — ตรวจการสะกดให้ตรงทุกครั้งก่อนส่งเอกสารออกนอกสำนักบริหาร</li>
+      <li><b>อ้างคำพูดท่านกับหัวหน้าฝ่ายโดยไม่ใช้ถ้อยคำเดิม</b> — เขาจะไปเช็คกับท่านเอง ครั้งเดียวก็พอที่จะเสียความไว้วางใจ</li>
+      <li><b>เสนอเรื่องที่พูดแต่รายได้ ไม่พูดต้นทุน</b></li>
+      <li><b>ตอบช้ากว่าที่ท่านอดทนได้</b> — ท่านจะไปสั่งฝ่ายเองโดยตรง ซึ่งกู้กลับยากมาก · ตั้ง SLA ตอบรับภายใน 30 นาทีแม้ยังไม่มีคำตอบ</li>
+      <li><b>ปล่อยให้ท่านเจอข่าวร้ายด้วยตัวเอง</b> — กับผู้บริหารที่ไวต่อเซอร์ไพรส์ นี่คือความเสียหายที่หนักที่สุดในลิสต์นี้ · เรื่องที่ “ยังไม่แน่ใจว่าจะเป็นปัญหาไหม” ให้แจ้งไว้ก่อนพร้อมระบุว่ายังไม่ยืนยัน ดีกว่าเงียบแล้วให้ท่านไปรู้ทีหลัง</li>
+      <li><b>เสนอเรื่องโดยไม่มี Plan B</b> — ข้อเสนอที่มีแต่ด้านบวกจะถูกตั้งคำถามกลับเสมอ และทำให้ดิฉันดูเหมือนคิดไม่รอบ ทั้งที่อาจคิดมาแล้วแต่ไม่ได้เขียน</li>
+      <li><b>ตอบเรื่องเดิมไม่ตรงกันสองครั้ง</b> — ท่านมีพฤติกรรมตรวจสอบซ้ำโดยธรรมชาติ · จดไว้เสมอว่าตอบอะไรไปเมื่อไหร่ ความไม่สอดคล้องคือสิ่งที่ทำลายความไว้วางใจ ไม่ใช่การไม่รู้คำตอบ</li>
+      <li><b>เอาข้อมูลผลประกอบการหรือเรื่องที่ยังไม่เปิดเผยไปคุยนอกวง</b> — บริษัทจดทะเบียน ไม่ใช่แค่มารยาท</li>
+      <li><b>ใช้สมมติฐานบุคลิกภาพตัดสินท่านล่วงหน้า</b> — พฤติกรรมจริงไม่ตรงสมมติฐาน ให้แก้เอกสาร ไม่ใช่ตีความคนให้เข้ากรอบ</li>
+      <li><b>รับงานทุกอย่างมาทำเองเพราะอยากพิสูจน์ตัว</b> — จะกลายเป็นคอขวดภายในสองเดือน ตรงข้ามกับสิ่งที่ท่านให้คุณค่าที่สุด</li>
+    </ul>
+  </div>
+
+  <h3>สิ่งที่ต้องสังเกตเองใน 30 วัน</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>สังเกตอะไร</th><th>วิธี</th><th>ได้อะไร</th></tr></thead>
+      <tbody>
+        <tr><td class="k">ท่านตอบเร็วสุดช่วงไหน</td><td>จดเวลาที่ท่านตอบ LINE ทุกครั้ง 2 สัปดาห์</td><td>ช่วงเวลาที่ควรส่งเรื่องสำคัญ</td></tr>
+        <tr><td class="k">ท่านอ่านอะไรก่อน</td><td>สังเกตว่าท่านถามถึงส่วนไหนของเอกสารก่อน</td><td>ลำดับข้อมูลที่ควรวาง</td></tr>
+        <tr><td class="k">คำถามแรกที่ท่านถามเสมอ</td><td>จดคำถามแรกของทุกวาระ</td><td>เตรียมคำตอบล่วงหน้าได้</td></tr>
+        <tr><td class="k">เรื่องแบบไหนที่ท่านผลักกลับ</td><td>จดเหตุผลทุกครั้งที่ตีกลับ</td><td>เกณฑ์คุณภาพที่แท้จริงของท่าน</td></tr>
+        <tr><td class="k">ท่านไม่ชอบอะไรซ้ำ ๆ</td><td>สิ่งที่ท่านพูดถึงเกิน 2 ครั้ง</td><td>ข้อห้ามที่ท่านไม่เคยบอกตรง ๆ</td></tr>
+        <tr><td class="k">ท่านไว้ใจใครในองค์กร</td><td>ท่านอ้างความเห็นใครบ่อย</td><td>แผนที่อิทธิพลที่ไม่เป็นทางการ</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><b>คำถามเดียวเมื่อครบ 30 วัน:</b> “ผู้บริหารคะ ครบเดือนแล้ว ดิฉันอยากขอ Feedback ข้อเดียว — <b>เรื่องไหนที่ผู้บริหารอยากให้ดิฉันตัดสินใจเองได้เลยโดยไม่ต้องถาม และเรื่องไหนที่ต้องถามทุกครั้ง</b> ค่ะ” · คำถามนี้ได้ทั้ง Feedback และได้ Mandate ของ D-Level ในคำถามเดียว</div>
+</section>
+
+<!-- ============ 02 CULTURE ============ -->
+<section class="pane" id="p-culture" hidden>
+  <div class="sechead">
+    <p class="eyebrow">02 · บริบทที่ต้องเคารพ</p>
+    <h2>วัฒนธรรมองค์กร — ระบบปฏิบัติการที่มีอยู่แล้ว</h2>
+    <p class="lede">องค์กรนี้ไม่ได้บริหารด้วยสามัญสำนึก แต่บริหารด้วยระบบที่เขียนไว้เป็นลายลักษณ์อักษร มีภาษาเฉพาะ แบบฟอร์มบังคับ จังหวะรายวัน และเกณฑ์ประเมินพฤติกรรมเป็นตัวอักษร</p>
+  </div>
+
+  <div class="panel alert">
+    <h3 style="margin-top:0">กฎข้อแรกของ Chief of Staff ใหม่</h3>
+    <p>องค์กรที่ลงทุนกับระบบขนาดนี้ อ่านการที่คนใหม่เอาเฟรมเวิร์กของตัวเองมาใช้ ว่าเป็น <b>การไม่เคารพระบบ</b> ไม่ใช่ความคิดริเริ่ม</p>
+    <p style="margin-bottom:0"><b>Master ระบบเดิมให้ได้ก่อน 3 เดือน แล้วค่อยเสนอปรับ</b> — คู่มือเล่มนี้จึงสร้างบนภาษาขององค์กร ทั้งหมด ไม่ได้สร้างระบบคู่ขนาน</p>
+  </div>
+
+  <h3>โครงคิดที่องค์กรใช้กับทุกกลไก</h3>
+  <p>ทุกระบบใน Onboarding Package เขียนด้วยโครงเดียวกัน — <b>Higher Purpose → Pain → Target group → ความถี่ → Owner</b></p>
+  <div class="panel teal">
+    <p style="margin-bottom:0">เวลาดิฉันเสนอกระบวนการใหม่กับผู้บริหาร <b>ให้เขียนด้วยโครงนี้ ไม่ใช่โครง Executive Brief สากล</b> เพราะท่านและทีมอ่านโครงนี้มาเป็นร้อยครั้ง จะเข้าใจทันทีและอนุมัติเร็วกว่า — และมันบังคับให้ดิฉันตอบให้ได้ก่อนว่ากลไกนี้แก้ Pain อะไรจริง ๆ ซึ่งเป็นคำถามแรกที่ท่านจะถามอยู่แล้ว</p>
+  </div>
+
+  <h3>ระบบบังคับ 5 ตัว</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ระบบ</th><th>Higher Purpose</th><th>ความถี่ / เกณฑ์</th></tr></thead>
+      <tbody>
+        <tr><td class="k">TT<br><span style="color:var(--ink-3);font-weight:400">ติดตามทวงถาม</span></td><td>ลดสิ่งที่ต้องจำ ป้องกันงานหลุด กระตุ้นให้ทำทันที · KP Voice → Admin กดอิโมจิรับทราบ → Admin ทวนเป็นข้อความส่งกลับ</td><td>08.30–20.00 · Admin ลิสต์งานทุกเช้าก่อน 10.00<br>♻️ งานรูทีน · 🔥 งานสำคัญ</td></tr>
+        <tr><td class="k">Reflection<br><span style="color:var(--ink-3);font-weight:400">KP RF</span></td><td>ให้ Management สะท้อนสิ่งที่ทำได้ดีและสิ่งที่ควรพัฒนา · ผู้สะท้อนคือ <b>ชุดผู้บริหารที่องค์กรกำหนด</b></td><td>ต้องทวนกลับ Voice/Video <b>ภายใน 1 วัน</b> · ได้ C/D ต้องส่ง Self-Reflection</td></tr>
+        <tr class="hi"><td class="k">Discipline</td><td>ให้กล้าคุยตรงกับหัวหน้า มีวินัย อัปเดตสม่ำเสมอ กล้าตัดสินใจพร้อมเสนอ Solution</td><td>D5 Call + ถามเพื่อพัฒนา (จ.–ศ.) · ภาษา Proactive (สัปดาห์ละ 1) · <b>UD (ทุกศุกร์)</b> · ส่งหลัง 17.30 · ผ่านเมื่อครบ <b>3 เดือน หรือ 95%</b></td></tr>
+        <tr><td class="k">Q2 Schedule</td><td>วางแผนล่วงหน้า ไม่ปล่อยให้งาน Q2 กลายเป็น Q1</td><td>ลงปฏิทินล่วงหน้าตามรูปแบบที่กำหนด</td></tr>
+        <tr><td class="k">Delegate Level</td><td>ให้ Key Player กล้าตัดสินใจและรับผิดชอบเอง พร้อมมี Solution มานำเสนอ</td><td>ทุกวัน · Target: KP Lv.8+ / Successor / Head / PA / DL</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Learning Journey 90 วัน</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Phase</th><th>สิ่งที่ต้องทำ</th><th>ระยะเวลา</th></tr></thead>
+      <tbody>
+        <tr><td class="k">วันที่ 1–2</td><td>Orientation HR เต็มวัน · Culture Day กับ PDC · Orientation กับทีม Discipline</td><td>2 วัน</td></tr>
+        <tr><td class="k">Phase 1</td><td>แนะนำตัวกับผู้บริหารผ่าน Line · เข้าระบบ TT · เข้ากลุ่ม Reflection Key Player</td><td>ทันที</td></tr>
+        <tr><td class="k">Phase 1</td><td>ใบ Mandala Art — แตกงานในหน้าที่ตนเอง</td><td>1 สัปดาห์</td></tr>
+        <tr><td class="k">Phase 1</td><td>Unpack คลิป Delegate Level · Podcasts 10 คลิป</td><td>1 เดือน</td></tr>
+        <tr><td class="k">Phase 1</td><td>หนังสือ 2 เล่ม — <b>Management 3.0</b> · <b>ทำไม NETFLIX ถึงมีแต่คนโคตรเก่ง</b></td><td>2 เดือน</td></tr>
+        <tr><td class="k">Phase 1</td><td>ชุดคำถาม 13 Things Mentally Strong People Don't Do · แบบทดสอบ Philosophy</td><td>—</td></tr>
+        <tr><td class="k">Phase 2</td><td>เข้าระบบ Discipline · การขอวาระกับผู้บริหาร · Q2 Schedule</td><td>ต่อเนื่อง 3 เดือน / 95%</td></tr>
+        <tr><td class="k">Phase 3</td><td>EF Hospital — หลักสูตร <b>Management 1.0</b> (ลงทะเบียนผ่าน Rich Menu)</td><td>ติดตามรายสัปดาห์</td></tr>
+        <tr><td class="k">Phase 3</td><td><b>Keeper Test</b> รายไตรมาส 20 นาที · กลุ่มฝึก <b>หมวกดำ</b></td><td>ทุกไตรมาส / ตาม Drill</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel amber">
+    <h3 style="margin-top:0">Keeper Test — เตรียมล่วงหน้า อย่าไปเจอหน้างาน</h3>
+    <p>คำถามแกนกลางเขียนไว้ตรง ๆ ว่า <b>“ถ้าคุณกำลังจะลาออก ฉันจะรั้งคุณไว้ไหม”</b> แบ่งผลเป็น <b>Asset (รั้ง)</b> กับ <b>Cost (ไม่รั้ง)</b></p>
+    <p style="margin-bottom:0">แบบฟอร์มมีช่อง MBTI · Enneagram · ผู้ประเมิน · ความสม่ำเสมอในการโค้ช และเชื่อมกับ 9 Grid Role &amp; Responsibility, Spiral Dynamics, CBT · <b>ขอแบบฟอร์มเปล่าและเกณฑ์ให้ครบก่อนถึงไตรมาสแรก</b></p>
+  </div>
+
+  <h3>แนวคิดอ้างอิงที่องค์กรใช้</h3>
+  <p>The Speed of Trust (Stephen M.R. Covey) · A CEO Only Does Three Things (Trey Taylor) · Management 3.0 · Spiral Dynamics · Satir Model · Mind Sweep · Influencers Framework · 4ER (4 บทบาทหลักของผู้นำ) — <b>รู้จักไว้เพื่อฟังประชุมรู้เรื่อง ไม่ต้องอ่านครบทุกเล่มในเดือนแรก</b></p>
+</section>
+
+<!-- ============ 03 DELEGATE ============ -->
+<section class="pane" id="p-delegate" hidden>
+  <div class="sechead">
+    <p class="eyebrow">03 · ทักษะแกนที่ 1</p>
+    <h2>Delegate Level — แกนอำนาจ</h2>
+    <p class="lede">Delegate ไม่ใช่ “การมอบงาน” แต่คือ <b>การระบุตำแหน่งของการตัดสินใจ ก่อนที่บทสนทนาจะเริ่ม</b> — และมันถูกประกาศล่วงหน้า ไม่ใช่สรุปทีหลัง</p>
+  </div>
+
+  <h3>ตารางระดับ</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ระดับ</th><th>ความหมาย</th><th>ใครตัดสิน</th><th>ใช้เมื่อไหร่</th></tr></thead>
+      <tbody>
+        <tr><td class="code">D1</td><td>นายสั่งการ</td><td>ผู้บริหาร</td><td>รับคำสั่ง ไม่ใช่การเสนอ</td></tr>
+        <tr><td class="code">D2</td><td>นายขายไอเดียและสั่งการ</td><td>ผู้บริหาร</td><td>รับทิศทาง</td></tr>
+        <tr><td class="code">D3</td><td>ให้ความเห็นและขอการตัดสินใจจากนาย</td><td>ผู้บริหาร</td><td>เรื่องที่เกินอำนาจ CoS จริง</td></tr>
+        <tr><td class="code">D4</td><td>หารือและตกลงร่วมกัน</td><td>ร่วมกัน</td><td>เรื่องข้ามฝ่ายที่ต้อง Align</td></tr>
+        <tr class="hi"><td class="code">D5</td><td><b>ขอความเห็นนาย แต่จะตัดสินใจและรับผิดชอบเอง</b></td><td>ดิฉัน</td><td><b>ระดับที่ CoS ควรอยู่เป็นค่าเริ่มต้น</b></td></tr>
+        <tr><td class="code">D6</td><td>มา Update สิ่งที่ทำไปแล้ว</td><td>ดิฉัน (ทำแล้ว)</td><td>รายงานผล ไม่ต้องขออนุมัติ</td></tr>
+        <tr><td class="code">D7</td><td>ไปทำเองได้เลย</td><td>ดิฉัน</td><td>ได้รับมอบอำนาจเต็ม</td></tr>
+        <tr><td class="code">D-</td><td>ไม่มีการตัดสินใจมาเกี่ยวข้อง</td><td>—</td><td>วาระรีวิว วาระให้ข้อมูล</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>ห้าเหตุผลที่ทำให้มันเป็นเครื่องมือทรงพลังที่สุดในระบบ</h3>
+  <ol class="c">
+    <li><b>ฆ่าความคลุมเครือที่แพงที่สุดในองค์กร</b> — ประชุมที่จบแล้วไม่มีใครรู้ว่าตกลงอะไร คือประชุมที่ไม่ได้ระบุ D-Level ตอนเปิด · เมื่อประกาศ D ตั้งแต่ต้น ทุกคนรู้ทันทีว่ากำลังมาหารือ มาขออนุมัติ หรือมารับทราบ</li>
+    <li><b>เป็นเครื่องมือบริหาร Attention ของ CEO</b> — ผู้บริหารอ่านหัวข้อแล้วรู้ทันทีว่าต้องใช้สมองระดับไหน D6 กวาดตาผ่านได้ D3 ต้องหยุดคิด · นี่คือ Protect CEO Attention ที่ทำงานตั้งแต่บรรทัดแรก</li>
+    <li><b>เป็นหน่วยวัดความไว้วางใจที่จับต้องได้</b> — เรื่องที่เลื่อนจาก D3 → D5 → D7 คือหลักฐานว่าได้รับความไว้วางใจเพิ่มขึ้นจริง ไม่ใช่ความรู้สึก · <b>นี่คือเส้นทางความก้าวหน้าที่วัดได้ของ Chief of Staff</b></li>
+    <li><b>ป้องกันไม่ให้ CEO กลายเป็นคอขวด</b> — ถ้าทุกคนอยู่ D1–D2 องค์กรจะเดินได้เร็วเท่าความเร็วของคนคนเดียว · Higher Purpose ที่แท้จริงคือกระจายความเร็วในการตัดสินใจออกจากตัว CEO</li>
+    <li><b>เป็นเครื่องมือสองทาง ไม่ใช่ทางเดียว</b> — จุดที่ Chief of Staff ส่วนใหญ่พลาด: คิดว่า D-Level คือสิ่งที่ตัวเอง<b>ขอ</b>จากผู้บริหารเท่านั้น · ความจริงคือต้อง<b>ให้</b> D-Level กับคนที่ทำงานให้ดิฉันและกับหัวหน้าฝ่ายด้วย</li>
+  </ol>
+
+  <h3>บันได Delegate — เลือกระดับตามความสุกของเรื่อง</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>สถานะของเรื่อง</th><th>ระดับ</th><th>ประโยคเปิด</th></tr></thead>
+      <tbody>
+        <tr><td class="k">เรื่องใหม่ ยังไม่รู้บริบทองค์กร</td><td class="code">D3–D4</td><td>“ดิฉันขอความเห็นและขอการตัดสินใจจากผู้บริหารค่ะ” / “ขอหารือร่วมกันค่ะ”</td></tr>
+        <tr class="hi"><td class="k">เข้าใจบริบทแล้ว มีข้อเสนอชัด</td><td class="code">D5</td><td><b>“ดิฉันขอความเห็น แล้วจะตัดสินใจและรับผิดชอบเองค่ะ”</b></td></tr>
+        <tr><td class="k">ทำมาหลายรอบ ท่านเคยเห็นชอบแนวทาง</td><td class="code">D6</td><td>“ดิฉันขอ Update สิ่งที่ทำไปแล้วค่ะ”</td></tr>
+        <tr><td class="k">ได้รับมอบอำนาจเต็มแล้ว</td><td class="code">D7</td><td>ไม่ต้องขอ ทำแล้วสรุปในรอบ UD</td></tr>
+        <tr><td class="k">เกินอำนาจ CoS จริง</td><td class="code">D3</td><td>งบใหญ่ · กฎหมาย/กำกับดูแล · ขัดแย้งระดับ C-level · ชื่อเสียง · เข้าคณะกรรมการ</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel amber">
+    <h3 style="margin-top:0">กับดักที่ต้องระวังที่สุด — “D3 ที่ปลอดภัย”</h3>
+    <p style="margin-bottom:0">สัญชาตญาณของคนที่อยากทำงานดีและให้เกียรตินาย คือขอ D3 ตลอด เพราะรู้สึกว่าสุภาพและไม่เสี่ยง · แต่ระบบเขียน Higher Purpose ไว้ตรง ๆ ว่า <b>“เพื่อให้ Key Player กล้าที่จะตัดสินใจ และรับผิดชอบเอง”</b> ดังนั้น D3 บ่อย ๆ ไม่ได้อ่านว่าสุภาพ แต่อ่านว่า<b>ไม่กล้าตัดสินใจ</b> ซึ่งเป็นสิ่งเดียวที่ระบบนี้ตั้งใจกำจัด</p>
+  </div>
+
+  <h3>3 ช่องทางที่นับเป็น D5 Call ตามระบบ</h3>
+  <ul class="c">
+    <li><b>พิมพ์</b> ตามสคริปต์</li>
+    <li><b>โทร</b> หาหัวหน้าเพื่อขอ D5 พร้อมส่งรูปคู่ที่ระบุ Delegate Level 5</li>
+    <li><b>MOF</b> — เจอหน้าแล้วถ่ายรูปหัวหน้าชูสัญลักษณ์ 5 นิ้ว · ประชุมผ่าน Zoom ให้ขอ Selfie คู่ก่อนจบวาระ</li>
+  </ul>
+
+  <div class="note"><b>เมื่อขอ D5 แล้วถูกประเมินว่าได้ D1:</b> ต้องเขียนทันทีว่า “ถ้าย้อนเวลากลับไปได้ จะทำอย่างไรหรือพูดแบบไหน เพื่อให้ได้ตาม Delegate Level ที่คาดหวัง” แล้วส่งเข้ากลุ่ม Reflection</div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">Drill ทุกเช้า 3 นาที</h3>
+    <p style="margin-bottom:0">เปิดรายการงานของวัน เขียน D-Level กำกับทุกบรรทัด · <b>ถ้าเจอ D3 มากกว่า 2 รายการ ให้หยุดถามตัวเองว่าเรื่องไหนที่จริง ๆ ควรเป็น D5 แล้วดิฉันกำลังหลบ</b> · สิ้นสัปดาห์นับสัดส่วน D3 ต่อ D5 แล้วบันทึกไว้</p>
+  </div>
+</section>
+
+<!-- ============ 04 RDS ============ -->
+<section class="pane" id="p-rds" hidden>
+  <div class="sechead">
+    <p class="eyebrow">04 · ทักษะแกนที่ 2</p>
+    <h2>RDS — แกนการสื่อสาร</h2>
+    <p class="lede">Delegate ตอบว่า “ใครตัดสิน” · RDS ตอบว่า “เรียงข้อมูลอย่างไร” — สองอันนี้คือหัวกับตัวของทุกข้อความ</p>
+  </div>
+
+  <div class="note">
+    <p><span class="chip fact">Fact</span> ตารางภาษา Jargon ขององค์กร ระบุว่า <b>RDS = Result Detail Solution</b> อยู่ในหมวด Framework เดียวกับ FB, RB, AL, SF</p>
+    <p style="margin-bottom:0"><span class="chip rec">Rec</span> เอกสารให้แค่คำเต็ม ไม่ได้อธิบายวิธีใช้ · ส่วนต่อไปนี้คือข้อเสนอที่ดิฉันควรยึด — <b>ต้องยืนยันกับทีม Discipline หรือ PDC ก่อนสอนต่อให้คนอื่น</b></p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>ตัวอักษร</th><th>คืออะไร</th><th>คำถามที่ต้องตอบ</th><th>ห้ามใส่</th></tr></thead>
+      <tbody>
+        <tr><td class="code">R · Result</td><td>ผลลัพธ์หรือสถานะปลายทาง เทียบกับเป้าหมาย</td><td>ตอนนี้อยู่ตรงไหน สำเร็จหรือไม่สำเร็จ</td><td>กระบวนการ · ความพยายาม · ความรู้สึก</td></tr>
+        <tr><td class="code">D · Detail</td><td>ข้อเท็จจริงและตัวเลขที่ทำให้ R น่าเชื่อ</td><td>รู้ได้ยังไง ตัวเลขมาจากไหน</td><td>รายละเอียดที่ไม่เปลี่ยนการตัดสินใจ</td></tr>
+        <tr><td class="code">S · Solution</td><td>สิ่งที่จะทำต่อ หรือทางเลือกพร้อมข้อเสนอ</td><td>แล้วยังไงต่อ ใครทำ เมื่อไหร่</td><td>“แล้วแต่ผู้บริหาร” · คำถามเปล่าที่ไม่มีข้อเสนอ</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>ทำไม RDS สำคัญกว่าที่หน้าตามันบอก</h3>
+  <ol class="c">
+    <li><b>คนส่วนใหญ่พูดกลับด้าน</b> — Detail → Detail → Detail → ถ้ายังมีเวลาค่อยถึง Result · นี่คือสาเหตุเดียวที่ผู้บริหารรู้สึกว่า “ฟังแล้วไม่รู้จะเอาอะไร”</li>
+    <li><b>บังคับให้คิดจบก่อนพูด</b> — เขียนบรรทัด R ไม่ได้ = ยังไม่รู้ว่าเรื่องนี้จบยังไง = ยังไม่ถึงเวลาส่ง · Quality Gate ที่ราคาถูกที่สุดที่ดิฉันมี</li>
+    <li><b>ทำให้ได้ Accountability Level A โดยอัตโนมัติ</b> — นิยามของ A คือ “เอาผลลัพธ์ที่ตรงความต้องการมาบอก” และ “คิด Solution มาแล้ว” ซึ่งก็คือ <b>R</b> กับ <b>S</b> พอดี</li>
+    <li><b>ประหยัดเวลา CEO มากที่สุดต่อบรรทัดที่เขียน</b> — ผู้บริหารอ่านบรรทัด R บรรทัดเดียวก็ตัดสินได้ว่าจะอ่านต่อหรือข้าม</li>
+  </ol>
+
+  <h3>เปรียบเทียบ <span style="font-weight:400;color:var(--ink-3);font-size:14px">(ตัวอย่างสมมติเพื่อการฝึก)</span></h3>
+  <p style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--alert);margin-bottom:5px">แบบที่จะถูกถามกลับ → AL ระดับ C</p>
+  <pre class="bad">ผู้บริหารคะ เมื่อวานดิฉันประชุมกับฝ่ายจัดซื้อเรื่องสัญญาผู้ให้บริการ
+คุยกันนานพอสมควร มีหลายประเด็น ทางฝ่ายบอกว่าติดเรื่องเอกสาร
+แล้วก็ต้องรอฝ่ายกฎหมายอีก ดิฉันเลยตามให้แล้วค่ะ
+ไม่แน่ใจว่าผู้บริหารจะให้ทำยังไงต่อดีคะ</pre>
+  <p style="font-size:14px;color:var(--ink-3);margin-top:-6px">ไม่มี Result · Detail ไม่มีตัวเลข · ไม่มี Solution · ปิดท้ายด้วยการโยนกลับ</p>
+
+  <p style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:5px">แบบ RDS → AL ระดับ A</p>
+  <pre class="good">[Q2][D5] สัญญาผู้ให้บริการ — ขอความเห็นค่ะผู้บริหาร
+
+R : เกินกำหนดเซ็น 6 วัน คาดปิดได้ 8 ก.ย. ถ้าตัดสินใจภายในวันนี้
+D : ติดที่ฝ่ายกฎหมายรอ 2 ข้อ — ข้อรับผิดและเงื่อนไขยกเลิก
+    ดิฉันตามแล้ว 2 ครั้ง (28 ส.ค., 31 ส.ค.) ยังไม่ได้คำตอบ
+    ทุกวันที่ช้า มีค่าใช้จ่ายส่วนต่างสัญญาเดิมเดินอยู่
+S : ดิฉันเสนอเดินหน้าเซ็นเฉพาะขอบเขตที่ไม่มีข้อพิพาท
+    แล้วทำภาคผนวกสองข้อที่ค้างทีหลัง
+    ทางเลือกอีกทางคือรอให้ครบแล้วเซ็นทีเดียว ซึ่งจะเลื่อนไป 15 ก.ย.
+    Recommendation ของดิฉันคือทางแรก เพราะปิดค่าใช้จ่ายส่วนต่างได้เร็วกว่า 1 สัปดาห์
+
+ดิฉันขอความเห็นผู้บริหารค่ะ ถ้าไม่มีข้อทักท้วง ดิฉันจะเดินหน้าและรับผิดชอบเอง</pre>
+
+  <div class="panel">
+    <h3 style="margin-top:0">Drill 5 นาทีต่อวัน · 2 สัปดาห์</h3>
+    <p style="margin-bottom:8px">ก่อนส่งข้อความสำคัญทุกครั้ง เขียนสามบรรทัดนี้ลงกระดาษก่อน แล้วค่อยพิมพ์:</p>
+    <pre style="margin-bottom:8px">R : ..............
+D : ..............
+S : ..............</pre>
+    <p style="margin-bottom:0"><b>เขียน R ไม่ได้ภายใน 30 วินาที = ยังไม่ถึงเวลาส่ง</b> ให้กลับไปหาข้อมูลก่อน</p>
+  </div>
+
+  <h3>กับดัก</h3>
+  <ul class="c warn">
+    <li><b>เอา Detail มาใส่ในช่อง Result</b> — “ประชุมแล้ว” “ส่งเมลแล้ว” “ตามแล้ว” ไม่ใช่ผลลัพธ์</li>
+    <li><b>Detail ยาวเกินจำเป็น</b> — ใส่เฉพาะตัวเลขที่จะเปลี่ยนการตัดสินใจ ตัดออกแล้วคำตอบไม่เปลี่ยน ให้ตัด</li>
+    <li><b>Solution ที่ไม่มี Recommendation</b> — เสนอ A กับ B แล้วไม่บอกว่าเลือกอะไร คือทำงานเสร็จครึ่งเดียว</li>
+  </ul>
+</section>
+
+<!-- ============ 05 AL ============ -->
+<section class="pane" id="p-al" hidden>
+  <div class="sechead">
+    <p class="eyebrow">05 · เกณฑ์ที่ใช้ตัดสินดิฉัน</p>
+    <h2>Accountability Level A–D</h2>
+    <p class="lede">ชุดผู้สะท้อนที่องค์กรกำหนดจะสะท้อนกลับในกลุ่ม Reflection Key Player เป็นเกรด A–D · นี่คือเกณฑ์ที่ดิฉันถูกวัดจริงในช่วงแรก มากกว่า KPI ตัวไหน ๆ</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>ระดับ</th><th>Action</th><th>คำพูด</th><th>ผลต่อคนรอบข้าง</th></tr></thead>
+      <tbody>
+        <tr class="hi"><td class="code">A</td><td>เดินเข้ามาก่อน · เตือนก่อน · เอาผลลัพธ์ที่ตรงกับความต้องการมาบอก</td><td>คิด Solution มาแล้ว · ขอ Commit เป็นวินัย</td><td>มีเวลาเพิ่มขึ้น · สบายใจ · ช่วยผลักดันสิ่งที่ตั้งใจได้</td></tr>
+        <tr><td class="code">B</td><td>บอกแค่ Result · ทำตามสั่ง · ถามเมื่อทำไม่ได้</td><td>ผลลัพธ์คือ… Next Action คืออะไร</td><td>ต้องเช็คขั้นตอนตลอด</td></tr>
+        <tr><td class="code">C</td><td>ถ้าไม่ถามก็ไม่บอก · รอคนอื่น Action</td><td>ลืมบอกเฉย · อ้อ นึกขึ้นได้พอดี · ค่ะ/ครับ</td><td>ต้องคอยตามงาน · งานล่าช้า · ไม่เกิดผลลัพธ์</td></tr>
+        <tr><td class="code">D</td><td>หลบหนี · ไม่ Action อะไรเลย</td><td>ไม่พูด ไม่เถียง · เงียบ</td><td>ต้องตามเป็นการ · งานไปต่อไม่ได้</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>เส้นทางลัดสู่เกรด A</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>องค์ประกอบของ A</th><th>มาจากไหน</th><th>ต้องทำอะไร</th></tr></thead>
+      <tbody>
+        <tr><td class="k">เอาผลลัพธ์ที่ตรงความต้องการมาบอก</td><td class="code">R ของ RDS</td><td>เขียนบรรทัด Result ให้ได้เสมอ</td></tr>
+        <tr><td class="k">คิด Solution มาแล้ว</td><td class="code">S ของ RDS</td><td>ไม่ส่งปัญหาโดยไม่มีข้อเสนอ</td></tr>
+        <tr><td class="k">เดินเข้ามาก่อน · เตือนก่อน</td><td class="code">Q2 Schedule</td><td>ทำงานล่วงหน้า ไม่รอให้กลายเป็น Q1</td></tr>
+        <tr><td class="k">ขอ Commit เป็นวินัย</td><td class="code">D5 ขึ้นไป</td><td>ตัดสินใจและรับผิดชอบเอง ไม่ใช่รอสั่ง</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><b>ข้อสังเกตสำคัญ:</b> ไม่มีองค์ประกอบไหนเลยที่เกี่ยวกับ “ทำงานหนัก” หรือ “ทำงานเยอะ” ทั้งหมดเกี่ยวกับ<b>วิธีที่ข้อมูลถูกส่งและวิธีที่ความรับผิดชอบถูกรับ</b> — ซึ่งฝึกได้ในสองสัปดาห์ ไม่ใช่สามปี</p>
+
+  <h3>กติกาบังคับ</h3>
+  <ul class="c warn">
+    <li>ได้ <b>C หรือ D</b> → ต้องส่ง <b>Self-Reflection</b> กลับ ตามรูปแบบ ภายใน 1 วัน</li>
+    <li>ได้ Feedback / Right Behavior / Reflection ทุกครั้ง → <b>ทวนกลับด้วย Voice หรือ Video ภายใน 1 วัน</b> แล้วขอบคุณ</li>
+    <li>ไม่ทวน → แอดมินจะ TT ลงกลุ่มเพื่อติดตาม ซึ่งทุกคนในกลุ่มเห็น</li>
+  </ul>
+  <div class="note"><b>เคล็ดลับ:</b> ทวนภายใน <b>1 ชั่วโมง</b> ไม่ใช่ 1 วัน · ระบบให้เวลาหนึ่งวันเป็นเพดาน ไม่ใช่เป้าหมาย และความเร็วในการทวนคือสัญญาณที่ผู้บริหารอ่านได้ชัดกว่าความสวยของคำตอบ</div>
+
+  <h3>แบบฟอร์มที่ต้องใช้</h3>
+  <div class="grid">
+    <div class="card">
+      <span class="lbl">Feedback / Right Behavior / RF</span>
+      <pre style="font-size:12px;margin:0">ทวนนะคะ
+
+📌 เจตนารมณ์ :
+📌 เหตุการณ์ :
+📌 สิ่งที่ทำได้ดี :
+📌 ผลกระทบ :
+📌 สิ่งที่อยากให้ปรับ/พัฒนา :
+📌 ผลถ้าปรับ :</pre>
+    </div>
+    <div class="card">
+      <span class="lbl">Self-Reflection (เมื่อได้ C/D)</span>
+      <pre style="font-size:12px;margin:0">📌 Event :
+📌 Problem (สิ่งเร้า) :
+📌 My Weakness :
+📌 My Mistake :
+📌 Effect :
+📌 Improvement :
+   (ครั้งหน้าจะปรับปรุงยังไง)</pre>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px"><b>จุดที่คนเขียนผิดบ่อย:</b> <b>My Weakness</b> คือ<b>นิสัย</b>ที่ทำให้เกิดเรื่อง (เช่น “ไม่ทำทันที”) ส่วน <b>My Mistake</b> คือ<b>เหตุการณ์</b>ที่พลาดจริง (เช่น “ไม่ได้ UD จนถูกทวงถาม”) · เขียนสองช่องนี้เหมือนกัน = ยังไม่ได้สะท้อนถึงต้นเหตุ</div>
+</section>
+
+<!-- ============ 06 Q ============ -->
+<section class="pane" id="p-q" hidden>
+  <div class="sechead">
+    <p class="eyebrow">06 · การจัดประเภทงาน</p>
+    <h2>Q1–Q4 และรูปแบบปฏิทิน</h2>
+    <p class="lede">ปฏิทินที่นี่ไม่ใช่แค่ตารางนัด แต่เป็นหลักฐานสาธารณะว่าคนคนนั้นบริหารเวลาเป็นหรือไม่</p>
+  </div>
+
+  <div class="grid">
+    <div class="card"><span class="lbl">Q1</span><h4>งานที่ยกมาคุยแล้วจบ</h4><p>เร่งด่วนและสำคัญ มาถึงตัวแล้ว — วิ่งตามไฟ</p></div>
+    <div class="card" style="border-left:3px solid var(--teal)"><span class="lbl">Q2 · เป้าหมาย</span><h4>งานที่มีขั้นตอนในการทำ</h4><p>ควรวางแผนเพื่อความยั่งยืน — นี่คือที่ที่คุณค่าเกิด</p></div>
+    <div class="card"><span class="lbl">Q3</span><h4>เร่งด่วนแต่ไม่สำคัญ</h4><p>ควร Delegate ออก</p></div>
+    <div class="card"><span class="lbl">Q4</span><h4>งานที่ไม่ควรทำ</h4><p>ตัดทิ้ง</p></div>
+  </div>
+
+  <div class="note" style="margin-top:18px">Higher Purpose ที่ระบบเขียนไว้ตรง ๆ: <b>“ไม่มีการบริหารจัดการงาน Q2 จนงาน Q2 กลายเป็นงาน Q1”</b></div>
+
+  <h3>รูปแบบการลงตาราง</h3>
+  <pre>2️⃣ D4 CoS: MOF | 1 on 1 | [ผู้เข้าร่วม]        วันจันทร์ที่ 8 เม.ย.
+2️⃣ D5 CoS: MVC | Satir Model | [สถานที่]
+2️⃣ D- CoS: | รีวิว Pain และ Higher Purpose
+
+โครงสร้าง = [Q level] [Delegate level] [ผู้ขอวาระ] : [ประเภทประชุม] | [หัวข้อ] | [ผู้เข้าร่วม]</pre>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>ตัวย่อ</th><th>ความหมาย</th></tr></thead>
+      <tbody>
+        <tr><td class="code">MOF</td><td>Meet On Face — ประชุมแบบเห็นหน้ากัน</td></tr>
+        <tr><td class="code">MVC</td><td>Meeting Via Call — ประชุมผ่าน Zoom หรือโทรศัพท์</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel amber">
+    <h3 style="margin-top:0">สัญญาณเตือนที่ต้องเห็นก่อนคนอื่น</h3>
+    <p style="margin-bottom:0">ระบบบังคับว่า UD ทุกศุกร์ต้องมีงาน <b>Q2</b> ห้าข้อขึ้นไปทั้งฝั่ง On process และฝั่งสำเร็จ · <b>ถ้าสัปดาห์ไหนหางาน Q2 ครบห้าข้อไม่ได้ นั่นไม่ใช่ปัญหาการกรอกฟอร์ม แต่เป็นหลักฐานว่าทั้งสัปดาห์ทำแต่งาน Q1</b> คือวิ่งตามไฟ ไม่ได้สร้างอะไร — และนี่คือสิ่งที่ Chief of Staff ต้องเห็นก่อนคนอื่นและรายงานเอง ไม่ใช่รอให้ถูกจับได้</p>
+  </div>
+</section>
+
+<!-- ============ 07 UPDATES ============ -->
+<section class="pane" id="p-updates" hidden>
+  <div class="sechead">
+    <p class="eyebrow">07 · ใช้บ่อยที่สุด</p>
+    <h2>ตัวอย่างมาตรฐานการอัปเดตงาน 16 แบบ</h2>
+    <p class="lede">ทุกแบบใช้โครงเดียวกัน — <b>[Q][D] → R / D / S → ขอ Decision ภายในเมื่อไหร่</b> เปลี่ยนแค่ความยาวและระดับ D · กดปุ่ม Copy แล้วเติมในวงเล็บเหลี่ยม</p>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">โครงกลางที่ทุกแบบใช้ร่วมกัน</h3>
+    <pre style="margin-bottom:0">[Q?][D?] เรื่อง [หัวข้อ]
+
+R : [ผลลัพธ์ตอนนี้ เทียบกับเป้า — ต้องมีตัวเลขหรือวันที่]
+D : [ข้อเท็จจริงที่รองรับ + แหล่งที่มา + สิ่งที่ยังไม่ยืนยัน]
+S : [สิ่งที่จะทำต่อ หรือ ทางเลือก + Recommendation ของดิฉัน]
+
+ขอ [ความเห็น / Decision] ภายใน [วัน เวลา] ค่ะ</pre>
+  </div>
+
+  <!-- ===== interactive validator ===== -->
+  <style>
+    .vz{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);padding:20px 22px;margin-bottom:24px;box-shadow:var(--shadow)}
+    .vz h3{margin-top:0}
+    .vz-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+    .vz-select{font-family:var(--font);font-size:14px;padding:9px 12px;border:1px solid var(--line);border-radius:4px;background:var(--surface-3);color:var(--ink);min-width:250px;flex:1 1 250px}
+    .vz-select:focus{outline:2px solid var(--brand);outline-offset:1px}
+    .vz-tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:4px 9px;border-radius:3px;background:var(--accent-soft);color:var(--accent-ink);white-space:nowrap}
+    .vz-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .vz-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 6px;display:block}
+    .vz textarea{width:100%;min-height:300px;resize:vertical;font-family:var(--code);font-size:12.5px;line-height:1.7;padding:13px 14px;border:1px solid var(--line);border-radius:4px;background:var(--surface-3);color:var(--ink);box-sizing:border-box}
+    .vz textarea:focus{outline:2px solid var(--brand);outline-offset:1px;border-color:var(--brand)}
+    .vz-btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .vz-btn{font-family:var(--font);font-size:13px;padding:8px 15px;border-radius:4px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);cursor:pointer}
+    .vz-btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+    .vz-btn:hover{border-color:var(--brand);color:var(--ink)}
+    .vz-btn.primary:hover{color:var(--on-accent);opacity:.92}
+    .vz-btn:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+    .vz-score{margin-bottom:14px}
+    .vz-scnum{font-family:var(--mono);font-size:13px;color:var(--ink-2);font-weight:500}
+    .vz-bar{height:8px;border-radius:5px;background:var(--surface-2);overflow:hidden;margin:7px 0 6px}
+    .vz-bar>i{display:block;height:100%;width:0;background:var(--teal);transition:width .25s ease}
+    .vz-verdict{font-size:13.5px;color:var(--ink-2);margin:0}
+    .vz-verdict b{color:var(--ink)}
+    .vz-checks{list-style:none;margin:0;padding:0}
+    .vz-checks li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:13.5px;align-items:flex-start}
+    .vz-checks li:last-child{border-bottom:0}
+    .vz-ic{flex:0 0 18px;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:1px;line-height:1}
+    .vz-ic.ok{background:var(--teal-soft);color:var(--teal)}
+    .vz-ic.no{background:var(--alert-soft);color:var(--alert)}
+    .vz-ic.idle{background:var(--surface-2);color:var(--ink-3)}
+    .vz-ct{color:var(--ink);display:block}
+    .vz-ch{color:var(--ink-3);font-size:12px;display:block;margin-top:1px}
+    .vz li.pass .vz-ct{color:var(--ink-2)}
+    /* responsive — placed last so it overrides base .vz rules on small screens */
+    @media (max-width:760px){
+      .vz{padding:16px 15px}
+      .vz-grid{grid-template-columns:1fr;gap:20px}
+      .vz-controls{gap:8px}
+      .vz-select{min-width:0;flex:1 1 100%;width:100%;font-size:16px}
+      .vz-tag{align-self:flex-start}
+      .vz textarea{min-height:210px;font-size:16px}
+      .vz-btns{gap:8px}
+      .vz-btn{flex:1 1 auto;text-align:center;padding:11px 12px;font-size:14px}
+    }
+  </style>
+
+  <div class="vz">
+    <h3>🧪 ลองเขียนแล้วให้ระบบตรวจให้</h3>
+    <p style="margin:0 0 16px;color:var(--ink-2)">เลือกแบบ → พิมพ์หรือวางข้อความของดิฉัน → ระบบไล่ตรวจทีละข้อว่าตรงตามหลักการของแบบนั้นหรือยัง · <b>เป็นตัวช่วยเช็คโครงสร้าง ไม่ใช่การให้เกรดแทนผู้บริหาร</b> — ผ่านครบทุกข้อแปลว่า “ครบองค์ประกอบ” ยังต้องอ่านเนื้อหาจริงอีกครั้งก่อนส่ง</p>
+    <div class="vz-controls">
+      <select class="vz-select" id="vzSel" aria-label="เลือกแบบการอัปเดต"></select>
+      <span class="vz-tag" id="vzTag"></span>
+    </div>
+    <div class="vz-grid">
+      <div>
+        <span class="vz-lbl">ข้อความของดิฉัน</span>
+        <textarea id="vzInput" placeholder="พิมพ์หรือวางข้อความที่นี่… หรือกด ‘เติมโครงของแบบนี้’ แล้วแก้ในวงเล็บเหลี่ยม"></textarea>
+        <div class="vz-btns">
+          <button class="vz-btn primary" id="vzCheck" type="button">ตรวจสอบ</button>
+          <button class="vz-btn" id="vzFill" type="button">เติมโครงของแบบนี้</button>
+          <button class="vz-btn" id="vzClear" type="button">ล้าง</button>
+        </div>
+      </div>
+      <div>
+        <span class="vz-lbl">ผลตรวจ · <span class="vz-scnum" id="vzScore">—</span></span>
+        <div class="vz-score">
+          <div class="vz-bar"><i id="vzBar"></i></div>
+          <p class="vz-verdict" id="vzVerdict">ยังไม่มีข้อความ — พิมพ์แล้วกด “ตรวจสอบ” หรือระบบจะตรวจให้ระหว่างพิมพ์</p>
+        </div>
+        <ul class="vz-checks" id="vzList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <h3>หมวด ก · ประจำวันและประจำสัปดาห์ (Discipline)</h3>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">01</span><span class="ex-title">D5 Call ประจำวัน</span><span class="ex-tag">จ.–ศ. หลัง 17.30</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ทุกวันทำการ ส่งให้หัวหน้างานตามระบบ Discipline</div>
+<pre>ผู้บริหารค่ะ ขออนุญาตขอ D5 ค่ะ
+
+จากเหตุการณ์/วาระ : [เรื่องที่คืบหน้าวันนี้]
+
+R : [ผลลัพธ์วันนี้ — ปิดอะไรได้ / อยู่ขั้นไหน / ตัวเลข]
+D : [ข้อเท็จจริงสั้น ๆ ที่รองรับ]
+S : ดิฉันตัดสินใจว่าจะ [แนวทาง] เพราะ [เหตุผล 1 บรรทัด]
+
+ไม่แน่ใจว่าผู้บริหารมองว่าอย่างไรบ้างคะ
+รบกวนช่วยแชร์หน่อยค่ะ ถ้าไม่มีข้อทักท้วง ดิฉันจะดำเนินการและรับผิดชอบเองค่ะ</pre>
+    <div class="ex-why"><b>ทำไมถึงเขียนแบบนี้:</b> ครอบด้วยสคริปต์ D5 ของระบบ แล้วใส่ R/D/S เป็นเนื้อใน — ได้ทั้งความถูกต้องตามระเบียบและคุณภาพระดับ Chief of Staff · ปิดท้ายด้วยการรับผิดชอบเอง ซึ่งเป็นสาระของ D5</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">02</span><span class="ex-title">ถามเพื่อพัฒนา</span><span class="ex-tag">จ.–ศ.</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ทุกวันทำการ คู่กับ D5 Call · จุดประสงค์คือขอมุมมองเพื่อยกระดับงาน ไม่ใช่ขออนุมัติ</div>
+<pre>ผู้บริหารค่ะ
+
+วันนี้ดิฉันมีจุดไหนที่ยังไม่ได้ทำ
+หรือถ้าทำเพิ่มแล้วจะทำให้ได้เกินความคาดหวังบ้างคะ
+
+📌 สิ่งที่ดิฉันทำไปแล้ววันนี้ : [1–2 บรรทัด]
+📌 สิ่งที่ดิฉันอยากทำเพิ่มเติม : [ข้อเสนอของดิฉันเอง]
+
+รบกวนผู้บริหารช่วยแชร์ให้ดิฉันฟังได้ไหมคะ</pre>
+    <div class="ex-why"><b>จุดที่คนพลาด:</b> ถามลอย ๆ ว่า “มีอะไรให้ช่วยไหมคะ” — ต้องเสนอสิ่งที่ตัวเองคิดมาแล้วก่อน แล้วค่อยขอมุมมอง ไม่งั้นเข้าข่าย Accountability Level C</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">03</span><span class="ex-title">ภาษา Proactive</span><span class="ex-tag">สัปดาห์ละ 1 ครั้ง</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ส่งให้ใครก็ได้ตามระบบ — ฝึกการสื่อสารเชิงรุกที่ไม่ต้องรอให้ถูกถาม</div>
+<pre>[ชื่อผู้รับ] ค่ะ
+
+ดิฉันเห็นว่า [สถานการณ์ที่สังเกตเห็นเอง ยังไม่มีใครหยิบขึ้นมา]
+ซึ่งถ้าปล่อยไว้อาจกระทบ [ผลกระทบที่คาดว่าจะเกิด]
+
+ดิฉันเลยขอเสนอว่า [สิ่งที่จะทำ / อยากให้ทำ] ภายใน [วันที่]
+โดยดิฉันจะรับผิดชอบส่วน [ขอบเขตของดิฉัน]
+
+ถ้าเห็นด้วย ดิฉันเริ่มได้เลยค่ะ</pre>
+    <div class="ex-why"><b>หัวใจของ Proactive:</b> พูดถึงสิ่งที่ยังไม่เกิด ไม่ใช่รายงานสิ่งที่เกิดแล้ว · โครงคือ เห็นอะไร → ถ้าไม่ทำจะเกิดอะไร → ดิฉันจะทำอะไร</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">04</span><span class="ex-title">UD งานรายสัปดาห์</span><span class="ex-tag">ทุกศุกร์</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ทุกวันศุกร์ · ต้องมี Q2 ห้าข้อขึ้นไปทั้งสองฝั่ง</div>
+<pre>ผู้บริหารค่ะ ขออนุญาต UD งานรายสัปดาห์
+รอบวันที่ [../../..] – [../../..] ค่ะ
+
+🟡 สิ่งที่ On process (Q2)
+1. [ชื่องาน] — ขั้น [x/y] คาดปิด [วันที่]
+2. [ชื่องาน] — รอ [ฝ่าย/คน] ภายใน [วันที่]
+3. [ชื่องาน] — [สถานะเป็นผลลัพธ์ ไม่ใช่ชื่อเปล่า]
+4. [ชื่องาน] — ...
+5. [ชื่องาน] — ...
+
+🟢 สิ่งที่สำเร็จ (Q2)
+1. [ชื่องาน] — ผลลัพธ์ [ตัวเลข/สิ่งที่เปลี่ยนไป] · Owner ต่อ [ชื่อ]
+2. [ชื่องาน] — ผลลัพธ์ [...]
+3. [ชื่องาน] — ผลลัพธ์ [...]
+4. [ชื่องาน] — ผลลัพธ์ [...]
+5. [ชื่องาน] — ผลลัพธ์ [...]
+
+📌 เรื่องที่ต้องการ Decision จากผู้บริหารสัปดาห์หน้า : [n] เรื่อง
+📌 ความเสี่ยงสูงสุด : [1 เรื่อง]</pre>
+    <div class="ex-why"><b>จุดที่ทำให้ต่างจากคนอื่น:</b> แต่ละบรรทัดเขียนเป็น <b>R ย่อ ๆ</b> ไม่ใช่ชื่องานเปล่า · “ทบทวนสัญญา” ไม่บอกอะไร แต่ “ทบทวนสัญญา — ปิดได้ 2 ใน 3 ฉบับ เหลือรอกฎหมาย 1 ฉบับ” คือผลลัพธ์ · สองบรรทัดล่างไม่ได้อยู่ในฟอร์มมาตรฐาน แต่เป็นสิ่งที่ทำให้ UD ของสำนักบริหารมีค่ากว่า UD ทั่วไป</div>
+  </div>
+
+  <h3>หมวด ข · ขอการตัดสินใจ</h3>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">05</span><span class="ex-title">ขอ Decision ที่มีทางเลือก</span><span class="ex-tag">D5</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ดิฉันเข้าใจเรื่องดีแล้ว มีข้อเสนอชัด ต้องการมุมมองก่อนลงมือ — <b>เป็นแบบที่ควรใช้บ่อยที่สุด</b></div>
+<pre>[Q2][D5] [เรื่อง] — ขอความเห็นค่ะผู้บริหาร
+
+R : [สถานะตอนนี้ + ผลกระทบถ้าไม่ตัดสินใจภายในเมื่อไหร่]
+D : [ข้อเท็จจริง 2–3 บรรทัด พร้อมตัวเลขและแหล่งที่มา]
+    [สิ่งที่ยังไม่ยืนยัน — ถ้ามี]
+
+S : ทางเลือก
+    A. [ทางเลือก] — ได้ [...] เสีย [...]
+    B. [ทางเลือก] — ได้ [...] เสีย [...]
+    Recommendation ของดิฉันคือ [B] เพราะ [เหตุผลเชิงต้นทุน/มาร์จิ้น/เวลา]
+
+Risk : [สิ่งที่อาจผิดพลาด] · โอกาส [สูง/กลาง/ต่ำ] · ผลกระทบ [สูง/กลาง/ต่ำ]
+Mitigation : [ดิฉันจะคุมอย่างไร]
+Trigger : ถ้า [เงื่อนไข] เกิดขึ้น ดิฉันจะ [action] และแจ้งผู้บริหารทันที
+Worst case : กรณีแย่ที่สุดคือ [X] ซึ่งดิฉันจำกัดไว้ที่ [ขอบเขต]
+
+ผลต่อ ต้นทุน / มาร์จิ้น / ประสิทธิภาพ : [เชื่อมกับกลยุทธ์ที่ท่านประกาศ]
+
+ขอความเห็นภายใน [วัน เวลา] ค่ะ
+ถ้าไม่มีข้อทักท้วง ดิฉันจะเดินหน้าตาม B และรับผิดชอบเองค่ะ</pre>
+    <div class="ex-why"><b>สี่อย่างที่ทำให้แบบนี้ได้ผลกับผู้บริหาร:</b> ① Recommendation อ้างเหตุผลเชิงต้นทุน/มาร์จิ้น ซึ่งเป็นโจทย์ที่ท่านถูกวัด ② <b>บล็อก Risk/Mitigation/Trigger/Worst case — สำคัญที่สุดสำหรับผู้บริหารที่ประเมินความเสี่ยงเป็นหลัก</b> เพราะท่านประเมินข้อเสนอจากสิ่งที่อาจพลาดมากกว่าสิ่งที่จะได้ · ข้อเสนอที่ล้อมกรอบความเสี่ยงไว้แล้วจะได้ Approve เร็วกว่ามาก ③ บรรทัดเชื่อมกลยุทธ์เข้ากรอบที่ท่านประกาศเอง ④ ปิดด้วย D5 คือขอความเห็นแต่รับผิดชอบเอง ไม่ผลักภาระตัดสินใจ</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">06</span><span class="ex-title">ขอ Decision ที่เกินอำนาจ CoS</span><span class="ex-tag">D3</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> งบใหญ่ · กฎหมาย/กำกับดูแล · ความขัดแย้งระดับ C-level · ชื่อเสียงองค์กร · เรื่องที่อาจต้องเข้าคณะกรรมการ</div>
+<pre>[Q1][D3] [เรื่อง] — ขอการตัดสินใจจากผู้บริหารค่ะ
+
+R : [สถานะ + เหตุผลว่าทำไมเรื่องนี้เกินอำนาจสำนักบริหาร]
+D : [ข้อเท็จจริง + ตัวเลข + ข้อจำกัดทางกฎหมาย/กำกับดูแล ถ้ามี]
+    [สิ่งที่ยังไม่ยืนยัน และจะรู้ผลเมื่อไหร่]
+
+S : ทางเลือก
+    A. [...] — Risk [ระดับ] · Mitigation [...]
+    B. [...] — Risk [ระดับ] · Mitigation [...]
+    Recommendation ของดิฉันคือ [X] เพราะ [...]
+
+ระดับอำนาจ : ดิฉันประเมินว่าเป็น L3 (CEO ตัดสิน)
+             [หรือ] อาจเข้าข่าย L4 ต้องขอความเห็นเลขานุการบริษัทก่อน
+
+ขอ Decision ภายใน [วัน เวลา] เพราะ [เหตุผลที่มี deadline] ค่ะ</pre>
+    <div class="ex-why"><b>ต้องมีบรรทัดระดับอำนาจเสมอ:</b> D-Level คือการมอบอำนาจภายใน แต่ L3/L4 คือธรรมาภิบาลของบริษัทมหาชน สองอย่างนี้ไม่เหมือนกัน · ถ้าไม่แน่ใจ ให้เขียนตรง ๆ ว่ายังไม่แน่ใจ ดีกว่าเดา</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">07</span><span class="ex-title">รายงานสิ่งที่ทำไปแล้ว ไม่ต้องขออนุมัติ</span><span class="ex-tag">D6</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> เรื่องที่ผู้บริหารเคยเห็นชอบแนวทางแล้ว ดิฉันทำต่อเองได้ — <b>สัดส่วน D6 ที่เพิ่มขึ้นคือหลักฐานว่าได้รับความไว้วางใจมากขึ้น</b></div>
+<pre>[Q2][D6] [เรื่อง] — ขอ Update สิ่งที่ทำไปแล้วค่ะ
+
+R : [ผลลัพธ์ที่เกิดขึ้นจริง พร้อมตัวเลข]
+D : [ทำอะไรไปบ้าง สั้น ๆ + วันที่]
+S : ขั้นต่อไป [สิ่งที่จะทำ] ภายใน [วันที่]
+    กลไกที่วางไว้ไม่ให้เกิดซ้ำ : [X] โดย [Owner]
+
+ไม่มีเรื่องที่ต้องการ Decision จากผู้บริหารในเรื่องนี้ค่ะ</pre>
+    <div class="ex-why"><b>บรรทัด “กลไกที่วางไว้ไม่ให้เกิดซ้ำ” คือหัวใจ</b> — ผู้บริหารให้คุณค่ากับระบบมากกว่าความขยันเฉพาะกิจ · และบรรทัดสุดท้ายที่บอกว่าไม่ต้องการอะไร ช่วยให้ท่านกวาดตาผ่านได้โดยไม่ต้องกังวล</div>
+  </div>
+
+  <h3>หมวด ค · เหตุการณ์ ความเสี่ยง และความผิดพลาด</h3>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">08</span><span class="ex-title">แจ้งเหตุด่วนที่กระทบทันที</span><span class="ex-tag">ภายใน 2 ชม.</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> Patient safety · กฎหมาย/กำกับดูแล · ชื่อเสียง · การเงินมีนัยสำคัญ · ความขัดแย้งระดับ C-level</div>
+<pre>[Q1][D3] ⚠️ [เรื่อง] — ระดับ [Red / Amber]
+
+R : เกิดอะไรขึ้นแล้ว และผลกระทบที่ยืนยันได้ตอนนี้คือ [...]
+D : รู้เรื่องเมื่อ [วัน เวลา] จาก [แหล่ง]
+    ข้อเท็จจริงที่ยืนยันแล้ว : [...]
+    ยังไม่ยืนยัน : [...] จะรู้ผล [เวลา]
+
+S : ดิฉันดำเนินการไปแล้ว
+    1. [...]
+    2. [...]
+    ความเสี่ยงถัดไปถ้าไม่คุม : [...]
+    สิ่งที่ขอจากผู้บริหาร : [ตัดสินใจ / ใช้อำนาจสั่ง / รับทราบอย่างเดียว]
+
+ดิฉันจะอัปเดตอีกครั้ง [เวลา] ค่ะ</pre>
+    <div class="ex-why"><b>อย่ารอจนข้อมูลครบ</b> — CEO สไตล์นี้รับ “ข้อมูลยังไม่ครบ” ได้ แต่รับ “ทำไมเพิ่งรู้” ไม่ได้ · <b>ห้ามขึ้นต้นด้วยคำขอโทษ</b> ให้เข้าข้อเท็จจริงทันทีและระบุเวลาที่รู้เรื่อง · ถ้าเป็นระดับ Red ให้โทรด้วย ไม่ใช่ส่งข้อความอย่างเดียว</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">09</span><span class="ex-title">รายงานงานที่ล่าช้าเพราะรอฝ่ายอื่น</span><span class="ex-tag">D5</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ตามเองครบ 2 ครั้งแล้วยังไม่ได้ผล — <b>ห้ามส่งก่อนตามเอง 2 ครั้ง</b></div>
+<pre>[Q1][D5] [เรื่อง] — ติดที่ [ฝ่าย] เกินกำหนด [n] วัน
+
+R : เลยกำหนด [วันที่] มา [n] วัน · ถ้าไม่ขยับภายใน [วันที่] จะกระทบ [ผลที่วัดได้]
+D : ดิฉันตามแล้ว 2 ครั้ง — [วันที่ครั้งที่ 1] และ [วันที่ครั้งที่ 2]
+    เหตุผลที่ฝ่ายให้มาคือ [...]
+    ต้นเหตุจริงที่ดิฉันประเมินคือ [...]
+
+S : ดิฉันเสนอ [แนวทางที่ไม่ต้องใช้อำนาจ CEO เช่น เปลี่ยนลำดับงาน / แยกส่วนที่ทำได้ก่อน]
+    ถ้าแนวทางนี้ยังไม่พอ ดิฉันขอให้ผู้บริหารช่วย [สิ่งที่ต้องการอย่างเจาะจง เช่น หยิบขึ้นในที่ประชุมวันจันทร์]
+
+ขอความเห็นภายใน [วัน เวลา] ค่ะ</pre>
+    <div class="ex-why"><b>กติกาเหล็ก:</b> ห้ามใช้ผู้บริหารเป็นเครื่องมือทวงงานก่อนที่ดิฉันจะตามเองครบ 2 ครั้ง · และต้องเสนอทางที่<b>ไม่ต้อง</b>ใช้อำนาจ CEO ก่อนเสมอ ไม่งั้นความสัมพันธ์กับหัวหน้าฝ่ายจะเสียหายระยะยาว</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">10</span><span class="ex-title">รายงานเมื่อดิฉันเองเป็นคนพลาด</span><span class="ex-tag">D6</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ดิฉันทำผิดพลาดเอง — <b>แจ้งเองก่อนถูกถาม เสมอ</b></div>
+<pre>[Q1][D6] [เรื่อง] — ดิฉันพลาดเอง ขอรายงานค่ะ
+
+R : [ผลกระทบที่เกิดขึ้นจริง] · ดิฉันแก้ไขแล้ว/กำลังแก้ คาดจบ [วันที่]
+D : เกิดอะไร : [ข้อเท็จจริงล้วน ไม่แก้ตัว]
+    ดิฉันรู้ตัวเมื่อ [เวลา]
+    สาเหตุ : [ตรงไปตรงมา]
+
+S : แก้ไขทันที : [1] [2]
+    กลไกกันเกิดซ้ำ : [X] เริ่มใช้ [วันที่]
+
+ดิฉันจะส่ง Self-Reflection ตามรูปแบบเข้ากลุ่ม RF ภายในวันนี้ค่ะ</pre>
+    <div class="ex-why"><b>สิ่งที่ทำให้ต่างระหว่าง A กับ C:</b> ไม่ใช่เรื่องที่พลาด แต่คือใครเป็นคนบอกก่อน · การแจ้งเองพร้อมกลไกกันเกิดซ้ำ ยังอยู่ในเกรด A ได้ · การให้ท่านมาเจอเองคือ C ทันที · บรรทัดสุดท้ายแสดงว่าดิฉันรู้ระบบและไม่รอให้ถูกทวง</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">11</span><span class="ex-title">เมื่อไม่เห็นด้วยกับ Direction ของผู้บริหาร</span><span class="ex-tag">D4</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> มีข้อมูลที่ทำให้เห็นว่าทิศทางอาจมีความเสี่ยง — <b>ใช้เป็นข้อความ ไม่ใช่โต้ในที่ประชุม</b></div>
+<pre>[Q2][D4] [เรื่อง] — ขอ Flag หนึ่งประเด็นค่ะผู้บริหาร
+
+ดิฉันเข้าใจ Direction ที่ผู้บริหารต้องการคือ [ทวนทิศทางให้ตรง]
+
+R : มีหนึ่งประเด็นที่ดิฉันอยาก Flag เพราะจากข้อมูลที่มี อาจกระทบ [ผลกระทบที่วัดได้]
+D : [ข้อมูลที่ทำให้ดิฉันคิดแบบนั้น + ตัวเลข + แหล่ง]
+
+S : ทางเลือก
+    A. [ตาม Direction เดิม] — Risk [...] · Mitigation [...]
+    B. [ทางที่ดิฉันเสนอ] — ได้ [...] เสีย [...]
+    Recommendation ของดิฉันคือ B เพราะ [...]
+
+แต่หากผู้บริหารยืนยัน A ดิฉันจะดำเนินการตาม Direction
+และควบคุม Risk ตามนี้ค่ะ : [1] [2]</pre>
+    <div class="ex-why"><b>สูตร Alignment → Evidence → Risk → Recommendation → Decision</b> · ประโยคสุดท้ายสำคัญที่สุด — มันบอกว่าดิฉันไม่ได้แข่งอำนาจ แต่กำลังทำหน้าที่ Flag ให้ครบ · Chief of Staff ต้องเห็นต่างเป็นโดยไม่บั่นทอนอำนาจผู้บริหาร</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">12</span><span class="ex-title">ปิด Loop หลังผู้บริหารตัดสินใจ</span><span class="ex-tag">ภายใน 24 ชม.</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ทุกเรื่องที่ผู้บริหารตัดสินใจไปแล้วและดิฉันดำเนินการเสร็จ — <b>ทุก D3/D5 ต้องมีคู่ของมันเสมอ</b></div>
+<pre>[CLOSED] [เรื่อง]
+
+ตามที่ผู้บริหารตัดสินใจเมื่อ [วันที่] ดิฉันดำเนินการเรียบร้อยแล้วค่ะ
+
+R : ผลลัพธ์ที่เกิดขึ้นจริง [ตัวเลข/สิ่งที่เปลี่ยนไป]
+D : [ทำอะไรไป + วันที่ปิด]
+S : Owner ต่อจากนี้ [ชื่อ] · ติดตามรอบถัดไป [วันที่]
+    กลไกกันเกิดซ้ำ : [X]</pre>
+    <div class="ex-why"><b>นี่คือสิ่งที่สร้างความไว้วางใจมากที่สุด</b> — CEO ไม่ได้ไว้ใจ Chief of Staff เพราะรายงานเยอะ แต่ไว้ใจเพราะทุกเรื่องที่สั่งไป “จบจริง” และมีคนกลับมาบอก · เก็บทุกรายการใน Decision Log 6 คอลัมน์: วันที่ · เรื่อง · Decision · Owner · Deadline · ปิดแล้วหรือยัง</div>
+  </div>
+
+  <h3>หมวด ง · กิจกรรมและการประสานงาน</h3>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">13</span><span class="ex-title">แจ้งกิจกรรมก่อนงาน</span><span class="ex-tag">T-3 วัน</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ล่วงหน้า 3 วันก่อนกิจกรรมที่ผู้บริหารเกี่ยวข้อง</div>
+<pre>[Q2][D-] กิจกรรม: [ชื่องาน]
+
+R : ผู้บริหารต้องใช้เวลา [x นาที] ในบทบาท [กล่าวเปิด / ร่วมถ่ายภาพ / ไม่ต้องเข้าร่วม]
+D : วัน/เวลา/สถานที่ : [...]
+    ผู้ร่วมงานสำคัญ : [ชื่อ — ตำแหน่ง — ทำไมสำคัญ]
+    บริบทที่ควรรู้ : [1 บรรทัด]
+
+S : ดิฉันเตรียมให้แล้ว — [สคริปต์ / Talking points / ของที่ระลึก]
+    ต้องการจากผู้บริหาร : [ยืนยันเวลา / ไม่มี]</pre>
+    <div class="ex-why"><b>บรรทัด R ต้องเป็น “เวลาที่ท่านต้องใช้”</b> ไม่ใช่ “มีกิจกรรมชื่อ…” — เพราะสิ่งที่ CEO ต้องตัดสินใจเรื่องกิจกรรมคือจะให้เวลาเท่าไหร่ ไม่ใช่รายละเอียดของงาน</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">14</span><span class="ex-title">สรุปกิจกรรมหลังงาน</span><span class="ex-tag">ภายใน 24 ชม.</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ภายใน 24 ชั่วโมงหลังกิจกรรมจบ</div>
+<pre>[Q2][D6] สรุปกิจกรรม: [ชื่องาน] — [วันที่]
+
+R : [ผู้เข้าร่วม x คน / Lead y ราย / สื่อ z ชิ้น / ตัวเลขอื่นที่วัดได้]
+D : ประเด็นที่เกิดขึ้น : [ถ้ามี — ถ้าไม่มีให้ตัดบรรทัดนี้ทิ้ง]
+S : Follow-up : [action] — Owner [ชื่อ] — ภายใน [วันที่]
+    บทเรียนครั้งหน้า : [1 ข้อเท่านั้น]</pre>
+    <div class="ex-why"><b>ทำไมต้องมีตัวเลข:</b> กิจกรรมที่รายงานว่า “ผ่านไปด้วยดี” คือกิจกรรมที่พิสูจน์คุณค่าไม่ได้ และจะเป็นรายการแรกที่ถูกตัดเมื่อทบทวนงบ · ตัวเลขเพียง 2–3 ตัวเปลี่ยนสถานะจาก “ค่าใช้จ่าย” เป็น “การลงทุน” · บทเรียนให้ใส่ข้อเดียว ไม่ใช่ห้าข้อ</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">15</span><span class="ex-title">ขอวาระกับผู้บริหาร</span><span class="ex-tag">ตามฟอร์มระบบ</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ต้องการเวลาของผู้บริหารอย่างเป็นทางการ</div>
+<pre>ขออนุญาตขอวาระค่ะ
+
+📌 ชื่อผู้เข้าร่วมวาระ : [...]
+📌 ชื่อวาระ : [D?] [เรื่อง]
+📌 วันที่ใช้ : [...]
+📌 เวลาที่ใช้ : [x นาที]
+
+R ของวาระนี้ : ออกจากวาระนี้แล้วจะได้ [ผลลัพธ์ที่ต้องการ]
+
+รบกวนขอวาระค่ะ
+CC. [...]
+ขอบคุณค่ะ</pre>
+    <div class="ex-why"><b>บรรทัด R ของวาระ</b> ไม่ได้อยู่ในฟอร์มมาตรฐาน แต่เพิ่มเข้าไปหนึ่งบรรทัดทำให้ทุกคนรู้ตั้งแต่ก่อนเข้าห้องว่าวาระนี้จะจบด้วยอะไร · ตามระบบต้องระบุ Delegate Level ไว้ที่ชื่อวาระด้วย</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head"><span class="ex-id">16</span><span class="ex-title">ประสานหัวหน้าฝ่าย — พร้อมให้ D-Level</span><span class="ex-tag">CoS → ฝ่าย</span><button class="copy" type="button">Copy</button></div>
+    <div class="ex-when"><b>ใช้เมื่อ:</b> ส่งเรื่องให้ฝ่ายดำเนินการ — <b>ต้องระบุประเภทอำนาจและ D-Level ที่ให้เขาเสมอ</b></div>
+<pre>เรียน [ชื่อ] ค่ะ
+
+ประเภท : [CEO Decision / CEO Direction / CEO Request /
+          ข้อเสนอของสำนักบริหาร ยังไม่ได้ผ่านผู้บริหาร]
+
+R : สิ่งที่ต้องเกิดขึ้นคือ [ผลลัพธ์] ภายใน [วันที่]
+D : ที่มา — [ถ้าเป็น CEO Decision ให้ใช้ถ้อยคำเดิมของท่านเป๊ะ ๆ]
+    ข้อมูลประกอบ : [...]
+S : Delegate Level ที่ดิฉันให้ : [D5 — ตัดสินใจได้เลย มาบอกผลก็พอ]
+    Chief of Staff Role ของดิฉัน : [Coordinate / Monitor / Escalate]
+    ดิฉันขอ Update กลับ [วันที่ เวลา]
+
+มีอะไรที่ดิฉันช่วยเคลียร์ให้ได้ บอกได้เลยค่ะ</pre>
+    <div class="ex-why"><b>สองบรรทัดที่ป้องกันความเสียหายที่แก้ไม่ได้:</b> ① บรรทัด “ประเภท” — ห้ามเบลอระหว่างคำสั่ง CEO กับข้อเสนอของดิฉัน เพราะหัวหน้าฝ่ายจะไปเช็คกับท่านเอง ② บรรทัด “D-Level ที่ดิฉันให้” — นี่คือสิ่งที่กันไม่ให้สำนักบริหารกลายเป็นคอขวด และแสดงว่าดิฉันใช้ระบบเป็นทั้งสองทาง</div>
+  </div>
+
+  <h3>ตารางเลือกแบบให้ถูก</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>สถานการณ์</th><th>ใช้แบบที่</th><th>D-Level</th><th>ความยาว</th></tr></thead>
+      <tbody>
+        <tr><td class="k">อัปเดตประจำวัน</td><td class="code">01, 02</td><td class="code">D5</td><td>6–10 บรรทัด</td></tr>
+        <tr><td class="k">สรุปสัปดาห์</td><td class="code">04</td><td class="code">D6</td><td>ฟอร์ม UD</td></tr>
+        <tr class="hi"><td class="k">มีเรื่องต้องตัดสิน มีข้อเสนอแล้ว</td><td class="code">05</td><td class="code">D5</td><td>1 หน้าจอ</td></tr>
+        <tr><td class="k">เกินอำนาจ CoS</td><td class="code">06</td><td class="code">D3</td><td>1 หน้าจอ</td></tr>
+        <tr><td class="k">ทำเสร็จแล้ว ไม่ต้องอนุมัติ</td><td class="code">07</td><td class="code">D6</td><td>5–7 บรรทัด</td></tr>
+        <tr><td class="k">เกิดเหตุกระทบทันที</td><td class="code">08</td><td class="code">D3</td><td>ส่งใน 2 ชม.</td></tr>
+        <tr><td class="k">ฝ่ายอื่นช้า</td><td class="code">09</td><td class="code">D5</td><td>หลังตามเอง 2 ครั้ง</td></tr>
+        <tr><td class="k">ดิฉันพลาดเอง</td><td class="code">10</td><td class="code">D6</td><td>แจ้งก่อนถูกถาม</td></tr>
+        <tr><td class="k">ไม่เห็นด้วยกับ Direction</td><td class="code">11</td><td class="code">D4</td><td>เป็นข้อความ ไม่ใช่ในห้องประชุม</td></tr>
+        <tr><td class="k">ปิดเรื่องที่ท่านตัดสินแล้ว</td><td class="code">12</td><td class="code">—</td><td>ภายใน 24 ชม.</td></tr>
+        <tr><td class="k">กิจกรรม</td><td class="code">13, 14</td><td class="code">D- / D6</td><td>2 ข้อความต่องาน</td></tr>
+        <tr><td class="k">ขอเวลาท่าน</td><td class="code">15</td><td class="code">ตามเรื่อง</td><td>ฟอร์มระบบ</td></tr>
+        <tr><td class="k">สั่งงานฝ่าย</td><td class="code">16</td><td class="code">ดิฉันเป็นผู้ให้</td><td>สั้นที่สุดเท่าที่ครบ</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel amber">
+    <h3 style="margin-top:0">กฎ 5 ข้อที่ใช้กับทุกแบบ</h3>
+    <ol class="c" style="margin-bottom:0">
+      <li><b>1 ข้อความ = 1 วัตถุประสงค์</b> — ห้ามปนเรื่องที่ต้องตัดสินกับเรื่องแจ้งเพื่อทราบ เพราะเรื่องที่ต้องตัดสินจะหาย</li>
+      <li><b>ยาวไม่เกิน 1 หน้าจอมือถือ</b> — เกินแปลว่าควรไป UD หรือควรเป็นเอกสารแนบ</li>
+      <li><b>ทุกตัวเลขต้องมีแหล่งและวันที่</b> — ถ้าผู้บริหารมาจากสายปฏิบัติการ จะจับได้ทันทีถ้าไม่ตรงหน้างาน</li>
+      <li><b>แยก ยืนยันแล้ว / ยังเป็นสมมติฐาน / ยังขาดข้อมูล</b> ให้ชัดเมื่อข้อมูลไม่ครบ — เดาผิดครั้งเดียวเสียหายกว่าบอกว่ายังไม่รู้สิบครั้ง</li>
+      <li><b>ไม่ขึ้นต้นด้วยคำขอโทษ</b> — เข้าเนื้อหาทันที ถ้าช้าให้ระบุว่ารู้เรื่องเมื่อไหร่</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 08 CROSS ============ -->
+<section class="pane" id="p-cross" hidden>
+  <div class="sechead">
+    <p class="eyebrow">08 · จุดเสี่ยงที่สุดของ CoS ใหม่</p>
+    <h2>ประสานข้ามฝ่าย</h2>
+    <p class="lede">ดิฉันไม่มีอำนาจสั่งการหัวหน้าฝ่าย ดิฉันมีเพียงอำนาจประสานงานในนามสำนักบริหาร · ความผิดพลาดที่แก้ไม่ได้คือทำให้เขารู้สึกว่าดิฉันอ้างอำนาจ CEO เกินจริง เพราะเขาจะเช็คกับผู้บริหารเอง</p>
+  </div>
+
+  <h3>ห้าประเภทที่ห้ามเบลอกัน</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ประเภท</th><th>ถ้อยคำที่ต้องใช้</th></tr></thead>
+      <tbody>
+        <tr><td class="k">CEO Decision</td><td>“ผู้บริหารอนุมัติเมื่อ [วันที่] ว่า [ข้อความตามที่ท่านพูด]”</td></tr>
+        <tr><td class="k">CEO Direction</td><td>“ทิศทางที่ผู้บริหารให้ไว้คือ [ข้อความ] รายละเอียดการปฏิบัติให้ฝ่ายพิจารณา”</td></tr>
+        <tr><td class="k">CEO Request</td><td>“ผู้บริหารขอข้อมูล [X] ภายใน [วันที่] ค่ะ”</td></tr>
+        <tr><td class="k">ข้อเสนอของ CoS</td><td>“นี่เป็นข้อเสนอของสำนักบริหาร <b>ยังไม่ได้ผ่านผู้บริหาร</b> อยากขอความเห็นก่อนเสนอ”</td></tr>
+        <tr><td class="k">รอบอร์ด</td><td>“ยังรอการพิจารณาระดับคณะกรรมการ ยังไม่ถือเป็นข้อสรุป”</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><b>กติกาเหล็ก:</b> ถ้าจำถ้อยคำเดิมของท่านไม่ได้แม่น <b>ห้ามอ้าง</b> ให้ใช้ว่า “ดิฉันจะยืนยันกับผู้บริหารแล้วแจ้งกลับ” — เสียเวลาหนึ่งชั่วโมง ดีกว่าเสียความน่าเชื่อถือถาวร</div>
+
+  <h3>ระดับอำนาจตัดสินใจ — สองระบบที่ห้ามสับสน</h3>
+  <div class="grid">
+    <div class="card" style="border-left:3px solid var(--brand)">
+      <span class="lbl">ภายในองค์กร</span>
+      <h4>D1–D7 (Delegate Level)</h4>
+      <p>การมอบอำนาจระหว่างหัวหน้ากับลูกน้อง · ยืดหยุ่นได้ตามความไว้วางใจ · ผู้บริหารให้ D7 กับดิฉันได้</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--alert)">
+      <span class="lbl">ธรรมาภิบาลบริษัทมหาชน</span>
+      <h4>L1–L4</h4>
+      <p>กำหนดโดยโครงสร้างกำกับดูแล · <b>ยืดหยุ่นไม่ได้</b> · แม้ได้ D7 ถ้าเรื่องแตะงบการเงินหรือการเปิดเผยข้อมูล ก็ยังต้องผ่านกระบวนการ</p>
+    </div>
+  </div>
+
+  <div class="tw" style="margin-top:16px">
+    <table>
+      <thead><tr><th>ระดับ</th><th>ใครตัดสิน</th><th>ตัวอย่าง</th></tr></thead>
+      <tbody>
+        <tr><td class="code">L1</td><td>ฝ่ายตัดสินเอง</td><td>งานประจำภายในฝ่าย</td></tr>
+        <tr><td class="code">L2</td><td>Chief of Staff ประสาน</td><td>เรื่องข้ามฝ่ายที่ไม่กระทบงบหรือกลยุทธ์</td></tr>
+        <tr><td class="code">L3</td><td>CEO ตัดสิน</td><td>งบใหญ่ · กลยุทธ์ · ชื่อเสียง · C-level · ความเสี่ยงสูง</td></tr>
+        <tr><td class="code">L4</td><td>คณะกรรมการ / Governance</td><td>เรื่องที่ต้องผ่านบอร์ด กฎหมาย หรือการกำกับดูแล</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><span class="chip gap">Gap</span> เส้นแบ่ง L3/L4 ที่แท้จริงของบริษัทยังไม่ได้ยืนยัน — <b>ขอจากเลขานุการบริษัทเป็น P0</b></div>
+
+  <h3>บทบาทของสำนักบริหารต้องระบุให้ชัดทุกครั้ง</h3>
+  <p>Coordinate · Monitor · Facilitate · Recommend · Escalate — <b>ไม่ควรเป็น Operational Owner โดยอัตโนมัติ</b> · ทุกครั้งที่รับเรื่องเข้ามา ให้ถามก่อนว่า “ใครควรเป็นเจ้าของเรื่องนี้จริง ๆ” ก่อนจะรับมาทำเอง</p>
+
+  <div class="panel alert">
+    <h3 style="margin-top:0">สัญญาณว่าดิฉันกำลังกลายเป็นคอขวด</h3>
+    <ul class="c warn" style="margin-bottom:0">
+      <li>การอนุมัติจำนวนมากถูกส่งผ่านสำนักบริหาร</li>
+      <li>ดิฉันลงมือทำงานของฝ่ายเอง</li>
+      <li>รายงานด้วยมือมากเกินไป</li>
+      <li>ตามงานซ้ำ ๆ โดยไม่มีเจ้าของที่ชัด</li>
+      <li>ผู้บริหารอนุมัติเรื่องที่ควรมอบอำนาจให้คนอื่นได้แล้ว</li>
+      <li><b>UD สามสัปดาห์ติดมีแต่งานที่ดิฉันทำเอง</b> — ให้ทบทวน Ownership ใหม่ ไม่ใช่ทำให้เร็วขึ้น</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 09 MEETING ============ -->
+<section class="pane" id="p-meeting" hidden>
+  <div class="sechead">
+    <p class="eyebrow">09 · ทำให้ประชุมเป็นเครื่องมือ Execution</p>
+    <h2>ประชุมและเอกสาร</h2>
+    <p class="lede">บันทึกการประชุมต้องเป็นเครื่องมือ Execution ไม่ใช่บันทึกเชิงรับ</p>
+  </div>
+
+  <h3>ก่อนประชุม — Pre-Brief 1 หน้า ส่งล่วงหน้า ≥1 วัน</h3>
+  <pre>PRE-BRIEF : [ชื่อวาระ] · [วันที่ เวลา] · [D-Level]
+
+R ของวาระนี้ : ออกจากห้องแล้วต้องได้ [ผลลัพธ์]
+
+1. วัตถุประสงค์      : [ประชุมนี้ต้องบรรลุอะไร]
+2. ผู้เข้าร่วม        : [ชื่อ — ทำไมต้องอยู่ในห้อง]
+3. บริบท             : [เกิดอะไรมาก่อนหน้านี้ 2–3 บรรทัด]
+4. เรื่องที่ต้องตัดสิน : [ระบุให้ชัด + ระดับอำนาจ L?]
+5. ข้อมูลที่ต้องใช้    : [ตัวเลข + แหล่ง + วันที่ของข้อมูล]
+6. จุดที่อาจเห็นต่าง   : [ใคร เรื่องอะไร เพราะอะไร]
+7. จุดยืนที่ดิฉันแนะนำ   : [Recommendation]
+8. คำถามที่ผู้บริหารน่าจะถาม : [3 ข้อ พร้อมคำตอบเตรียมไว้]</pre>
+
+  <h3>ระหว่างประชุม</h3>
+  <ul class="c">
+    <li><b>เตรียมชั้นข้อมูลสำรองไว้เสมอ</b> — สไลด์หลักสั้น แต่มีภาคผนวกตัวเลขระดับปฏิบัติการพร้อมเปิดทันทีเมื่อถูกถาม (โดยเฉพาะผู้บริหารที่มาจากสายปฏิบัติการ)</li>
+    <li><b>จดคำถามแรกที่ท่านถาม</b> ทุกวาระ — เป็นข้อมูลสำคัญที่สุดสำหรับ Observation Log</li>
+    <li><b>ถ้าตอบไม่ได้</b> ให้พูดว่า “ดิฉันยังไม่มีตัวเลขนี้ ขอเวลาถึง [เวลา] ค่ะ” แล้วส่งตรงเวลา — ได้เครดิตมากกว่าการเดา</li>
+  </ul>
+
+  <h3>หลังประชุม — ส่งภายใน 24 ชม.</h3>
+  <pre>AAR : [ชื่อวาระ] — [วันที่]
+
+✅ DECISION (สิ่งที่ตกลงแล้ว)
+1. [ข้อความตามที่ตกลง] — ผู้ตัดสิน [ชื่อ] — ระดับ [L?]
+
+📋 ACTION ITEMS
+| Action | Owner (ชื่อคน) | Deadline | Deliverable | Dependency | Status |
+|--------|---------------|----------|-------------|------------|--------|
+| ...    | ...           | ...      | ...         | ...        | ...    |
+
+⏳ ยังไม่สรุป / รอข้อมูล
+1. [เรื่อง] — รอ [อะไร] จาก [ใคร] ภายใน [วันที่]
+
+🔺 ที่ต้อง Escalate
+1. [เรื่อง] — ถ้า [เงื่อนไข] ยังไม่ขยับภายใน [วันที่] ดิฉันจะ [action]
+
+รบกวนทุกท่านยืนยันภายใน [24 ชม.] ค่ะ เงียบถือว่ารับทราบ</pre>
+
+  <div class="note"><b>กติกาที่ทำให้บันทึกกลายเป็นเครื่องมือ:</b> Action ต้องมี <b>ชื่อคน ไม่ใช่ชื่อฝ่าย</b> · แยก Decision ออกจาก Discussion เสมอ · ทุกบรรทัดที่ไม่มี Owner กับ Deadline ให้ถือว่ายังไม่ใช่ Action Item</div>
+
+  <h3>Status ที่ใช้ใน Action Tracker</h3>
+  <p style="font-family:var(--mono);font-size:13px">Not Started · In Progress · Waiting · Blocked · Completed · Escalated</p>
+  <p><b>รายการที่เป็น Blocked ต้องขึ้นบนสุดเสมอ</b> พร้อมระบุว่าต้องการอะไรจากใครเพื่อปลดล็อก</p>
+</section>
+
+<!-- ============ 10 TRAINING ============ -->
+<section class="pane" id="p-training" hidden>
+  <div class="sechead">
+    <p class="eyebrow">10 · แผนฝึก</p>
+    <h2>Master Training 8 สัปดาห์</h2>
+    <p class="lede">อย่าเปิดทุกโมดูลพร้อมกัน · ลำดับนี้ออกแบบให้ทักษะก่อนหน้ารองรับทักษะถัดไป และตรงกับเงื่อนไข Discipline ที่ต้องทำต่อเนื่อง 3 เดือน</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>สัปดาห์</th><th>โฟกัส</th><th>สิ่งที่ต้องส่งจริง</th><th>ตัววัด</th></tr></thead>
+      <tbody>
+        <tr><td class="k num">1</td><td>RDS เท่านั้น</td><td>เขียน R/D/S บนกระดาษก่อนส่งทุกข้อความ</td><td>เขียน R ได้ 100% ของข้อความสำคัญ</td></tr>
+        <tr><td class="k num">2</td><td>RDS ต่อ + ติด D กำกับงานเช้า</td><td>รายการงานเช้ามี D-Level ครบทุกบรรทัด</td><td>ทำครบ 5/5 วัน</td></tr>
+        <tr><td class="k num">3</td><td>ขอ D5 จริงกับผู้บริหาร</td><td>ขอ D5 อย่างน้อย 3 เรื่อง</td><td>ผ่านการประเมิน D5 อย่างน้อย 2 ใน 3</td></tr>
+        <tr><td class="k num">4</td><td>เริ่ม<b>ให้</b> D-Level กับหัวหน้าฝ่าย</td><td>ระบุ D-Level ที่ให้ในทุกเรื่องที่ประสาน</td><td>ไม่มีใครถามกลับว่า “ตกลงใครตัดสิน”</td></tr>
+        <tr><td class="k num">5</td><td>Accountability Level</td><td>ทวน Reflection ทุกครั้งภายใน 1 ชม.</td><td>ไม่เคยถูกแอดมิน TT ตาม</td></tr>
+        <tr><td class="k num">6</td><td>Q2 Schedule เต็มรูปแบบ</td><td>ปฏิทินสัปดาห์หน้าลงล่วงหน้าครบตามรูปแบบระบบ</td><td>UD มี Q2 ครบ 5+5</td></tr>
+        <tr><td class="k num">7</td><td>รวมทุกโมดูล · One Format</td><td>ใช้โครงเดียวในทั้ง 16 สถานการณ์</td><td>ไม่มีข้อความไหนที่ไม่มี R</td></tr>
+        <tr class="hi"><td class="k num">8</td><td><b>ทบทวนกับผู้บริหาร</b></td><td>ขอ Feedback หนึ่งคำถาม + ปรับคู่มือเป็น v2.1</td><td>ได้คำตอบว่าควรทำอะไรมากขึ้นและเลิกทำอะไร</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>คำถามเดียวในสัปดาห์ที่ 8:</b> “ผู้บริหารคะ ครบสองเดือนแล้ว ดิฉันอยากขอ Feedback ข้อเดียว — <b>เรื่องไหนที่ผู้บริหารอยากให้ดิฉันตัดสินใจเองได้เลยโดยไม่ต้องถาม และเรื่องไหนที่ต้องถามทุกครั้ง</b> ค่ะ” · ได้ทั้ง Feedback และ Mandate ของ D-Level ในคำถามเดียว</div>
+
+  <h3>ตารางประจำวันและประจำสัปดาห์</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>เวลา</th><th>ทำอะไร</th><th>ผลลัพธ์ที่ต้องได้</th></tr></thead>
+      <tbody>
+        <tr><td class="k">ทุกเช้า 3 นาที</td><td>ติด Q + D กำกับงานของวัน</td><td>รู้ตั้งแต่เช้าว่าต้องขออะไรจากใครที่ระดับไหน</td></tr>
+        <tr><td class="k">ตลอดวัน</td><td>TT — Voice งานเข้ากลุ่ม</td><td>ไม่มีงานหลุด · 🔥 สำหรับงานสำคัญ</td></tr>
+        <tr><td class="k">ก่อนส่งทุกข้อความ</td><td>เขียน R/D/S สามบรรทัด</td><td>เขียน R ไม่ได้ = ยังไม่ส่ง</td></tr>
+        <tr><td class="k">จ.–ศ. หลัง 17.30</td><td>Discipline — D5 Call + ถามเพื่อพัฒนา</td><td>ส่งครบ 5/5 วันทำการ</td></tr>
+        <tr><td class="k">ภายใน 1 ชม. หลังได้ RF</td><td>ทวน Reflection · SF ถ้าได้ C/D</td><td>ไม่เคยถูกแอดมิน TT ตาม</td></tr>
+        <tr><td class="k">สัปดาห์ละ 1</td><td>ภาษา Proactive</td><td>ฝึกพูดเชิงรุก</td></tr>
+        <tr class="hi"><td class="k">ทุกศุกร์</td><td><b>UD งานรายสัปดาห์</b></td><td><b>Q2 On process ≥5 · Q2 สำเร็จ ≥5</b></td></tr>
+        <tr><td class="k">ทุกศุกร์ 10 นาที</td><td>นับสัดส่วน D3 : D5 ของสัปดาห์</td><td>เห็นแนวโน้มว่าไต่บันไดขึ้นหรือถอยลง</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ FORMAT LIBRARY ============ -->
+<section class="pane" id="p-formats" hidden>
+  <div class="sechead">
+    <p class="eyebrow">ภาษาองค์กร · Format ทางการ</p>
+    <h2>Format ทางการ 10 แบบ</h2>
+    <p class="lede">ชุด Framework การสื่อสารทางการของ PDC — แต่ละแบบมี <b>โครงให้คัดลอก</b> · <b>ตัวอย่างจริง</b> · และ <b>พื้นที่ฝึกเขียน</b> ที่บันทึกอัตโนมัติในเครื่อง · เลือกให้ถูกสถานการณ์ แล้วฝึกจนเป็นภาษาที่สองของดิฉัน</p>
+  </div>
+  <div class="note"><span class="chip fact">Fact</span> โครงและตัวอย่างทั้งหมดในหน้านี้มาจาก <b>การ์ด Format ทางการของ PDC</b> (Created by PDC) — ใช้อ้างอิงและสอนต่อได้ · ต่างจากส่วน “ตัวอย่างอัปเดต 16 แบบ” ซึ่งเป็นการประยุกต์ RDS สำหรับสื่อสารกับผู้บริหารโดยเฉพาะ</div>
+  <div class="fmtbar" id="fmtBar"></div>
+  <div id="fmtList"></div>
+</section>
+
+<!-- ============ DECISION LOG (tool) ============ -->
+<section class="pane" id="p-log" hidden>
+  <div class="sechead">
+    <p class="eyebrow">เครื่องมือ · บันทึกในเครื่อง</p>
+    <h2>Decision Log</h2>
+    <p class="lede">ทุกข้อความที่ขอ D3/D5 ต้องมีบรรทัดในตารางนี้ และต้องมีการปิด [CLOSED] คู่กันเสมอ · ตารางนี้คือวัตถุดิบของ UD โดยอัตโนมัติ — ตอนนี้กรอกและติดตามได้ในหน้านี้เลย</p>
+  </div>
+
+  <div class="tool">
+    <h3>เพิ่มรายการตัดสินใจ</h3>
+    <div class="frow">
+      <div class="field"><label for="lgDate">วันที่ขอ</label><input type="date" id="lgDate"></div>
+      <div class="field"><label for="lgTopic">เรื่อง</label><input type="text" id="lgTopic" placeholder="เช่น สัญญาผู้ให้บริการ"></div>
+      <div class="field"><label for="lgOwner">Owner</label><input type="text" id="lgOwner" placeholder="ชื่อคน ไม่ใช่ชื่อฝ่าย"></div>
+      <div class="field"><label for="lgDeadline">Deadline</label><input type="date" id="lgDeadline"></div>
+    </div>
+    <div class="field"><label for="lgDecision">Decision / สิ่งที่ขอให้ตัดสิน</label><input type="text" id="lgDecision" placeholder="เช่น เดินหน้าเซ็นเฉพาะขอบเขตที่ไม่มีข้อพิพาท"></div>
+    <div class="tbtnrow">
+      <button class="tbtn primary" id="lgAdd" type="button">เพิ่มลงตาราง</button>
+      <button class="tbtn ghost" id="lgClear" type="button">ล้างฟอร์ม</button>
+    </div>
+  </div>
+
+  <div class="filterbar">
+    <button class="chipbtn" id="fltAll" data-flt="all" aria-pressed="true" type="button">ทั้งหมด</button>
+    <button class="chipbtn" id="fltOpen" data-flt="open" aria-pressed="false" type="button">ยังไม่ปิด</button>
+    <button class="chipbtn" id="fltOver" data-flt="over" aria-pressed="false" type="button">เลยกำหนด</button>
+    <button class="chipbtn" id="fltDone" data-flt="done" aria-pressed="false" type="button">ปิดแล้ว</button>
+    <span style="flex:1"></span>
+    <button class="tbtn ghost" id="lgCopy" type="button">คัดลอกเป็นตาราง</button>
+  </div>
+
+  <div class="tw">
+    <table class="logtable">
+      <thead><tr><th>วันที่</th><th>เรื่อง</th><th>Decision</th><th>Owner</th><th>Deadline</th><th>สถานะ</th><th>จัดการ</th></tr></thead>
+      <tbody id="lgBody"></tbody>
+    </table>
+  </div>
+  <p class="empty" id="lgEmpty" hidden>ยังไม่มีรายการ — เพิ่มรายการแรกด้านบน หรือดูแถวตัวอย่างที่ระบบใส่ให้</p>
+
+  <div class="note"><b>เกณฑ์:</b> แถวที่เลยกำหนดและยังไม่ปิดจะขึ้นสีแดงและป้าย <span class="badge over">Overdue</span> อัตโนมัติ · กด <b>ปิด</b> เมื่อส่งข้อความ [CLOSED] แล้ว · ข้อมูลบันทึกในเบราว์เซอร์นี้เท่านั้น ไม่ถูกส่งออกและไม่แชร์ให้ผู้อื่นที่เปิดหน้าเดียวกัน</div>
+</section>
+
+<!-- ============ 11 SCORE ============ -->
+<section class="pane" id="p-score" hidden>
+  <div class="sechead">
+    <p class="eyebrow">11 · วัดผลตัวเอง</p>
+    <h2>Scorecard รายสัปดาห์</h2>
+    <p class="lede">ทุกวันศุกร์ 10 นาที ให้คะแนนตัวเองแล้วบันทึกไว้ · แนวโน้มสำคัญกว่าคะแนนของสัปดาห์เดียว</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>ตัวชี้วัด</th><th>ประเภท</th><th>เกณฑ์ผ่าน</th></tr></thead>
+      <tbody>
+        <tr><td class="k">% ข้อความสำคัญที่มีบรรทัด R</td><td class="code">Process</td><td class="num">100%</td></tr>
+        <tr><td class="k">สัดส่วน D5 ขึ้นไป ต่อวาระทั้งหมด</td><td class="code">Output</td><td class="num">&gt; 50% และเพิ่มขึ้นทุกเดือน</td></tr>
+        <tr><td class="k">อัตราผ่านการประเมิน D-Level</td><td class="code">Output</td><td class="num">&gt; 70%</td></tr>
+        <tr><td class="k">ครั้งที่ถูกแอดมิน TT ตามเพราะไม่ทวน RF</td><td class="code">Process</td><td class="num">0</td></tr>
+        <tr><td class="k">Discipline ส่งครบ</td><td class="code">Input</td><td class="num">5/5 วันทำการ</td></tr>
+        <tr><td class="k">งาน Q2 ที่ปิดได้ในสัปดาห์</td><td class="code">Output</td><td class="num">≥ 5</td></tr>
+        <tr class="hi"><td class="k"><b>เรื่องที่เลื่อนระดับ D ขึ้นได้ในเดือนนี้</b></td><td class="code">Outcome</td><td class="num"><b>≥ 1 เรื่อง/เดือน</b></td></tr>
+        <tr class="hi"><td class="k"><b>เรื่องที่ดิฉันให้ D5+ กับคนอื่น</b></td><td class="code">Outcome</td><td>เพิ่มขึ้น — ตัวกันคอขวด</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel amber">
+    <h3 style="margin-top:0">อ่าน Scorecard ให้เป็น</h3>
+    <p>สองบรรทัดล่างคือ <b>Outcome KPI</b> ที่แท้จริง ส่วนที่เหลือเป็นเพียง Input และ Process</p>
+    <p style="margin-bottom:0"><b>ส่ง Discipline ครบ 5/5 ทุกสัปดาห์แต่ไม่มีเรื่องไหนเลื่อนระดับ D ขึ้นได้เลยตลอดสามเดือน</b> แปลว่าทำครบตามระเบียบแต่ไม่ได้รับความไว้วางใจเพิ่ม — ซึ่งเป็นสัญญาณที่ต้องคุยกับผู้บริหารตรง ๆ ไม่ใช่ทำให้หนักขึ้น</p>
+  </div>
+
+  <div class="tool">
+    <h3>กรอก Scorecard สัปดาห์นี้</h3>
+    <p style="margin:0 0 14px;color:var(--ink-2)">กรอกตัวเลขของสัปดาห์แล้วกดบันทึก · ระบบตัดสินผ่าน/ไม่ผ่านตามเกณฑ์ และเก็บทุกสัปดาห์ไว้ทำกราฟแนวโน้มให้ · <b>แนวโน้มสำคัญกว่าคะแนนของสัปดาห์เดียว</b></p>
+    <div class="field" style="max-width:230px"><label for="scWeek">สัปดาห์</label><input type="week" id="scWeek"></div>
+    <div id="scMetrics"></div>
+    <div class="tbtnrow" style="margin-top:14px">
+      <button class="tbtn primary" id="scSave" type="button">บันทึกสัปดาห์นี้</button>
+      <span class="scverd idle" id="scTotal" style="min-width:150px">— / 8 ตัวชี้วัดผ่าน</span>
+    </div>
+  </div>
+
+  <h3>แนวโน้ม</h3>
+  <figure class="spark">
+    <svg id="scChart" viewBox="0 0 640 220" role="img" aria-label="กราฟแนวโน้มจำนวนตัวชี้วัดที่ผ่านต่อสัปดาห์"></svg>
+    <div class="sparkrow" id="scLegend"><span>บันทึกอย่างน้อย 2 สัปดาห์เพื่อดูแนวโน้ม</span></div>
+  </figure>
+  <div class="tbtnrow" style="margin-bottom:22px">
+    <button class="tbtn ghost danger" id="scDelLast" type="button">ลบสัปดาห์ล่าสุด</button>
+  </div>
+
+  <h3>Decision Log — เชื่อมกับ UD โดยอัตโนมัติ</h3>
+  <p>ทุกข้อความที่ขอ D3/D5 ต้องมีบรรทัดใน Decision Log และต้องมีข้อความ [CLOSED] คู่กันเสมอ · ตอนนี้กรอกและติดตามได้ในหน้า <button class="tbtn" data-go="log" type="button" style="padding:4px 12px">เปิด Decision Log →</button></p>
+</section>
+
+<!-- ============ 12 JARGON ============ -->
+<section class="pane" id="p-jargon" hidden>
+  <div class="sechead">
+    <p class="eyebrow">12 · อ้างอิง</p>
+    <h2>Jargon และคนสำคัญ</h2>
+    <p class="lede">ในเอกสารและแชทขององค์กร ตัวย่อเหล่านี้ถูกใช้แทนคำเต็มตลอด · อ่านไม่ออกเท่ากับตามประชุมไม่ทัน</p>
+  </div>
+
+  <h3>Framework</h3>
+  <div class="note">ตัวย่อสื่อสาร (LT, LK, TT, CC, FB, RF, SF, RB, RJ, AAR) มีโครงและตัวอย่างจริงพร้อมพื้นที่ฝึกในหน้า <button class="tbtn" data-go="formats" type="button" style="padding:4px 12px">Format ทางการ 10 แบบ →</button></div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ย่อ</th><th>เต็ม</th><th>ย่อ</th><th>เต็ม</th></tr></thead>
+      <tbody>
+        <tr><td class="code">FB</td><td>Feedback / เพื่อให้พัฒนาปรับปรุง</td><td class="code">RDS</td><td>Result Detail Solution</td></tr>
+        <tr><td class="code">RB</td><td>Right Behavior / ชื่นชม</td><td class="code">Q1</td><td>งานที่ยกมาคุยแล้วจบ</td></tr>
+        <tr><td class="code">BT</td><td>Build Trust</td><td class="code">Q2</td><td>งานที่มีขั้นตอนในการทำ</td></tr>
+        <tr><td class="code">CC</td><td>Crucial Conversation</td><td class="code">Q3</td><td>งานที่เร่งด่วนแต่ไม่สำคัญ</td></tr>
+        <tr><td class="code">TT</td><td>ติดตามทวงถาม</td><td class="code">Q4</td><td>งานที่ไม่ควรทำ</td></tr>
+        <tr><td class="code">RJ</td><td>Rejection / การปฏิเสธ</td><td class="code">4ER</td><td>4 บทบาทหลักของผู้นำ</td></tr>
+        <tr><td class="code">LT</td><td>การลองถาม</td><td class="code">C-suite</td><td>การสวมหมวกของผู้บริหาร</td></tr>
+        <tr><td class="code">LK</td><td>การลองขอความช่วยเหลือ</td><td class="code">COI</td><td>Circle of Influence</td></tr>
+        <tr class="hi"><td class="code">AL</td><td><b>Accountability Level</b></td><td class="code">COC</td><td>Circle of Concern</td></tr>
+        <tr><td class="code">SF</td><td>Self Reflection</td><td class="code">C&amp;E</td><td>Concern &amp; Expectation</td></tr>
+        <tr><td class="code">RF</td><td>Reflection</td><td class="code">GNC</td><td>Give New Chance</td></tr>
+        <tr><td class="code">AAR</td><td>After Action Review / สรุปหลังประชุม</td><td class="code">Sympathy / Empathy</td><td>มีอารมณ์ร่วมกับสถานการณ์ / ความเข้าอกเข้าใจ</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>ตำแหน่งและแผนก</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ย่อ</th><th>เต็ม</th><th>ย่อ</th><th>เต็ม</th></tr></thead>
+      <tbody>
+        <tr class="hi"><td class="code">EO</td><td><b>Executive Officer — สำนักบริหาร (หน่วยงานของดิฉัน)</b></td><td class="code">PMO</td><td>Project Management Office</td></tr>
+        <tr><td class="code">Dr.Co</td><td>ประสานงานลงตารางแพทย์</td><td class="code">OG</td><td>Organizer</td></tr>
+        <tr><td class="code">OP</td><td>Operation (ฝ่ายปฏิบัติการ)</td><td class="code">NV</td><td>Navigation</td></tr>
+        <tr><td class="code">PO</td><td>Product Owner</td><td class="code">RR / OR</td><td>Recovery Room / Operation Room</td></tr>
+        <tr><td class="code">GM</td><td>General Manager</td><td class="code">MKT</td><td>Marketing</td></tr>
+        <tr><td class="code">FA</td><td>Financial Advisor</td><td class="code">QMS</td><td>Quality Measurement System</td></tr>
+        <tr><td class="code">IR</td><td>Investment Relationship</td><td class="code">CS</td><td>Customer Service</td></tr>
+        <tr><td class="code">BD</td><td>Business Development</td><td class="code">CRM</td><td>Customer Relationship Management</td></tr>
+        <tr><td class="code">IB</td><td>Investment Banking</td><td class="code">BC / BA</td><td>Beauty Consult / Beauty Agency (Sale)</td></tr>
+        <tr><td class="code">TA</td><td>Talent Acquisition</td><td class="code">IA</td><td>Internal Audit</td></tr>
+        <tr><td class="code">SEO</td><td>Search Engine Optimization</td><td class="code">PUR</td><td>จัดซื้อจัดจ้าง</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>คนสำคัญ</h3>
+  <div class="note">เว้นเป็น <b>โครงให้กรอก</b> — บันทึกตัวย่อ ชื่อ และตำแหน่งของบุคคลสำคัญที่ต้องประสานงานด้วย เก็บเป็นไฟล์ภายในของสำนักบริหาร ไม่เผยแพร่ออกนอกวง</div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ย่อ</th><th>บุคคล</th><th>ตำแหน่ง / บทบาท</th></tr></thead>
+      <tbody>
+        <tr class="hi"><td class="code">—</td><td>[ผู้บริหารที่ดิฉันรายงานตรง]</td><td><b>CEO — ผู้บังคับบัญชาของดิฉัน</b></td></tr>
+        <tr><td class="code">—</td><td>[ผู้บริหารระดับกลุ่ม]</td><td>Group CEO</td></tr>
+        <tr><td class="code">—</td><td>[รองผู้บริหาร]</td><td>รอง CEO</td></tr>
+        <tr><td class="code">—</td><td>[ผู้บริหารสายปฏิบัติการ]</td><td>อยู่ในชุดผู้สะท้อน Reflection</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>กลุ่มที่ต้องเข้าและแบบฟอร์ม</h3>
+  <div class="grid">
+    <div class="card">
+      <span class="lbl">กลุ่มที่ต้องอยู่ให้ครบ</span>
+      <p style="color:var(--ink-2)">TT Key Player · Reflection Key Player · <b>กลุ่มขอวาระผู้บริหาร</b> · Key Player ลา · Line Project · Onboarding Package · EF Hospital (Rich Menu มีปฏิทินหลักสูตร)</p>
+    </div>
+    <div class="card">
+      <span class="lbl">แบบฟอร์มขอลา</span>
+      <pre style="font-size:12px;margin:0">ขออนุญาตแจ้งลา ค่ะ
+📌 ชื่อผู้ลา :
+📌 วันที่ลา :</pre>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px"><b>ข้อสังเกต:</b> การเข้าถึงผู้บริหารมักมีกระบวนการกำกับอยู่ (เช่น เมื่อเพิ่มเพื่อนกับผู้บริหารต้องแจ้งทีม Admin ที่ดูแล) · ควรทำความรู้จักทีม Admin ชุดนี้ให้เร็วที่สุด เพราะพวกเขาคือคนที่ควบคุมคิวและการติดตามงานของท่านจริง ๆ · <b>ระบุผู้ติดต่อเรื่อง TT และ Reflection ไว้ให้ชัด</b></div>
+</section>
+
+<!-- ============ 13 GAP ============ -->
+<section class="pane" id="p-gap" hidden>
+  <div class="sechead">
+    <p class="eyebrow">13 · วินัยข้อมูล</p>
+    <h2>Fact / Recommendation / Gap</h2>
+    <p class="lede">คู่มือนี้ผสมสิ่งที่มาจากระบบจริงกับข้อเสนอทางวิชาชีพ · ต้องแยกให้ชัดก่อนเอาไปสอนหรืออ้างกับใคร</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>สถานะ</th><th>เนื้อหา</th><th>ต้องทำอะไรต่อ</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="chip fact">Fact</span></td>
+          <td>D1–D7 และ D- · Accountability Level A–D · Q1–Q4 · แบบฟอร์ม Discipline, UD, RF, SF · รูปแบบลงปฏิทิน · MOF/MVC · เกณฑ์ 3 เดือน/95% · คำเต็มของ RDS</td>
+          <td>ใช้ได้ทันที</td>
+        </tr>
+        <tr>
+          <td><span class="chip rec">Rec</span></td>
+          <td><b>วิธีใช้ RDS ทั้งหมด</b> · บันได Delegate · D-Level แบบสองทาง · ตัวอย่างอัปเดต 16 แบบ · แผน 8 สัปดาห์ · Scorecard · Decision Log</td>
+          <td>ข้อเสนอทางวิชาชีพ ไม่ใช่มาตรฐานบริษัท · ใช้กับตัวเองได้เลย แต่<b>ห้ามสอนต่อในนามองค์กรจนกว่าจะยืนยัน</b></td>
+        </tr>
+        <tr>
+          <td><span class="chip hypo">Hypo</span></td>
+          <td>การแปลสไตล์/บุคลิกภาพของผู้บริหารเป็นพฤติกรรมทั้งหมด — ความเร็วเมื่อความเสี่ยงถูกล้อมกรอบ · ความไวต่อเซอร์ไพรส์ · ความไว้วางใจที่มาจากความสม่ำเสมอ · พฤติกรรมตรวจสอบซ้ำ</td>
+          <td>เครื่องมือบุคลิกภาพ (ถ้ามี) เป็นข้อมูลตั้งต้น แต่การแปลเป็นพฤติกรรมเป็น <b>สมมติฐาน</b> · ทดสอบจากพฤติกรรมจริง 30 วัน · ไม่ตรงให้แก้เอกสาร ไม่ใช่ตีความคนให้เข้ากรอบ</td>
+        </tr>
+        <tr>
+          <td><span class="chip gap">Gap</span></td>
+          <td>นิยาม RDS อย่างเป็นทางการขององค์กร · ตำแหน่งในคณะกรรมการชุดย่อยของผู้บริหาร · เส้นแบ่ง L3/L4 · CoS อยู่ใน Target group ของ Discipline หรือไม่ · Key Player Level ของดิฉัน</td>
+          <td>ดูตารางลำดับความเร่งด่วนด้านล่าง</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>คำถามที่ต้องหาคำตอบ เรียงตามความเร่งด่วน</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ลำดับ</th><th>คำถาม</th><th>ทำไมสำคัญ</th><th>ถามใคร</th></tr></thead>
+      <tbody>
+        <tr><td class="code">P0</td><td>Chief of Staff อยู่ใน Target group ของ <b>Discipline</b> หรือไม่ ส่งให้ใคร</td><td>อยู่ในระบบแล้วไม่ส่ง = ขาดวินัยตั้งแต่เดือนแรก · ไม่อยู่แล้วส่ง = ทำงานผิดที่</td><td>ทีม Discipline / HR</td></tr>
+        <tr><td class="code">P0</td><td>ดิฉันอยู่ Key Player <b>Level</b> อะไร</td><td>กำหนดว่าต้องเข้ากลุ่มหมวกดำไหม และใช้ภาษา D-Level ทุกวันหรือไม่</td><td>HR / ทีม Discipline</td></tr>
+        <tr><td class="code">P0</td><td>เข้ากลุ่มครบหรือยัง</td><td>ไม่อยู่ในกลุ่ม = ไม่ได้รับ Reflection = ไม่ถูกประเมิน = มองไม่เห็นในระบบ</td><td>ผู้ดูแลกลุ่ม / ทีม Admin</td></tr>
+        <tr><td class="code">P0</td><td>องค์กรนิยาม <b>RDS</b> ไว้อย่างไรอย่างเป็นทางการ</td><td>ถ้านิยามต่างจากคู่มือนี้ ต้องแก้ทันที ก่อนที่ดิฉันจะกระจายมาตรฐานผิด</td><td>ทีม Discipline / PDC</td></tr>
+        <tr><td class="code">P1</td><td>เส้นแบ่ง <b>L3/L4</b> ของบริษัทจดทะเบียน</td><td>D-Level คืออำนาจภายใน แต่ L3/L4 คือธรรมาภิบาล ห้ามสับสน</td><td>เลขานุการบริษัท</td></tr>
+        <tr><td class="code">P1</td><td>สไตล์การตัดสินใจ/บุคลิกภาพของผู้บริหาร (ถ้าองค์กรใช้เครื่องมือนี้)</td><td>ใช้เป็นสมมติฐานการสื่อสาร · ดูหัวข้อ 01 สำหรับวิธีแปลงเป็นการทำงาน</td><td>HR / Onboarding Package</td></tr>
+        <tr><td class="code">P1</td><td>Mandate ของสำนักบริหารตามที่ท่านเข้าใจ</td><td>ยังไม่เคยคุยกันตรง ๆ ว่าท่านคาดหวังให้ CoS ทำอะไรและไม่ทำอะไร</td><td>ผู้บริหาร — คำถามในสัปดาห์ที่ 8</td></tr>
+        <tr><td class="code">P2</td><td>แบบฟอร์ม Keeper Test เปล่า + เกณฑ์</td><td>เตรียมล่วงหน้าก่อนไตรมาสแรก</td><td>HR / PDC</td></tr>
+        <tr><td class="code">P2</td><td>Admin ที่ดูแล TT และคิวของผู้บริหารคือใคร</td><td>คนกลุ่มนี้คุมคิวและการติดตามงานของ CEO จริง ๆ</td><td>ทีม Admin</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel alert">
+    <h3 style="margin-top:0">Risk รวม</h3>
+    <ul class="c warn" style="margin-bottom:0">
+      <li><b>สอน RDS ต่อก่อนยืนยันนิยามทางการ</b> — ถ้านิยามบริษัทต่างจากนี้ ดิฉันจะกลายเป็นคนกระจายมาตรฐานผิดในองค์กรที่ให้ความสำคัญกับมาตรฐานมาก หนักกว่าการไม่สอนเลย</li>
+      <li><b>เอาคู่มือนี้ไปเสนอเป็นระบบใหม่ขององค์กร</b> — นี่คือคู่มือใช้เอง ไม่ใช่ข้อเสนอเชิงนโยบาย · ใช้เงียบ ๆ 3 เดือนจนพิสูจน์ผลได้ก่อน</li>
+      <li><b>สับสน D-Level กับ L3/L4</b> — ผู้บริหารอาจให้ D7 แต่ถ้าเรื่องแตะการเปิดเผยข้อมูลหรืองบการเงิน ยังต้องผ่านกระบวนการบริษัทจดทะเบียนอยู่ดี</li>
+      <li><b>ไล่ตามคะแนน Input จนลืม Outcome</b> — ส่ง Discipline ครบทุกวันแต่ไม่มีเรื่องไหนเลื่อน D ขึ้นเลย = ทำตามระเบียบโดยไม่ได้รับความไว้วางใจเพิ่ม</li>
+      <li><b>เผยแพร่คู่มือนี้ออกนอกสำนักบริหาร</b> — มีทั้งการวิเคราะห์ผู้บริหารและแนวทางภายในของสำนักบริหาร · Confidential ระดับสำนักบริหารเท่านั้น</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <span>FORSOUL Project Office</span>
+  <span>FORSOUL · Work Handbook</span>
+  <span>v2.8 · 8 พ.ย. 2569</span>
+  <span>ทบทวน · สัปดาห์ที่ 8</span>
+</footer>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var btns = Array.prototype.slice.call(document.querySelectorAll('nav button'));
+  var panes = Array.prototype.slice.call(document.querySelectorAll('.pane'));
+
+  function show(id){
+    panes.forEach(function(p){ p.hidden = (p.id !== 'p-' + id); });
+    btns.forEach(function(b){ b.setAttribute('aria-current', b.dataset.p === id ? 'true' : 'false'); });
+    try{ window.scrollTo({top:0, behavior:'instant'}); }catch(e){ window.scrollTo(0,0); }
+    try{ history.replaceState(null,'','#'+id); }catch(e){}
+  }
+
+  btns.forEach(function(b){ b.addEventListener('click', function(){ show(b.dataset.p); }); });
+  document.querySelectorAll('[data-go]').forEach(function(el){
+    el.addEventListener('click', function(){ show(el.dataset.go); });
+  });
+
+  var h = (location.hash || '').replace('#','');
+  if(h && document.getElementById('p-'+h)) show(h);
+
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var block = btn.closest('.ex').querySelector('pre');
+      if(!block) return;
+      var text = block.textContent;
+      var done = function(){
+        btn.textContent = 'Copied'; btn.setAttribute('data-state','done');
+        setTimeout(function(){ btn.textContent='Copy'; btn.removeAttribute('data-state'); }, 1800);
+      };
+      var fallback = function(){
+        try{
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.setAttribute('readonly','');
+          ta.style.position='fixed'; ta.style.left='-9999px';
+          document.body.appendChild(ta); ta.select();
+          var ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          if(ok){ done(); } else { throw new Error('no'); }
+        }catch(e){
+          btn.textContent = 'เลือก + Ctrl C';
+          setTimeout(function(){ btn.textContent='Copy'; }, 2600);
+        }
+      };
+      try{
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(done).catch(fallback);
+        } else { fallback(); }
+      }catch(e){ fallback(); }
+    });
+  });
+})();
+</script>
+
+<script>
+/* ===== 16-format update validator ===== */
+(function(){
+  var sel = document.getElementById('vzSel');
+  if(!sel) return;
+  var input = document.getElementById('vzInput');
+  var list  = document.getElementById('vzList');
+  var bar   = document.getElementById('vzBar');
+  var verd  = document.getElementById('vzVerdict');
+  var scoreEl = document.getElementById('vzScore');
+  var tagEl = document.getElementById('vzTag');
+
+  function rLine(t){ var m=t.match(/(?:^|\n)\s*R\s*[:：]\s*([^\n]*)/); return m?m[1]:''; }
+  function countNum(t,re){ var m=t.match(re); return m?m.length:0; }
+
+  function feat(raw){
+    var t = raw;
+    var f = {
+      text:t,
+      hasQ:/\[Q[1-4]\]/.test(t)||/(^|\s)Q[1-4](\s|$|:)/.test(t),
+      hasR:/(?:^|\n)\s*R\s*[:：]/.test(t),
+      hasD:/(?:^|\n)\s*D\s*[:：]/.test(t),
+      hasS:/(?:^|\n)\s*S\s*[:：]/.test(t),
+      num:/\d/.test(t),
+      rNum:/\d/.test(rLine(t)),
+      date:/\d{1,2}\s*(ม\.?ค|ก\.?พ|มี\.?ค|เม\.?ย|พ\.?ค|มิ\.?ย|ก\.?ค|ส\.?ค|ก\.?ย|ต\.?ค|พ\.?ย|ธ\.?ค)/.test(t)||/\d{1,2}[\/\.]\d{1,2}/.test(t)||/วันที่/.test(t)||/\d{1,2}[.:]\d{2}/.test(t)||/วันนี้|พรุ่งนี้|สัปดาห์หน้า/.test(t),
+      time:/\d{1,2}[.:]\d{2}/.test(t)||/\d+\s*นาที/.test(t)||/โมง/.test(t),
+      deadline:/ภายใน[^\n]*(วันนี้|พรุ่งนี้|เย็นนี้|เช้านี้|\d)/.test(t)||/ขอ\s*(ความเห็น|Decision|การตัดสินใจ|Update)[^\n]*ภายใน/i.test(t),
+      apology:/^\s*(ผู้บริหารค่ะ\s*)?(ขอโทษ|ขออภัย|ต้องขอโทษ|เสียใจ|sorry)/i.test(t.trim()),
+      recommend:/Recommendation|Recommend|แนะนำว่า|ดิฉันเสนอ|เสนอว่า/i.test(t),
+      choices:(/(?:^|\n)\s*A[\.\)]\s/.test(t)&&/(?:^|\n)\s*B[\.\)]\s/.test(t))||/ทางเลือก/.test(t),
+      risk:/Risk\s*[:：]/i.test(t)||/ความเสี่ยง/.test(t),
+      mitig:/Mitigation/i.test(t)||/จำกัดไว้ที่|ดิฉันจะคุม|ควบคุม\s*Risk|คุมความเสี่ยง/i.test(t),
+      worst:/Worst\s*case/i.test(t)||/กรณีแย่ที่สุด/.test(t),
+      owner:/Owner/i.test(t)||/ผู้รับผิดชอบ|มอบให้|Owner\s*ต่อ/.test(t),
+      mech:/กลไก[^\n]*(ไม่ให้เกิดซ้ำ|กันเกิดซ้ำ|กันเกิด|กันซ้ำ|ไม่เกิดซ้ำ)/.test(t),
+      selfResp:/รับผิดชอบเอง|ดำเนินการและรับผิดชอบ/.test(t),
+      synergy:/มาร์จิ้น|ต้นทุน|ประสิทธิภาพ|ผลิตภาพ|Growth ที่วัดได้/i.test(t)
+    };
+    f.dtag=function(n){ return new RegExp('\\[D'+n+'\\]').test(t)||new RegExp('(^|[^A-Za-z0-9ก-๙])D'+n+'([^0-9]|$)').test(t); };
+    f.has=function(re){ return re.test(t); };
+    return f;
+  }
+
+  var SPEC = {
+    1:{name:"01 · D5 Call ประจำวัน", tag:"D5 · จ.–ศ.", c:[
+      {t:"ประกาศ D5 ตั้งแต่ต้น", h:"ครอบด้วยสคริปต์ D5 ของระบบ", ok:function(f){return f.dtag(5)||/ขอ\s*D5/.test(f.text);}},
+      {t:"มีบรรทัด R — ผลลัพธ์วันนี้", h:"ปิดอะไรได้ / อยู่ขั้นไหน", ok:function(f){return f.hasR;}},
+      {t:"R มีตัวเลขหรือสถานะจับต้องได้", h:"ไม่ใช่ ‘ทำแล้ว’ ลอย ๆ", ok:function(f){return f.rNum;}},
+      {t:"มีบรรทัด D รองรับ", h:"ข้อเท็จจริงสั้น ๆ ที่ทำให้ R น่าเชื่อ", ok:function(f){return f.hasD;}},
+      {t:"S เป็นการตัดสินใจของดิฉันเอง", h:"‘ดิฉันตัดสินใจว่า…’ ไม่ใช่ถามกลับอย่างเดียว", ok:function(f){return f.hasS&&/ดิฉันตัดสินใจ|ดิฉันจะ/.test(f.text);}},
+      {t:"ปิดท้ายด้วยการรับผิดชอบเอง", h:"สาระของ D5", ok:function(f){return f.selfResp;}},
+      {t:"ไม่ขึ้นต้นด้วยคำขอโทษ", h:"เข้าเนื้อหาทันที", ok:function(f){return !f.apology;}}
+    ]},
+    2:{name:"02 · ถามเพื่อพัฒนา", tag:"จ.–ศ.", c:[
+      {t:"บอกสิ่งที่ทำไปแล้ววันนี้", h:"1–2 บรรทัด", ok:function(f){return /ทำไปแล้ว|สิ่งที่ดิฉันทำ|ทำวันนี้/.test(f.text);}},
+      {t:"เสนอสิ่งที่อยากทำเพิ่มด้วยตัวเอง", h:"เสนอความคิดของตัวเองก่อน", ok:function(f){return /อยากทำเพิ่ม|ทำเพิ่มเติม|ข้อเสนอ|ดิฉันอยาก|ดิฉันคิดว่า/.test(f.text);}},
+      {t:"ขอมุมมองเพื่อยกระดับ ไม่ใช่ขออนุมัติ", h:"‘ช่วยแชร์…’", ok:function(f){return /แชร์|มุมมอง|เกินความคาดหวัง|ยังไม่ได้ทำ/.test(f.text);}},
+      {t:"ไม่ถามลอย ๆ ว่า ‘มีอะไรให้ช่วยไหม’", h:"ถามลอยเข้าข่าย AL ระดับ C", ok:function(f){return !/มีอะไรให้ช่วย(ไหม|มั้ย|คะ)/.test(f.text);}}
+    ]},
+    3:{name:"03 · ภาษา Proactive", tag:"สัปดาห์ละ 1", c:[
+      {t:"พูดถึงสิ่งที่สังเกตเห็นเอง", h:"เรื่องที่ยังไม่มีใครหยิบขึ้นมา", ok:function(f){return /ดิฉันเห็นว่า|สังเกต|เห็นว่า|พบว่า/.test(f.text);}},
+      {t:"ระบุผลกระทบถ้าปล่อยไว้", h:"พูดถึงสิ่งที่ยังไม่เกิด", ok:function(f){return /ถ้าปล่อยไว้|อาจกระทบ|จะกระทบ|เสี่ยงที่จะ/.test(f.text);}},
+      {t:"เสนอสิ่งที่จะทำ + กำหนดวัน", h:"เห็นอะไร → จะทำอะไร", ok:function(f){return /ขอเสนอ|เสนอว่า|ดิฉันจะ/.test(f.text)&&f.date;}},
+      {t:"ระบุขอบเขตที่ดิฉันรับผิดชอบ", h:"บอกส่วนที่ดิฉันจะรับเอง", ok:function(f){return /รับผิดชอบ|ขอบเขตของดิฉัน|ดิฉันจะดูแล/.test(f.text);}},
+      {t:"ไม่ขึ้นต้นด้วยคำขอโทษ", h:"", ok:function(f){return !f.apology;}}
+    ]},
+    4:{name:"04 · UD งานรายสัปดาห์", tag:"D6 · ทุกศุกร์", c:[
+      {t:"ระบุช่วงวันที่ของรอบ", h:"รอบวันที่ …–…", ok:function(f){return /รอบวันที่/.test(f.text)||(/[–-]/.test(f.text)&&f.date);}},
+      {t:"มีฝั่ง On process (Q2)", h:"🟡 สิ่งที่กำลังทำ", ok:function(f){return /On\s*process|กำลังทำ|🟡/i.test(f.text);}},
+      {t:"มีฝั่งสำเร็จ (Q2)", h:"🟢 สิ่งที่สำเร็จ", ok:function(f){return /สำเร็จ|🟢|ปิดได้/.test(f.text);}},
+      {t:"มีรายการรวม ≥ 8 ข้อ (เล็ง 5+5)", h:"ระบบบังคับ Q2 ห้าข้อขึ้นไปทั้งสองฝั่ง", ok:function(f){return countNum(f.text,/(^|\n)\s*[1-9][\.\)]/g)>=8;}},
+      {t:"แต่ละบรรทัดเป็นผลลัพธ์ ไม่ใช่ชื่องานเปล่า", h:"ใช้ ‘—’ ต่อด้วยสถานะ/ตัวเลข", ok:function(f){return countNum(f.text,/—|-\s+/g)>=5&&f.num;}},
+      {t:"ระบุความเสี่ยงสูงสุด + จำนวน Decision", h:"สองบรรทัดที่ทำให้ UD มีค่ากว่า", ok:function(f){return /ความเสี่ยง/.test(f.text)&&/Decision/i.test(f.text);}}
+    ]},
+    5:{name:"05 · ขอ Decision ที่มีทางเลือก", tag:"D5", c:[
+      {t:"หัวข้อระบุ [Q..][D5]", h:"ประกาศ D-Level ก่อน", ok:function(f){return f.hasQ&&f.dtag(5);}},
+      {t:"R ระบุผลกระทบถ้าไม่ตัดสินภายในเมื่อไหร่", h:"บีบเวลาให้ชัด", ok:function(f){return f.hasR&&/ถ้าไม่ตัดสิน|ภายใน|ถ้าไม่ขยับ/.test(f.text);}},
+      {t:"D มีตัวเลข + แหล่งที่มา", h:"ทุกตัวเลขมีแหล่งและวันที่", ok:function(f){return f.hasD&&f.num;}},
+      {t:"S มีทางเลือก A/B + Recommendation ของดิฉัน", h:"เสนอ A,B แล้วบอกว่าเลือกอะไร", ok:function(f){return f.choices&&f.recommend;}},
+      {t:"มีบล็อก Risk / Mitigation / Worst case", h:"สำคัญที่สุดสำหรับผู้บริหารที่ประเมินความเสี่ยงเป็นหลัก", ok:function(f){return f.risk&&(f.mitig||f.worst);}},
+      {t:"เชื่อมกับต้นทุน / มาร์จิ้น / ประสิทธิภาพ", h:"กรอบที่ท่านถูกวัด", ok:function(f){return f.synergy;}},
+      {t:"ปิดด้วยการรับผิดชอบเอง (D5)", h:"ขอความเห็นแต่ไม่ผลักภาระตัดสินใจ", ok:function(f){return f.selfResp;}},
+      {t:"ขอความเห็นภายในเวลาที่ชัด", h:"ระบุวัน–เวลา", ok:function(f){return f.deadline;}}
+    ]},
+    6:{name:"06 · ขอ Decision ที่เกินอำนาจ CoS", tag:"D3", c:[
+      {t:"หัวข้อระบุ [D3]", h:"เรื่องที่เกินอำนาจสำนักบริหาร", ok:function(f){return f.dtag(3);}},
+      {t:"R อธิบายว่าทำไมเกินอำนาจ CoS", h:"เหตุผลว่าทำไมต้องให้ CEO ตัดสิน", ok:function(f){return f.hasR&&/เกินอำนาจ|เกินขอบเขต|เกินสำนักบริหาร/.test(f.text);}},
+      {t:"D มีข้อเท็จจริง + ตัวเลข", h:"พร้อมข้อจำกัดกฎหมาย/กำกับดูแลถ้ามี", ok:function(f){return f.hasD&&f.num;}},
+      {t:"S ทางเลือก + Recommendation", h:"", ok:function(f){return f.choices&&f.recommend;}},
+      {t:"มีบรรทัดระดับอำนาจ L3 / L4", h:"D-Level ≠ L3/L4 — ต้องแยก", ok:function(f){return /L3|L4|ระดับอำนาจ|เลขานุการบริษัท/.test(f.text);}},
+      {t:"ขอ Decision ภายในเวลา + เหตุผลของ deadline", h:"เพราะ … มี deadline", ok:function(f){return f.deadline&&/เพราะ/.test(f.text);}}
+    ]},
+    7:{name:"07 · รายงานสิ่งที่ทำไปแล้ว", tag:"D6", c:[
+      {t:"หัวข้อระบุ [D6]", h:"ทำต่อเองได้ ไม่ต้องขออนุมัติ", ok:function(f){return f.dtag(6);}},
+      {t:"R เป็นผลลัพธ์จริง + ตัวเลข", h:"", ok:function(f){return f.hasR&&f.rNum;}},
+      {t:"มีบรรทัดกลไกกันเกิดซ้ำ", h:"หัวใจ — ท่านให้คุณค่ากับระบบ", ok:function(f){return f.mech;}},
+      {t:"ระบุชัดว่าไม่ต้องการ Decision", h:"ช่วยให้ท่านกวาดตาผ่านได้", ok:function(f){return /ไม่มีเรื่องที่ต้องการ\s*Decision|ไม่ต้องการ\s*Decision|ไม่ต้องการการตัดสินใจ/i.test(f.text);}},
+      {t:"ไม่ขึ้นต้นด้วยคำขอโทษ", h:"", ok:function(f){return !f.apology;}}
+    ]},
+    8:{name:"08 · แจ้งเหตุด่วนที่กระทบทันที", tag:"D3 · ภายใน 2 ชม.", c:[
+      {t:"ระบุระดับ Red / Amber", h:"บอกความรุนแรงตั้งแต่หัว", ok:function(f){return /Red|Amber|🔴|🟠|⚠️/i.test(f.text);}},
+      {t:"R เกิดอะไรขึ้น + ผลกระทบที่ยืนยันได้", h:"", ok:function(f){return f.hasR;}},
+      {t:"ระบุเวลาที่รู้เรื่อง + แหล่ง", h:"‘ทำไมเพิ่งรู้’ รับไม่ได้", ok:function(f){return /รู้เรื่องเมื่อ|รู้เมื่อ|ทราบเมื่อ/.test(f.text)&&(f.time||f.date);}},
+      {t:"แยก ‘ยืนยันแล้ว’ ออกจาก ‘ยังไม่ยืนยัน’", h:"อย่ารอจนข้อมูลครบ", ok:function(f){return /ยืนยันแล้ว/.test(f.text)&&/ยังไม่ยืนยัน/.test(f.text);}},
+      {t:"S สิ่งที่ทำไปแล้ว + สิ่งที่ขอจากผู้บริหาร", h:"ตัดสิน / สั่ง / รับทราบ", ok:function(f){return f.hasS&&/ขอจากผู้บริหาร|สิ่งที่ขอ|รับทราบ|ใช้อำนาจ/.test(f.text);}},
+      {t:"ระบุเวลาอัปเดตครั้งถัดไป", h:"‘จะอัปเดตอีกครั้ง …’", ok:function(f){return /อัปเดตอีกครั้ง|จะอัปเดต|update.*อีกครั้ง/i.test(f.text);}},
+      {t:"ไม่ขึ้นต้นด้วยคำขอโทษ", h:"เข้าข้อเท็จจริงทันที", ok:function(f){return !f.apology;}}
+    ]},
+    9:{name:"09 · งานล่าช้าเพราะรอฝ่ายอื่น", tag:"D5", c:[
+      {t:"R เลยกำหนดกี่วัน + ผลถ้าไม่ขยับ", h:"", ok:function(f){return f.hasR&&f.num&&/เลยกำหนด|เกินกำหนด|วัน/.test(f.text);}},
+      {t:"ระบุว่าตามเองแล้ว 2 ครั้ง (มีวันที่)", h:"ห้ามส่งก่อนตามเอง 2 ครั้ง", ok:function(f){return /2\s*ครั้ง|ครั้งที่\s*2|สองครั้ง/.test(f.text);}},
+      {t:"แยกเหตุผลที่ฝ่ายให้ vs ต้นเหตุจริง", h:"ประเมินต้นเหตุจริง", ok:function(f){return /เหตุผลที่ฝ่าย|ฝ่ายให้มา/.test(f.text)&&/ต้นเหตุ/.test(f.text);}},
+      {t:"เสนอทางที่ไม่ต้องใช้อำนาจ CEO ก่อน", h:"อย่าใช้ผู้บริหารเป็นเครื่องมือทวงงาน", ok:function(f){return f.hasS&&/ไม่ต้องใช้อำนาจ|เปลี่ยนลำดับ|แยกส่วน|ทำได้ก่อน/.test(f.text);}},
+      {t:"ขอความเห็นภายในเวลา", h:"", ok:function(f){return f.deadline;}}
+    ]},
+    10:{name:"10 · รายงานเมื่อดิฉันเองเป็นคนพลาด", tag:"D6", c:[
+      {t:"แจ้งว่าดิฉันพลาดเอง (แจ้งก่อนถูกถาม)", h:"ใครบอกก่อนคือเส้นแบ่ง A กับ C", ok:function(f){return /ดิฉันพลาด|พลาดเอง|ผิดพลาดเอง|ดิฉันผิด/.test(f.text);}},
+      {t:"R ผลกระทบจริง + สถานะการแก้", h:"แก้แล้ว/กำลังแก้ คาดจบเมื่อไหร่", ok:function(f){return f.hasR&&/แก้/.test(f.text);}},
+      {t:"D ข้อเท็จจริงล้วน + เวลาที่รู้ตัว", h:"ไม่แก้ตัว", ok:function(f){return f.hasD&&/รู้ตัวเมื่อ|รู้เมื่อ/.test(f.text);}},
+      {t:"มีกลไกกันเกิดซ้ำ", h:"ยังอยู่ในเกรด A ได้", ok:function(f){return f.mech;}},
+      {t:"ระบุจะส่ง Self-Reflection", h:"แสดงว่ารู้ระบบ ไม่รอให้ถูกทวง", ok:function(f){return /Self-?Reflection|กลุ่ม\s*RF|\bSF\b/i.test(f.text);}},
+      {t:"ไม่ขึ้นต้นด้วยคำขอโทษ", h:"", ok:function(f){return !f.apology;}}
+    ]},
+    11:{name:"11 · ไม่เห็นด้วยกับ Direction", tag:"D4", c:[
+      {t:"เริ่มด้วยการทวน Direction (Alignment)", h:"ดิฉันเข้าใจทิศทางที่ผู้บริหารต้องการคือ…", ok:function(f){return /ดิฉันเข้าใจ[^\n]*(Direction|ทิศทาง)/i.test(f.text);}},
+      {t:"Flag ประเด็นเดียว + ผลกระทบ", h:"หนึ่งประเด็น ไม่ใช่รื้อทั้งหมด", ok:function(f){return /Flag/i.test(f.text)&&f.hasR;}},
+      {t:"D มีข้อมูล + ตัวเลข + แหล่ง", h:"", ok:function(f){return f.hasD&&f.num;}},
+      {t:"S ทางเลือก + Recommendation", h:"", ok:function(f){return f.choices&&f.recommend;}},
+      {t:"ปิดท้ายว่าหากยืนยัน จะทำตาม Direction", h:"ประโยคสำคัญที่สุด — ไม่แข่งอำนาจ", ok:function(f){return /หากผู้บริหารยืนยัน|ยืนยัน\s*A\s*ดิฉันจะ|จะดำเนินการตาม\s*Direction|ทำตาม\s*Direction/i.test(f.text);}}
+    ]},
+    12:{name:"12 · ปิด Loop หลังผู้บริหารตัดสินใจ", tag:"ภายใน 24 ชม.", c:[
+      {t:"ขึ้นต้น [CLOSED]", h:"ทุก D3/D5 ต้องมีคู่ปิด", ok:function(f){return /\[CLOSED\]/i.test(f.text);}},
+      {t:"อ้างวันที่ที่ผู้บริหารตัดสินใจ", h:"ตามที่ผู้บริหารตัดสินใจเมื่อ…", ok:function(f){return /ตัดสินใจ/.test(f.text)&&f.date;}},
+      {t:"R ผลลัพธ์จริง + ตัวเลข", h:"", ok:function(f){return f.hasR&&f.rNum;}},
+      {t:"ระบุ Owner ต่อ + ติดตามรอบถัดไป", h:"", ok:function(f){return f.owner&&f.date;}},
+      {t:"มีกลไกกันเกิดซ้ำ", h:"", ok:function(f){return f.mech;}}
+    ]},
+    13:{name:"13 · แจ้งกิจกรรมก่อนงาน", tag:"T-3 วัน", c:[
+      {t:"R = ‘เวลาที่ผู้บริหารต้องใช้’ + บทบาท", h:"ไม่ใช่ ‘มีกิจกรรมชื่อ…’", ok:function(f){return /\d+\s*นาที|ใช้เวลา/.test(f.text)&&/บทบาท|กล่าวเปิด|ร่วมถ่ายภาพ|ไม่ต้องเข้าร่วม/.test(f.text);}},
+      {t:"D วัน/เวลา/สถานที่", h:"", ok:function(f){return (f.date||f.time)&&/สถานที่/.test(f.text);}},
+      {t:"ผู้ร่วมงานสำคัญ + ทำไมสำคัญ", h:"", ok:function(f){return /ผู้ร่วมงาน|ผู้เข้าร่วม/.test(f.text)&&/ทำไมสำคัญ|สำคัญเพราะ|ตำแหน่ง/.test(f.text);}},
+      {t:"S ดิฉันเตรียมอะไรไว้แล้ว", h:"สคริปต์ / Talking points / ของที่ระลึก", ok:function(f){return f.hasS&&/เตรียม/.test(f.text);}},
+      {t:"ระบุสิ่งที่ต้องการจากผู้บริหาร", h:"ยืนยันเวลา / ไม่มี", ok:function(f){return /ต้องการจากผู้บริหาร|ยืนยันเวลา/.test(f.text);}}
+    ]},
+    14:{name:"14 · สรุปกิจกรรมหลังงาน", tag:"D6 · ภายใน 24 ชม.", c:[
+      {t:"R มีตัวเลขวัดได้ (คน/Lead/สื่อ)", h:"เปลี่ยน ‘ค่าใช้จ่าย’ เป็น ‘การลงทุน’", ok:function(f){return /\d+\s*(คน|ราย|ชิ้น|Lead|lead|เจ้า)/.test(f.text);}},
+      {t:"Follow-up มี Owner + วันที่", h:"", ok:function(f){return /Follow-?up|ติดตาม/i.test(f.text)&&f.owner&&f.date;}},
+      {t:"บทเรียนครั้งหน้า 1 ข้อ", h:"ข้อเดียว ไม่ใช่ห้าข้อ", ok:function(f){return /บทเรียน/.test(f.text);}},
+      {t:"ไม่ใช่แค่ ‘ผ่านไปด้วยดี’", h:"ต้องมีตัวเลขพิสูจน์คุณค่า", ok:function(f){return !/ผ่านไปด้วยดี|เรียบร้อยดี|สำเร็จลุล่วงด้วยดี/.test(f.text)&&f.num;}}
+    ]},
+    15:{name:"15 · ขอวาระกับผู้บริหาร", tag:"ตามฟอร์มระบบ", c:[
+      {t:"ระบุชื่อผู้เข้าร่วมวาระ", h:"", ok:function(f){return /ผู้เข้าร่วม/.test(f.text);}},
+      {t:"ชื่อวาระระบุ Delegate Level", h:"ต้องมี D? ที่ชื่อวาระ", ok:function(f){return /ชื่อวาระ/.test(f.text)&&/D[1-7]|D-|\[D/.test(f.text);}},
+      {t:"ระบุวันที่ + เวลาที่ใช้", h:"", ok:function(f){return f.date&&(/\d+\s*นาที|เวลาที่ใช้/.test(f.text));}},
+      {t:"มีบรรทัด R ของวาระ", h:"ออกจากวาระแล้วจะได้อะไร", ok:function(f){return /R\s*ของวาระ|ออกจากวาระ[^\n]*จะได้|จะได้[^\n]*ผลลัพธ์/.test(f.text);}}
+    ]},
+    16:{name:"16 · ประสานหัวหน้าฝ่าย (ให้ D-Level)", tag:"CoS → ฝ่าย", c:[
+      {t:"ระบุ ‘ประเภท’ ของอำนาจ", h:"CEO Decision/Direction/Request หรือข้อเสนอ CoS", ok:function(f){return /ประเภท\s*[:：]/.test(f.text)||/CEO\s*(Decision|Direction|Request)|ข้อเสนอของสำนักบริหาร/i.test(f.text);}},
+      {t:"R สิ่งที่ต้องเกิดขึ้น + วันที่", h:"", ok:function(f){return f.hasR&&f.date;}},
+      {t:"ระบุ Delegate Level ที่ดิฉันให้", h:"กันไม่ให้สำนักบริหารเป็นคอขวด", ok:function(f){return /Delegate\s*Level\s*ที่ดิฉันให้/i.test(f.text)||/ให้[^\n]*D[1-7]/.test(f.text);}},
+      {t:"ระบุบทบาท CoS (Coordinate/Monitor/Escalate)", h:"", ok:function(f){return /Coordinate|Monitor|Escalate|Facilitate|ประสาน|ติดตาม/i.test(f.text);}},
+      {t:"ขอ Update กลับ + กำหนดวัน", h:"", ok:function(f){return /Update\s*กลับ|ขอ\s*Update|อัปเดตกลับ/i.test(f.text)&&f.date;}}
+    ]}
+  };
+
+  // build options
+  var groups = [
+    ["หมวด ก · ประจำวัน/สัปดาห์",[1,2,3,4]],
+    ["หมวด ข · ขอการตัดสินใจ",[5,6,7]],
+    ["หมวด ค · เหตุการณ์/ความเสี่ยง/ความผิดพลาด",[8,9,10,11,12]],
+    ["หมวด ง · กิจกรรม/ประสานงาน",[13,14,15,16]]
+  ];
+  groups.forEach(function(g){
+    var og=document.createElement('optgroup'); og.label=g[0];
+    g[1].forEach(function(id){
+      var o=document.createElement('option'); o.value=id; o.textContent=SPEC[id].name; og.appendChild(o);
+    });
+    sel.appendChild(og);
+  });
+
+  function render(){
+    var id=+sel.value;
+    var spec=SPEC[id];
+    tagEl.textContent=spec.tag;
+    var raw=input.value;
+    list.innerHTML='';
+    if(!raw.trim()){
+      bar.style.width='0'; bar.style.background='var(--teal)';
+      scoreEl.textContent='—';
+      verd.innerHTML='ยังไม่มีข้อความ — พิมพ์แล้วกด “ตรวจสอบ” หรือระบบจะตรวจให้ระหว่างพิมพ์';
+      spec.c.forEach(function(ck){
+        var li=document.createElement('li');
+        li.innerHTML='<span class="vz-ic idle">·</span><span><span class="vz-ct">'+ck.t+'</span>'+(ck.h?'<span class="vz-ch">'+ck.h+'</span>':'')+'</span>';
+        list.appendChild(li);
+      });
+      return;
+    }
+    var f=feat(raw), pass=0;
+    spec.c.forEach(function(ck){
+      var good=false; try{good=!!ck.ok(f);}catch(e){good=false;}
+      if(good) pass++;
+      var li=document.createElement('li'); if(good) li.className='pass';
+      li.innerHTML='<span class="vz-ic '+(good?'ok':'no')+'">'+(good?'✓':'✕')+'</span>'+
+                   '<span><span class="vz-ct">'+ck.t+'</span>'+(ck.h?'<span class="vz-ch">'+ck.h+'</span>':'')+'</span>';
+      list.appendChild(li);
+    });
+    var tot=spec.c.length, ratio=pass/tot;
+    scoreEl.textContent=pass+' / '+tot;
+    bar.style.width=Math.round(ratio*100)+'%';
+    var col = ratio===1?'var(--teal)':(ratio>=0.6?'var(--amber)':'var(--alert)');
+    bar.style.background=col;
+    if(ratio===1){
+      verd.innerHTML='<b>ครบองค์ประกอบของแบบนี้ ✓</b> — อ่านเนื้อหาจริงอีกครั้งก่อนกดส่ง (ตัวเลขมีแหล่ง? ถ้อยคำ CEO ตรงไหม?)';
+    } else {
+      var miss=tot-pass;
+      verd.innerHTML='ยังขาดอีก <b>'+miss+'</b> จุด — เติมข้อที่ขึ้น ✕ ให้ครบ แล้วโครงจะตรงหลักการของแบบนี้';
+    }
+  }
+
+  sel.addEventListener('change', function(){ render(); });
+  input.addEventListener('input', render);
+  document.getElementById('vzCheck').addEventListener('click', render);
+  document.getElementById('vzClear').addEventListener('click', function(){ input.value=''; render(); input.focus(); });
+  document.getElementById('vzFill').addEventListener('click', function(){
+    var id=+sel.value;
+    var exs=document.querySelectorAll('#p-updates .ex');
+    var ex=exs[id-1];
+    if(ex){ var pre=ex.querySelector('pre'); if(pre){ input.value=pre.textContent; render(); input.focus(); } }
+  });
+
+  sel.value='5'; // default to the most-used format
+  render();
+})();
+</script>
+
+<script>
+/* ===== v2.2 tools: theme toggle · Decision Log · Scorecard · home stats ===== */
+(function(){
+  var LS = {
+    get:function(k,d){ try{ var v=localStorage.getItem(k); return v==null?d:JSON.parse(v); }catch(e){ return d; } },
+    set:function(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+  };
+  var today = new Date();
+  function iso(dt){ return dt.toISOString().slice(0,10); }
+  function todayStr(){ return iso(today); }
+  function fmtDate(s){ if(!s) return '—'; var p=s.split('-'); return p.length===3?(p[2]+'/'+p[1]+'/'+(+p[0]+543-2500<10?'0':'')+((+p[0]+543)%100)):s; }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+
+  /* ---------- theme toggle ---------- */
+  (function(){
+    var btn=document.getElementById('themeToggle'); if(!btn) return;
+    var ico=document.getElementById('themeIco'), txt=document.getElementById('themeTxt');
+    var modes=['system','light','dark'];
+    var meta={system:{i:'◐',t:'ธีม: ตามระบบ'},light:{i:'☀',t:'ธีม: สว่าง'},dark:{i:'☾',t:'ธีม: มืด'}};
+    var cur=LS.get('cos_theme','system'); if(modes.indexOf(cur)<0) cur='system';
+    function apply(m){
+      if(m==='system'){ document.documentElement.removeAttribute('data-theme'); }
+      else { document.documentElement.setAttribute('data-theme',m); }
+      ico.textContent=meta[m].i; txt.textContent=meta[m].t;
+    }
+    apply(cur);
+    btn.addEventListener('click',function(){
+      cur=modes[(modes.indexOf(cur)+1)%modes.length]; LS.set('cos_theme',cur); apply(cur);
+    });
+  })();
+
+  /* ---------- Decision Log ---------- */
+  var LOG_KEY='cos_log';
+  function seedLog(){
+    var d=function(off){ var t=new Date(); t.setDate(t.getDate()+off); return iso(t); };
+    return [
+      {id:uid(),date:d(-7),topic:'สัญญาผู้ให้บริการ (ตัวอย่าง)',decision:'เดินหน้าเซ็นเฉพาะขอบเขตที่ไม่มีข้อพิพาท',owner:'ฝ่ายจัดซื้อ — คุณเอ',deadline:d(-2),closed:false},
+      {id:uid(),date:d(-4),topic:'ปรับ SLA ตอบรับ 30 นาที (ตัวอย่าง)',decision:'ประกาศใช้กับทีมสำนักบริหาร',owner:'ดิฉัน',deadline:d(3),closed:false},
+      {id:uid(),date:d(-10),topic:'สรุปกิจกรรม Open House (ตัวอย่าง)',decision:'อนุมัติงบ follow-up lead',owner:'MKT — คุณบี',deadline:d(-6),closed:true}
+    ];
+  }
+  var logData = LS.get(LOG_KEY,null);
+  if(logData===null){ logData=seedLog(); LS.set(LOG_KEY,logData); }
+  var logFilter='all';
+  var scData = LS.get('cos_score',[]); // declared early so updateStats is safe before initScore runs
+
+  function isOver(r){ return !r.closed && r.deadline && r.deadline < todayStr(); }
+  function saveLog(){ LS.set(LOG_KEY,logData); }
+
+  function renderLog(){
+    var body=document.getElementById('lgBody'); if(!body) return;
+    var rows=logData.slice().sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); });
+    var shown=rows.filter(function(r){
+      if(logFilter==='open') return !r.closed;
+      if(logFilter==='done') return r.closed;
+      if(logFilter==='over') return isOver(r);
+      return true;
+    });
+    body.innerHTML='';
+    document.getElementById('lgEmpty').hidden = shown.length>0;
+    shown.forEach(function(r){
+      var over=isOver(r);
+      var tr=document.createElement('tr');
+      tr.className=(r.closed?'done ':'')+(over?'overdue':'');
+      var status=r.closed?'<span class="badge closed">Closed</span>':(over?'<span class="badge over">Overdue</span>':'<span class="badge open">Open</span>');
+      tr.innerHTML=
+        '<td class="num">'+esc(fmtDate(r.date))+'</td>'+
+        '<td class="k">'+esc(r.topic)+'</td>'+
+        '<td>'+esc(r.decision)+'</td>'+
+        '<td>'+esc(r.owner)+'</td>'+
+        '<td class="dl num">'+esc(fmtDate(r.deadline))+'</td>'+
+        '<td>'+status+'</td>'+
+        '<td class="act">'+
+          '<button class="rowbtn '+(r.closed?'':'close')+'" data-act="toggle" data-id="'+r.id+'">'+(r.closed?'เปิดใหม่':'ปิด')+'</button>'+
+          '<button class="rowbtn" data-act="del" data-id="'+r.id+'">ลบ</button>'+
+        '</td>';
+      body.appendChild(tr);
+    });
+    updateStats();
+  }
+
+  function addLog(){
+    var topic=document.getElementById('lgTopic').value.trim();
+    if(!topic){ document.getElementById('lgTopic').focus(); return; }
+    logData.push({
+      id:uid(),
+      date:document.getElementById('lgDate').value||todayStr(),
+      topic:topic,
+      decision:document.getElementById('lgDecision').value.trim(),
+      owner:document.getElementById('lgOwner').value.trim(),
+      deadline:document.getElementById('lgDeadline').value,
+      closed:false
+    });
+    saveLog();
+    ['lgTopic','lgDecision','lgOwner','lgDeadline'].forEach(function(id){ document.getElementById(id).value=''; });
+    document.getElementById('lgDate').value=todayStr();
+    renderLog();
+  }
+
+  (function initLog(){
+    var body=document.getElementById('lgBody'); if(!body) return;
+    document.getElementById('lgDate').value=todayStr();
+    document.getElementById('lgAdd').addEventListener('click',addLog);
+    document.getElementById('lgClear').addEventListener('click',function(){
+      ['lgTopic','lgDecision','lgOwner','lgDeadline'].forEach(function(id){ document.getElementById(id).value=''; });
+      document.getElementById('lgDate').value=todayStr();
+    });
+    body.addEventListener('click',function(e){
+      var b=e.target.closest('[data-act]'); if(!b) return;
+      var id=b.getAttribute('data-id'), act=b.getAttribute('data-act');
+      var i=logData.map(function(r){return r.id;}).indexOf(id); if(i<0) return;
+      if(act==='toggle'){ logData[i].closed=!logData[i].closed; }
+      else if(act==='del'){ if(!confirm('ลบรายการนี้?')) return; logData.splice(i,1); }
+      saveLog(); renderLog();
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.chipbtn[data-flt]'),function(c){
+      c.addEventListener('click',function(){
+        logFilter=c.getAttribute('data-flt');
+        Array.prototype.forEach.call(document.querySelectorAll('.chipbtn[data-flt]'),function(x){ x.setAttribute('aria-pressed', x===c?'true':'false'); });
+        renderLog();
+      });
+    });
+    document.getElementById('lgCopy').addEventListener('click',function(){
+      var lines=['วันที่\tเรื่อง\tDecision\tOwner\tDeadline\tสถานะ'];
+      logData.slice().sort(function(a,b){return (a.date||'').localeCompare(b.date||'');}).forEach(function(r){
+        lines.push([r.date,r.topic,r.decision,r.owner,r.deadline,(r.closed?'ปิดแล้ว':(isOver(r)?'เลยกำหนด':'ยังไม่ปิด'))].join('\t'));
+      });
+      var txt=lines.join('\n'), btn=this;
+      var done=function(){ btn.textContent='คัดลอกแล้ว'; setTimeout(function(){btn.textContent='คัดลอกเป็นตาราง';},1600); };
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done).catch(done); } else { done(); }
+    });
+    renderLog();
+  })();
+
+  /* ---------- Scorecard ---------- */
+  var SC_KEY='cos_score';
+  var METRICS=[
+    {k:'r',    name:'% ข้อความสำคัญที่มีบรรทัด R', cri:'= 100%',   pass:function(v){return v>=100;}},
+    {k:'d5',   name:'สัดส่วน D5 ขึ้นไป ต่อวาระ',   cri:'> 50%',    pass:function(v){return v>50;}},
+    {k:'dp',   name:'อัตราผ่านการประเมิน D-Level', cri:'> 70%',    pass:function(v){return v>70;}},
+    {k:'tt',   name:'ถูกแอดมิน TT ตาม (ไม่ทวน RF)', cri:'= 0 ครั้ง', pass:function(v){return v===0;}},
+    {k:'disc', name:'Discipline ส่งครบ (วันทำการ)', cri:'5 / 5',     pass:function(v){return v>=5;}},
+    {k:'q2',   name:'งาน Q2 ที่ปิดได้ในสัปดาห์',    cri:'≥ 5',      pass:function(v){return v>=5;}},
+    {k:'dup',  name:'เรื่องที่เลื่อนระดับ D ขึ้นได้ (เดือนนี้)', cri:'≥ 1 · Outcome', pass:function(v){return v>=1;}, outcome:true},
+    {k:'give', name:'เรื่องที่ดิฉันให้ D5+ กับคนอื่น', cri:'เพิ่มขึ้น · Outcome', pass:function(v){return v>=1;}, outcome:true}
+  ];
+  /* scData declared earlier (near logData) so home stats render safely */
+
+  function curWeek(){
+    var d=new Date(Date.UTC(today.getFullYear(),today.getMonth(),today.getDate()));
+    var day=d.getUTCDay()||7; d.setUTCDate(d.getUTCDate()+4-day);
+    var ys=new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    var wk=Math.ceil((((d-ys)/86400000)+1)/7);
+    return d.getUTCFullYear()+'-W'+(wk<10?'0':'')+wk;
+  }
+  function passCount(vals){ var n=0; METRICS.forEach(function(m){ var v=vals[m.k]; if(typeof v==='number'&&!isNaN(v)&&m.pass(v)) n++; }); return n; }
+
+  function buildMetricInputs(){
+    var wrap=document.getElementById('scMetrics'); if(!wrap) return;
+    wrap.innerHTML='';
+    METRICS.forEach(function(m){
+      var row=document.createElement('div'); row.className='scmetric';
+      row.innerHTML='<div><div class="scname">'+esc(m.name)+'</div><div class="sccri">เกณฑ์ '+esc(m.cri)+'</div></div>'+
+        '<input type="number" inputmode="decimal" id="sc_'+m.k+'" aria-label="'+esc(m.name)+'">'+
+        '<div class="scverd idle" id="scv_'+m.k+'">—</div>';
+      wrap.appendChild(row);
+    });
+    wrap.addEventListener('input',liveVerdict);
+  }
+  function liveVerdict(){
+    var pass=0,filled=0;
+    METRICS.forEach(function(m){
+      var el=document.getElementById('sc_'+m.k), cell=document.getElementById('scv_'+m.k);
+      var raw=el.value.trim();
+      if(raw===''){ cell.className='scverd idle'; cell.textContent='—'; return; }
+      filled++;
+      var v=parseFloat(raw), ok=!isNaN(v)&&m.pass(v);
+      if(ok) pass++;
+      cell.className='scverd '+(ok?'pass':'fail'); cell.textContent=ok?'ผ่าน':'ยังไม่ผ่าน';
+    });
+    var t=document.getElementById('scTotal');
+    t.className='scverd '+(filled===0?'idle':(pass===8?'pass':'fail'));
+    t.textContent=pass+' / 8 ตัวชี้วัดผ่าน';
+  }
+  function loadWeekIntoForm(wk){
+    var rec=scData.filter(function(r){return r.week===wk;})[0];
+    METRICS.forEach(function(m){
+      var el=document.getElementById('sc_'+m.k);
+      el.value = rec&&typeof rec.values[m.k]==='number' ? rec.values[m.k] : '';
+    });
+    liveVerdict();
+  }
+
+  function drawChart(){
+    var svg=document.getElementById('scChart'), leg=document.getElementById('scLegend'); if(!svg) return;
+    var rows=scData.slice().sort(function(a,b){return a.week.localeCompare(b.week);});
+    if(rows.length<2){
+      svg.innerHTML='<text x="320" y="110" text-anchor="middle" class="scLbl">บันทึกอย่างน้อย 2 สัปดาห์เพื่อดูแนวโน้ม</text>';
+      leg.innerHTML='<span>ยังมี '+rows.length+' สัปดาห์</span>';
+      return;
+    }
+    var W=640,H=220,L=34,R=620,T=20,B=188;
+    var n=rows.length, maxY=8;
+    var x=function(i){ return L+(R-L)*(n===1?0.5:i/(n-1)); };
+    var y=function(v){ return B-(B-T)*(v/maxY); };
+    var s='';
+    [0,4,8].forEach(function(g){ var yy=y(g); s+='<line class="scGrid" x1="'+L+'" y1="'+yy+'" x2="'+R+'" y2="'+yy+'"/><text class="scLbl" x="'+(L-6)+'" y="'+(yy+3)+'" text-anchor="end">'+g+'</text>'; });
+    var pts=rows.map(function(r,i){ return x(i)+','+y(r.pass); });
+    s+='<polygon class="scArea" points="'+L+','+B+' '+pts.join(' ')+' '+R+','+B+'"/>';
+    s+='<polyline class="scLine" points="'+pts.join(' ')+'"/>';
+    rows.forEach(function(r,i){
+      var last=i===n-1;
+      s+='<circle class="'+(last?'scDotLast':'scDot')+'" cx="'+x(i)+'" cy="'+y(r.pass)+'" r="'+(last?5:3.4)+'"/>';
+      if(last||i===0||n<=6) s+='<text class="scVal" x="'+x(i)+'" y="'+(y(r.pass)-10)+'" text-anchor="middle">'+r.pass+'</text>';
+      var wl=r.week.split('-W'); var lbl=n>8&&!last&&i%2? '' : 'W'+(wl[1]||'');
+      if(lbl) s+='<text class="scLbl" x="'+x(i)+'" y="'+(B+16)+'" text-anchor="middle">'+lbl+'</text>';
+    });
+    s+='<line class="scAxis" x1="'+L+'" y1="'+B+'" x2="'+R+'" y2="'+B+'"/>';
+    svg.innerHTML=s;
+    var lastRow=rows[n-1];
+    leg.innerHTML='<span><span class="legdot" style="background:var(--teal)"></span>ตัวชี้วัดที่ผ่าน / 8 · สัปดาห์ล่าสุด <b>'+lastRow.pass+'/8</b></span>'+
+      '<span>D เลื่อนขึ้นเดือนนี้ <b>'+(lastRow.values.dup||0)+'</b></span>'+
+      '<span>ให้ D5+ ผู้อื่น <b>'+(lastRow.values.give||0)+'</b></span>';
+  }
+
+  (function initScore(){
+    var wrap=document.getElementById('scMetrics'); if(!wrap) return;
+    buildMetricInputs();
+    var wkEl=document.getElementById('scWeek');
+    wkEl.value=curWeek();
+    loadWeekIntoForm(wkEl.value);
+    wkEl.addEventListener('change',function(){ loadWeekIntoForm(wkEl.value); });
+    document.getElementById('scSave').addEventListener('click',function(){
+      var wk=wkEl.value||curWeek(), vals={};
+      METRICS.forEach(function(m){ var raw=document.getElementById('sc_'+m.k).value.trim(); if(raw!=='' ){ var v=parseFloat(raw); if(!isNaN(v)) vals[m.k]=v; } });
+      var rec={week:wk,values:vals,pass:passCount(vals)};
+      var i=scData.map(function(r){return r.week;}).indexOf(wk);
+      if(i>=0) scData[i]=rec; else scData.push(rec);
+      LS.set(SC_KEY,scData);
+      var btn=this; btn.textContent='บันทึกแล้ว ✓'; setTimeout(function(){btn.textContent='บันทึกสัปดาห์นี้';},1500);
+      drawChart(); updateStats();
+    });
+    document.getElementById('scDelLast').addEventListener('click',function(){
+      if(!scData.length){ return; }
+      var rows=scData.slice().sort(function(a,b){return a.week.localeCompare(b.week);});
+      var last=rows[rows.length-1].week;
+      if(!confirm('ลบข้อมูลสัปดาห์ '+last+' ?')) return;
+      scData=scData.filter(function(r){return r.week!==last;});
+      LS.set(SC_KEY,scData); loadWeekIntoForm(wkEl.value); drawChart(); updateStats();
+    });
+    drawChart();
+  })();
+
+  /* ---------- home stats ---------- */
+  function updateStats(){
+    var so=document.getElementById('statOpen'); if(!so) return;
+    var open=logData.filter(function(r){return !r.closed;}).length;
+    var over=logData.filter(isOver).length;
+    so.textContent=open; so.className='snum'+(open===0?' good':'');
+    var ov=document.getElementById('statOver'); ov.textContent=over; ov.className='snum'+(over>0?' warn':' good');
+    var rows=scData.slice().sort(function(a,b){return a.week.localeCompare(b.week);});
+    var last=rows[rows.length-1];
+    var ss=document.getElementById('statScore'); var st=document.getElementById('statTrend');
+    if(last){ ss.textContent=last.pass+'/8'; ss.className='snum'+(last.pass===8?' good':(last.pass<5?' warn':'')); st.textContent=(last.values.dup||0); st.className='snum'+((last.values.dup||0)>=1?' good':' warn'); }
+    else { ss.textContent='—'; ss.className='snum'; st.textContent='—'; st.className='snum'; }
+  }
+  updateStats();
+})();
+</script>
+
+<script>
+/* ===== v2.3: PDC Format library — framework · example · practice ===== */
+(function(){
+  var list=document.getElementById('fmtList'); if(!list) return;
+  var bar=document.getElementById('fmtBar');
+  function LSget(k,d){ try{var v=localStorage.getItem(k);return v==null?d:v;}catch(e){return d;} }
+  function LSset(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+
+  var F=[
+    {code:'LT',name:'ลองถาม',sub:'ขอความเห็นก่อนเสนอสิ่งที่เราอยากได้',
+     what:'การลองถามอีกฝ่ายว่าคิดอย่างไร ในสิ่งที่เราต้องการหรือตัดสินใจมา แต่ยังอยู่บนความต้องการของอีกฝ่ายด้วย',
+     concept:['ถามเพื่อขอความคิดเห็นจากอีกฝ่าย','แชร์ความคิดเชิงบวก 2 ความคิดขึ้นไป','ต้องเป็นความคิดที่เป็นผลบวกต่ออีกฝ่ายก่อน แล้วจึงตามด้วยสิ่งที่เราต้องการเสนอ'],
+     fw:'ขออนุญาตลองถาม (LT) นะคะ/ครับ\n\n💙 จากเรื่องที่/จากเหตุการณ์ [...]\n\nไม่แน่ใจว่า...\n👉 [ความคิดที่เป็นผลบวกต่ออีกฝ่าย]\n   หรือ\n👉 [ความคิดเชิงบวกที่เป็นความต้องการของเรา]\n\n🙏 คุณมองว่าอย่างไร รบกวนช่วยแชร์ให้ฟังหน่อยค่ะ/ครับ',
+     ex:'สวัสดีครับ 🙏 ขออนุญาตลองถาม (LT) พี่กอล์ฟครับ\n\n💙 เนื่องจากวันที่ 1/7 เป็นวันทำงานปกติของอาร์ท แต่เนื่องด้วยอาร์ทมีความจำเป็นที่จะต้องเดินทางกลับเพชรบุรี เพื่อทำธุรกรรมสำคัญกับทางครอบครัว\n\nจากเหตุการณ์ดังกล่าวไม่แน่ใจว่า\n👉 พี่กอล์ฟมีงานที่สำคัญที่อาร์ทจะต้องมาทำงานที่โรงพยาบาล หรือ\n👉 อาร์ทสามารถลาเพื่อทำธุรกรรมที่เพชรบุรี หากมีวาระสำคัญสามารถเข้าร่วมแบบออนไลน์ได้\n\n🙏 พี่กอล์ฟมองว่าอย่างไร รบกวนช่วยแชร์ให้ฟังหน่อยครับ'},
+    {code:'LK',name:'ลองขอความช่วยเหลือ',sub:'เปิดใจให้อีกฝ่ายปฏิเสธได้',
+     what:'ใช้ในการลองขอความช่วยเหลือจากอีกฝ่าย',
+     concept:['ขอความช่วยเหลือโดยเปิดพื้นที่ให้อีกฝ่ายปฏิเสธได้อย่างสบายใจ'],
+     fw:'ขออนุญาต LK นะคะ/ครับ\n\n🧡 ความกังวลใจ + EVENT : [เรื่องที่กังวล + เหตุการณ์]\n\n👉 ไม่แน่ใจว่าคุณ....สามารถช่วย... [สิ่งที่ขอความช่วยเหลือ]\n   หรือ\n👉 [กรณีที่เขาอาจช่วยไม่ได้] จากเรื่องนี้อย่าได้ลังเลใจที่จะปฏิเสธนะคะ/ครับ\n\nรบกวนช่วยแชร์ให้ฟังหน่อยนะคะ/ครับ ขอบคุณค่ะ/ครับ',
+     ex:'ผมขออนุญาต LK พี่ดาวครับ\n\n🧡 ผมมีความกังวลใจ จากเหตุการณ์ที่ผมได้ติดตาม FRAMEWORK กับ KP แต่ผมรู้สึกว่ามันมีความล่าช้าและยังไม่ประสบความสำเร็จ ผมจึงอยากขอความช่วยเหลือพี่ดาวครับ\n\n👉 ไม่แน่ใจว่า เรื่องนี้พี่ดาวสามารถช่วยผมในการส่งข้อความไปกระตุ้น KP เพื่อให้เรื่องนี้สำเร็จ หรือ\n👉 พี่ดาวคิดว่าเรื่องนี้อยากให้ผมทำเอง จากเรื่องนี้พี่ดาวอย่าได้ลังเลใจที่จะปฏิเสธผมนะครับ\n\nรบกวนช่วยแชร์ให้ผมฟังหน่อยนะครับ ขอบคุณครับ'},
+    {code:'TT',name:'ทวงถาม',sub:'ติดตามงานโดยไม่ตัดสิน',
+     what:'ใช้ติดตามทวงถามงานหรือสิ่งที่เรามอบหมาย/ขอเอาไว้จากเพื่อนร่วมงาน แล้วยังไม่ได้รับการส่งมอบ',
+     concept:['ไม่ตัดสินว่าเขาทำหรือยังไม่ทำ สิ่งที่เราทวงถาม'],
+     fw:'ขออนุญาต TT นะคะ/ครับ\n\n❤️ จากเหตุการณ์ที่ [ระบุงาน/สิ่งที่ทวงถาม]\n\n👉 ไม่แน่ใจว่า [สมมติฐานเชิงบวก 1]\n   หรือ\n👉 [สมมติฐานเชิงบวก 2]\n   (คาดเดาอย่างน้อย 2 กรณี)\n\nอยากเข้าใจเพิ่มเติม รบกวนช่วยแชร์ให้ฟังหน่อยค่ะ/ครับ',
+     ex:'สวัสดีค่ะพี่กี้ ขออนุญาต TT นะคะ\n\n❤️ จากเหตุการณ์ที่เรามีการประชุมกันเกี่ยวกับการที่พี่กี้จะต้องจัดทำสคริปต์ผู้ร่วมงานในงาน JOB FAIR2024 ที่จะเกิดขึ้นในวันพรุ่งนี้ แล้วหนูยังไม่ได้ SCRIPT\n\n👉 ไม่แน่ใจว่าพี่กี้กำลังส่ง SCRIPT ให้หนูอยู่ หรือ\n👉 พี่กี้ติดงาน Q1 ที่สำคัญอยู่\n\nอยากเข้าใจเพิ่มเติม รบกวนช่วยแชร์ให้ฟังหน่อยค่ะ'},
+    {code:'CC',name:'Crucial Conversation',sub:'คุยเรื่องสำคัญที่กังวลใจ',
+     what:'การถามเพื่อพูดคุยกันในเรื่องที่สำคัญ ที่เรากังวลใจหรือไม่สบายใจ',
+     concept:['มีความรู้สึก... เรื่องที่รุนแรง... มีส่วนได้ส่วนเสีย ซึ่งอาจส่งผลกระทบตามมา','ขออนุญาตเจ้าตัวก่อนพูด เพื่อเปิดพื้นที่และสร้างบัญชีออมใจทั้งสองฝ่าย'],
+     fw:'ขออนุญาต CC นะคะ/ครับ\n\n💚 ฉันรู้สึกกังวลใจว่า จากเหตุการณ์ที่ [เหตุการณ์/การกระทำที่เป็นสาเหตุของปัญหา] + [ผลกระทบที่เกิดขึ้น]\n\n👉 ไม่แน่ใจว่า [ความเข้าใจเชิงบวก 1]\n   หรือ\n👉 [ความเข้าใจเชิงบวก 2]\n   (คาดเดาอย่างน้อย 2 กรณี)\n\n📌 อยากเข้าใจเพิ่มเติม รบกวนช่วยแชร์ให้ฟังหน่อยค่ะ/ครับ',
+     ex:'ขออนุญาต CC น้องอาร์ทนะครับ\n\n💚 พี่รู้สึกกังวลใจว่า จากเหตุการณ์ที่อาร์ทไม่ได้ห้อยบัตรพนักงานในวันที่ 20/08 ซึ่งอาจทำให้น้องอาร์ทโดนปรับและเสียภาพลักษณ์ได้\n\n👉 ไม่แน่ใจว่าอาร์ททำงานเยอะจนหลงลืม หรือ\n👉 มีเหตุสุดวิสัยเกิดขึ้นจนทำให้ไม่ได้ห้อยบัตร\n\n📌 พี่อยากเข้าใจเพิ่มเติม รบกวนช่วยแชร์ให้ฟังหน่อยครับ'},
+    {code:'FB',name:'การให้ Feedback',sub:'สะท้อนเพื่อให้พัฒนาเพิ่ม',
+     what:'การสะท้อนผู้อื่นในสิ่งที่เราเห็น และสิ่งที่อยากให้คน ๆ นั้นทำเพิ่มเติมหรือพัฒนา',
+     concept:['FEEDBACK IS A GIFT','นึกถึงผลประโยชน์ของผู้รับมากที่สุด','ไม่ใช้อารมณ์ส่วนตัวเข้ามาปน','ต้องเป็นสิ่งที่นำไปพัฒนาได้จริง'],
+     note:'กรณีที่เขาไม่ได้ขอ แต่เราอยากให้ FEEDBACK ต้องขึ้นต้นว่า “ขออนุญาตให้ FEEDBACK เพื่อพัฒนาร่วมกัน”',
+     fw:'ขออนุญาตให้ FEEDBACK เพื่อพัฒนาร่วมกันค่ะ/ครับ\n\n📌 เจตนารมณ์ : [สิ่งที่อยากให้อีกฝ่ายดีขึ้น]\n📌 เหตุการณ์ที่สังเกตเห็น : [เหตุการณ์จริง]\n📌 ผลกระทบ : [ผลที่เกิด]\n📌 สิ่งที่อยากให้ปรับ/พัฒนา : [ข้อเสนอ]',
+     ex:'🎌 สวัสดีครับ ขออนุญาตให้ FEEDBACK น้องไซม่อนเพื่อพัฒนาร่วมกันครับ\n\n📌 เจตนารมณ์ : เพื่อให้ไซม่อนมีความ PROACTIVE เพิ่มมากขึ้น\n📌 เหตุการณ์ที่สังเกตเห็น : ในการประชุม 4DX พี่กอล์ฟให้ไซม่อนเป็นผู้ FACILITATOR ซึ่งน้องยังไม่มีการจับประเด็น รวมถึงยังมีการชี้ออก ซึ่งดูไม่ PROACTIVE\n📌 ผลกระทบ : ลด TRUST จากทีมงาน และทีมที่ทำงานร่วมกัน\n📌 สิ่งที่อยากให้ปรับ/พัฒนา : ตั้งใจฟังแบบ ACTIVE LISTENING จับประเด็นให้มากขึ้น จะทำให้ไซม่อนเป็น VALUE MEMBER ยิ่งขึ้น'},
+    {code:'RF',name:'Reflection',sub:'From Good to Great',
+     what:'สะท้อนสิ่งที่ทำได้ดีอยู่แล้ว และสิ่งที่เพิ่มเติมได้เพื่อให้ดียิ่งขึ้น',
+     concept:['สะท้อนมุมมองของเราให้อีกฝ่ายรับรู้สิ่งที่ทำได้ดีอยู่แล้ว','เสนอสิ่งที่ทำเพิ่มได้ เพื่อพัฒนาไปอีกขั้น (FROM GOOD TO GREAT)'],
+     fw:'ขออนุญาตส่ง RF – REFLECTION นะคะ/ครับ\n\n📌 EVENT : [เหตุการณ์]\n📌 สิ่งที่ทำได้ดี : [...]\n📌 ผล (สิ่งที่ทำได้ดี) : [...]\n📌 สิ่งที่อยากให้เพิ่มเติม : [...]\n📌 ผล (ถ้าปรับ) : [...]',
+     ex:'พี่ขออนุญาตส่ง RF – REFLECTION : อาร์ท นะครับ\n\n📌 EVENT : จากเหตุการณ์ที่อาร์ทได้ลงสื่อประชาสัมพันธ์ ใน MTP มีเรื่องเล่า\n📌 สิ่งที่ทำได้ดี : ได้แสดงถึงการ TAKE ACCOUNTABILITY ในหน้าที่ของตัวเอง\n📌 ผล : ทำให้เกิดความ TRUST อาร์ทในหน้าที่ของตัวเอง\n📌 สิ่งที่อยากให้เพิ่มเติม : อยากให้อาร์ทรอบคอบ ในการสะกดคำให้มากขึ้น\n📌 ผล ถ้าปรับ : ทำให้งานของอาร์ทมีประสิทธิภาพ และสร้างภาพลักษณ์ที่ดีให้กับทีม'},
+    {code:'SF',name:'Self-Reflection',sub:'สะท้อนความผิดพลาดของตัวเอง',
+     what:'สะท้อนจุดอ่อน/ความผิดพลาดของตัวเอง และสิ่งที่ได้เรียนรู้จากผู้อื่น',
+     concept:['สะท้อนข้อผิดพลาดของตัวเอง หรือสิ่งที่ได้เรียนรู้','นำพฤติกรรมที่ผิดพลาดมาปรับปรุงพัฒนาให้ดีขึ้น'],
+     fw:'ขออนุญาตส่ง SELF - REFLECTION นะคะ/ครับ\n\n📌 EVENT : [เหตุการณ์โดยสรุป ใคร ทำอะไร ที่ไหน เกิดผลอะไร]\n📌 PROBLEM : [สิ่งเร้า/ปัจจัยที่ควบคุมไม่ได้]\n📌 MY WEAKNESS : [นิสัย/จุดอ่อนที่ควบคุมได้]\n📌 MY MISTAKE : [สิ่งที่ทำผิดพลาดไป]\n📌 EFFECT : [ผลกระทบ]\n📌 IMPROVEMENT : [สิ่งที่จะปรับปรุง/ป้องกันครั้งหน้า]',
+     ex:'ขออนุญาตส่ง SELF - REFLECTION นะครับ\n\n📌 EVENT : จากเหตุการณ์ปอมีการคุยโทรศัพท์ขณะที่พี่เป้สอนอยู่\n📌 PROBLEM : มีสายเข้าจากน้องผู้ช่วยซึ่งคาดว่าเป็นเรื่องสำคัญ\n📌 MY WEAKNESS : ไม่ได้ปฏิเสธการรับสาย\n📌 MY MISTAKE : คุยโทรศัพท์ขณะที่พี่เป้กำลังสอนอยู่\n📌 EFFECT : รบกวนการสอนของพี่เป้ · รบกวนผู้เรียนท่านอื่น\n📌 IMPROVEMENT : ปฏิเสธการรับสายก่อนแล้วค่อยโทรกลับภายหลัง · หากเป็นสายสำคัญ ควรขออนุญาตออกไปรับนอกห้อง'},
+    {code:'RB',name:'Right Behavior',sub:'ชื่นชม/ยอมรับผลลัพธ์ที่ดี',
+     what:'การชื่นชมและการยอมรับในผลลัพธ์ที่ดี',
+     concept:['เปิดใจมองหาข้อดี มองที่ตัวเขา ไม่ใช่บรรทัดฐานเรา','ชื่นชมด้วยความจริงใจ เติมกำลังใจเขา เติมความสุขเรา','ชื่นชมทีละประเด็น สรุปประเด็นในการชื่นชมแต่ละครั้ง','เป็นการเติมบัญชีออมใจของทั้งผู้ให้และผู้รับ'],
+     fw:'ขอชื่นชมคุณ [ชื่อ]\n\n📌 เหตุการณ์ : [...]\n📌 สิ่งที่ทำได้ดี : [...]\n📌 สร้างผลลัพธ์ : [...]',
+     ex:'RIGHT BEHAVIOR : น้อง B\nขอชื่นชมน้อง B นะครับ\n\n📌 เหตุการณ์ : จากเหตุการณ์ที่น้อง B ทำการ์ดเกมที่ใช้ประกอบการสอนในหลักสูตร SPIRAL DYNAMICS\n📌 สิ่งที่ทำได้ดี : นำเกมการ์ด/กิจกรรมมาปรับใช้ในการเรียน ทำให้เกิดความสนุก เรียนรู้แบบสองทางจากการได้แชร์ผ่านกิจกรรม\n📌 สร้างผลลัพธ์ : ออกแบบการเรียนการสอนได้ดี · ทำให้รู้สึก TRUST และเกิดการแชร์ไอเดีย · เป็นคนที่มีไอเดียดี ให้พัฒนาจุดนี้ต่อไปครับ'},
+    {code:'RJ',name:'Rejection',sub:'ปฏิเสธแบบสุภาพ ให้เกียรติ',
+     what:'การปฏิเสธแบบสุภาพ และให้เกียรติ',
+     concept:['อธิบายอย่างใจเย็นและใช้เหตุผลประกอบ','ปฏิเสธโดยไม่ทำให้เสียความสัมพันธ์ ไม่ให้อีกฝ่ายเสียหน้า'],
+     fw:'🙏 ขอบคุณ/ขอโทษ หรือพูดถึงเหตุการณ์นั้น ๆ [...]\n\n👉 เพราะ/เนื่องจาก [เหตุผลประกอบ]\n\n👉 ถ้ามี [โอกาสครั้งหน้า] ...',
+     ex:'🙏 สวัสดีค่ะพี่นิกกี้ ขอบคุณที่ชวนแอมปี้ไปเรียนวันนี้นะคะ\n\n👉 เนื่องจากวันนี้แอมปี้มีนัดพบแพทย์ ช่วงเวลาหลังเลิกงาน โดยนัดหมายล่วงหน้าไว้แล้ว ซึ่งไม่สามารถเลื่อนนัดได้ จึงไม่สามารถอยู่เรียนได้ตามเวลาดังกล่าวค่ะ\n👉 ถ้ามีการเปิดหลักสูตรอีกรอบ แอมปี้จะขอลงเรียนด้วยนะคะ\nขอบคุณค่ะ 🙏'},
+    {code:'AAR',name:'After Action Review',sub:'ทบทวนหลังงาน/ประชุม',
+     what:'กระบวนการทบทวนหลังทำงานเสร็จ จบการประชุม หรือกิจกรรม เพื่อสะท้อนตนเอง กระบวนการทำงาน และประยุกต์ใช้',
+     concept:['รีวิวหลังทำกิจกรรม/งานเสร็จ ให้เห็นร่วมกันว่าเป็นไปตามวัตถุประสงค์','ทำอะไรได้ดีแล้ว และมีอะไรที่ปรับปรุงให้ดีกว่านี้ได้บ้าง'],
+     fw:'AAR : [ชื่อกิจกรรม/ประชุม]\n\n✅ FEEL : [รู้สึกอย่างไร]\n✅ FOUND : [ค้นพบอะไร]\n✅ FUTURE : [นำไปใช้ในอนาคตได้อย่างไร]',
+     ex:'AAR จากการประชุมทีมประจำสัปดาห์\n\n✅ FEEL : สนุก ตื่นเต้น\n✅ FOUND : แต่ละหน้าที่มีความสำคัญทั้งหมด\n✅ FUTURE : วางแผนเรื่องการจัดการงานในความรับผิดชอบของตนให้ดี\n\n🐻✨❤️ ขอบคุณค่ะ'}
+  ];
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function copyText(text,btn,label){
+    var done=function(){ btn.textContent='คัดลอกแล้ว'; btn.setAttribute('data-state','done'); setTimeout(function(){btn.textContent=label;btn.removeAttribute('data-state');},1600); };
+    try{ if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(done); } else { done(); } }catch(e){ done(); }
+  }
+
+  F.forEach(function(f){
+    // jump chip
+    var chip=document.createElement('button'); chip.type='button'; chip.className='fmtjump'; chip.textContent=f.code;
+    chip.addEventListener('click',function(){ var d=document.getElementById('fmt-'+f.code); d.open=true; d.scrollIntoView({behavior:'smooth',block:'start'}); });
+    bar.appendChild(chip);
+
+    var d=document.createElement('details'); d.className='fmt'; d.id='fmt-'+f.code;
+    var conceptHtml=f.concept.map(function(c){return '<li>'+esc(c)+'</li>';}).join('');
+    var noteHtml=f.note?'<div class="fmt-note">📌 '+esc(f.note)+'</div>':'';
+    d.innerHTML=
+      '<summary><span class="fmt-code">'+f.code+'</span><span class="fmt-name">'+esc(f.name)+'<span class="fmt-sub">'+esc(f.sub)+'</span></span></summary>'+
+      '<div class="fmt-body">'+
+        '<h4>ใช้เมื่อไหร่</h4><p>'+esc(f.what)+'</p>'+
+        '<h4>หลักการ</h4><div class="fmt-concept"><ul>'+conceptHtml+'</ul></div>'+noteHtml+
+        '<h4>โครง (Framework)</h4><div class="codewrap"><button class="copy" type="button" data-copy="fw">Copy</button><pre>'+esc(f.fw)+'</pre></div>'+
+        '<h4>ตัวอย่างจริง</h4><div class="fmt-ex codewrap"><button class="copy" type="button" data-copy="ex">Copy</button><pre>'+esc(f.ex)+'</pre></div>'+
+        '<h4>พื้นที่ฝึกเขียนของดิฉัน</h4>'+
+        '<div class="fmt-practice">'+
+          '<textarea id="prac-'+f.code+'" placeholder="ลองเขียน '+f.code+' ของดิฉันตามโครงด้านบน… (บันทึกอัตโนมัติ)"></textarea>'+
+          '<div class="tbtnrow" style="margin-top:8px"><button class="tbtn" type="button" data-fill="'+f.code+'">เติมโครง</button><button class="tbtn" type="button" data-praccopy="'+f.code+'">คัดลอกงานฝึก</button><button class="tbtn ghost danger" type="button" data-clear="'+f.code+'">ล้าง</button><span class="saveflag" id="flag-'+f.code+'"></span></div>'+
+        '</div>'+
+      '</div>';
+    list.appendChild(d);
+
+    // restore practice
+    var ta=d.querySelector('#prac-'+f.code);
+    ta.value=LSget('cos_practice_'+f.code,'');
+    var flag=d.querySelector('#flag-'+f.code);
+    if(ta.value) flag.textContent='บันทึกแล้ว', flag.className='saveflag on';
+    var t;
+    ta.addEventListener('input',function(){
+      flag.textContent='กำลังบันทึก…'; flag.className='saveflag';
+      clearTimeout(t); t=setTimeout(function(){ LSset('cos_practice_'+f.code,ta.value); flag.textContent='บันทึกแล้ว'; flag.className='saveflag on'; },400);
+    });
+
+    // copy framework / example
+    d.querySelectorAll('.copy').forEach(function(b){
+      b.addEventListener('click',function(){ copyText(b.getAttribute('data-copy')==='fw'?f.fw:f.ex, b, 'Copy'); });
+    });
+  });
+
+  // fill / copy / clear practice
+  list.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    var code=b.getAttribute('data-fill')||b.getAttribute('data-praccopy')||b.getAttribute('data-clear'); if(!code) return;
+    var ta=document.getElementById('prac-'+code); var flag=document.getElementById('flag-'+code);
+    var f=F.filter(function(x){return x.code===code;})[0];
+    if(b.hasAttribute('data-fill')){ ta.value=f.fw; ta.focus(); LSset('cos_practice_'+code,ta.value); flag.textContent='บันทึกแล้ว'; flag.className='saveflag on'; }
+    else if(b.hasAttribute('data-praccopy')){ copyText(ta.value,b,'คัดลอกงานฝึก'); }
+    else if(b.hasAttribute('data-clear')){ if(ta.value && !confirm('ล้างงานฝึก '+code+' ?')) return; ta.value=''; LSset('cos_practice_'+code,''); flag.textContent=''; flag.className='saveflag'; ta.focus(); }
+  });
+
+  // open first by default
+  var first=document.getElementById('fmt-LT'); if(first) first.open=true;
+})();
+</script>
+
+<script>
+/* ===== v2.4: self-training hub — daily ring · weekly · mastery · roadmap ===== */
+(function(){
+  if(!document.getElementById('dailyList')) return;
+  function jget(k,d){ try{var v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;} }
+  function jset(k,v){ try{localStorage.setItem(k,JSON.stringify(v));}catch(e){} }
+  function dstr(dt){ return dt.getFullYear()+'-'+('0'+(dt.getMonth()+1)).slice(-2)+'-'+('0'+dt.getDate()).slice(-2); }
+  var CODES=['LT','LK','TT','CC','FB','RF','SF','RB','RJ','AAR'];
+
+  var DAILY=[
+    {k:'qd',t:'ติด Q + D กำกับงานของวัน',h:'เช้า 3 นาที — รู้ตั้งแต่เช้าว่าต้องขออะไรจากใครที่ระดับไหน'},
+    {k:'rds',t:'เขียน R/D/S ก่อนส่งข้อความสำคัญ',h:'เขียน R ไม่ได้ใน 30 วินาที = ยังไม่ถึงเวลาส่ง'},
+    {k:'disc',t:'Discipline — D5 Call + ถามเพื่อพัฒนา',h:'จ.–ศ. หลัง 17.30'},
+    {k:'rf',t:'ทวน Reflection ภายใน 1 ชม. (ถ้ามี)',h:'ระบบให้ 1 วันเป็นเพดาน ไม่ใช่เป้าหมาย'},
+    {k:'fmt',t:'ฝึก 1 Format ในหน้า Format ทางการ',h:'พิมพ์ในพื้นที่ฝึกอย่างน้อยหนึ่งแบบ'}
+  ];
+  var WEEK=[
+    {k:'ud',t:'ส่ง UD วันศุกร์ — Q2 On process ≥5 · สำเร็จ ≥5'},
+    {k:'pro',t:'ภาษา Proactive สัปดาห์ละ 1 ครั้ง'},
+    {k:'ratio',t:'นับสัดส่วน D3 : D5 (ศุกร์ 10 นาที)'},
+    {k:'score',t:'กรอก Scorecard สัปดาห์นี้'}
+  ];
+  var ROAD=[
+    {t:'RDS เท่านั้น',s:'เขียน R/D/S บนกระดาษก่อนส่งทุกข้อความ'},
+    {t:'RDS ต่อ + ติด D กำกับงานเช้า',s:'รายการงานเช้ามี D-Level ครบทุกบรรทัด'},
+    {t:'ขอ D5 จริงกับผู้บริหาร',s:'ขอ D5 อย่างน้อย 3 เรื่อง'},
+    {t:'เริ่มให้ D-Level กับหัวหน้าฝ่าย',s:'ระบุ D-Level ที่ให้ในทุกเรื่องที่ประสาน'},
+    {t:'Accountability Level',s:'ทวน Reflection ทุกครั้งภายใน 1 ชม.'},
+    {t:'Q2 Schedule เต็มรูปแบบ',s:'ปฏิทินสัปดาห์หน้าลงล่วงหน้าครบ'},
+    {t:'รวมทุกโมดูล · One Format',s:'ใช้โครงเดียวในทั้ง 16 สถานการณ์'},
+    {t:'ทบทวนกับผู้บริหาร',s:'ขอ Feedback 1 คำถาม + ปรับคู่มือ'}
+  ];
+
+  var today=dstr(new Date());
+  function curWeek(){
+    var t=new Date(); var d=new Date(Date.UTC(t.getFullYear(),t.getMonth(),t.getDate()));
+    var day=d.getUTCDay()||7; d.setUTCDate(d.getUTCDate()+4-day);
+    var ys=new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    var wk=Math.ceil((((d-ys)/86400000)+1)/7);
+    return d.getUTCFullYear()+'-W'+(wk<10?'0':'')+wk;
+  }
+  var wkKey=curWeek();
+
+  var daily=jget('cos_train_daily',{});      // {date:{k:true}}
+  var weekly=jget('cos_train_week',{});       // {weekKey:{k:true}}
+  var road=jget('cos_train_road',{});         // {i:true}
+  if(!daily[today]) daily[today]={};
+  if(!weekly[wkKey]) weekly[wkKey]={};
+
+  function masteryCount(){ var n=0; CODES.forEach(function(c){ try{ if((localStorage.getItem('cos_practice_'+c)||'').trim()) n++; }catch(e){} }); return n; }
+
+  function dayDoneCount(map){ var n=0; DAILY.forEach(function(d){ if(map[d.k]) n++; }); return n; }
+  function streak(){
+    var s=0, dt=new Date();
+    for(var i=0;i<400;i++){
+      var key=dstr(dt), m=daily[key];
+      if(m && dayDoneCount(m)===DAILY.length){ s++; dt.setDate(dt.getDate()-1); }
+      else if(i===0){ dt.setDate(dt.getDate()-1); } // today not complete yet — keep counting yesterday back
+      else break;
+    }
+    return s;
+  }
+
+  var RING_C=2*Math.PI*52;
+  function renderDaily(){
+    var ul=document.getElementById('dailyList'); ul.innerHTML='';
+    DAILY.forEach(function(d){
+      var li=document.createElement('li'); var on=!!daily[today][d.k]; if(on) li.className='done';
+      var id='dk-'+d.k;
+      li.innerHTML='<input type="checkbox" id="'+id+'" '+(on?'checked':'')+'><label for="'+id+'"><span class="ct">'+d.t+'</span><span class="ch">'+d.h+'</span></label>';
+      li.querySelector('input').addEventListener('change',function(e){
+        daily[today][d.k]=e.target.checked; jset('cos_train_daily',daily);
+        li.classList.toggle('done',e.target.checked); renderRing(); updateTrainStats();
+      });
+      ul.appendChild(li);
+    });
+    renderRing();
+  }
+  function renderRing(){
+    var done=dayDoneCount(daily[today]), frac=done/DAILY.length;
+    document.getElementById('ringFg').style.strokeDashoffset=(RING_C*(1-frac)).toFixed(1);
+    document.getElementById('ringPct').textContent=Math.round(frac*100)+'%';
+    var s=streak();
+    document.getElementById('streakNum').textContent=s;
+    document.getElementById('streakBox').style.opacity=s>0?'1':'.55';
+  }
+  function renderWeek(){
+    var ul=document.getElementById('weekList'); ul.innerHTML='';
+    WEEK.forEach(function(w){
+      var li=document.createElement('li'); var on=!!weekly[wkKey][w.k]; if(on) li.className='done';
+      var id='wk-'+w.k;
+      li.innerHTML='<input type="checkbox" id="'+id+'" '+(on?'checked':'')+'><label for="'+id+'"><span class="ct">'+w.t+'</span></label>';
+      li.querySelector('input').addEventListener('change',function(e){
+        weekly[wkKey][w.k]=e.target.checked; jset('cos_train_week',weekly);
+        li.classList.toggle('done',e.target.checked); renderWeekBar();
+      });
+      ul.appendChild(li);
+    });
+    renderWeekBar();
+  }
+  function renderWeekBar(){
+    var n=0; WEEK.forEach(function(w){ if(weekly[wkKey][w.k]) n++; });
+    document.getElementById('weekBar').style.width=Math.round(n/WEEK.length*100)+'%';
+    document.getElementById('weekPct').textContent=n+' / '+WEEK.length+' ข้อสัปดาห์นี้';
+  }
+  function renderMastery(){
+    var chips=document.getElementById('mastChips'); chips.innerHTML='';
+    var n=0;
+    CODES.forEach(function(c){
+      var on=false; try{ on=!!(localStorage.getItem('cos_practice_'+c)||'').trim(); }catch(e){}
+      if(on) n++;
+      var s=document.createElement('span'); s.className='mchip'+(on?' on':''); s.textContent=c; chips.appendChild(s);
+    });
+    document.getElementById('mastBar').style.width=Math.round(n/CODES.length*100)+'%';
+    document.getElementById('mastPct').textContent=n+' / '+CODES.length;
+  }
+  function renderRoad(){
+    var ul=document.getElementById('roadList'); ul.innerHTML='';
+    ROAD.forEach(function(r,i){
+      var li=document.createElement('li'); var on=!!road[i]; if(on) li.className='done';
+      var id='rw-'+i;
+      li.innerHTML='<span class="wk">'+(i+1)+'</span><div class="wtxt"><b>'+r.t+'</b><span>'+r.s+'</span></div><input type="checkbox" id="'+id+'" aria-label="สัปดาห์ '+(i+1)+'" '+(on?'checked':'')+'>';
+      li.querySelector('input').addEventListener('change',function(e){
+        road[i]=e.target.checked; jset('cos_train_road',road);
+        li.classList.toggle('done',e.target.checked); renderRoadBar();
+      });
+      ul.appendChild(li);
+    });
+    renderRoadBar();
+  }
+  function renderRoadBar(){
+    var n=0; ROAD.forEach(function(_,i){ if(road[i]) n++; });
+    document.getElementById('roadBar').style.width=Math.round(n/ROAD.length*100)+'%';
+    document.getElementById('roadPct').textContent=n+' / '+ROAD.length;
+  }
+
+  function updateTrainStats(){
+    var td=document.getElementById('statTrainDay');
+    if(td){ var done=dayDoneCount(daily[today]); td.textContent=done+'/5'; td.className='snum'+(done===5?' good':(done===0?' warn':'')); }
+    var ms=document.getElementById('statMastery');
+    if(ms){ var m=masteryCount(); ms.textContent=m+'/10'; ms.className='snum'+(m>=10?' good':(m===0?' warn':'')); }
+  }
+
+  renderDaily(); renderWeek(); renderMastery(); renderRoad(); updateTrainStats();
+})();
+</script>
+</body></html>
